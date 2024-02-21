@@ -20,13 +20,13 @@ public class Content {
     @Column(name = "content_id")
     private Long contentId;
 
-    @Column(name = "title", length = 45)
+    @Column(name = "title")
     private String title;
 
     @Column(name = "content_type")
     private Integer contentType;
 
-    @Column(name = "img_url", columnDefinition = "TEXT")
+    @Column(name = "img_url")
     private String imgUrl;
 
     @Column(name = "created_at")
