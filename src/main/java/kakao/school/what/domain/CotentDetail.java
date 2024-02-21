@@ -13,35 +13,24 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Content {
+public class ContentDetail {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "history_id")
-    private Long historyId;
+    @Column(name = "serial")
+    private Long serial;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "content_id")
+    private Long contentId;
 
-    @Column(name = "priority")
-    private Integer priority;
+    @Column(name = "like_num")
+    private Long likeNum;
 
-    @Column(name = "country_id")
-    private Long countryId;
+    @Column(name = "dislike_num")
+    private Long dislikeNum;
 
-    @Column(name = "brief")
-    private String brief;
-
-    @Column(name = "year")
-    private Integer year;
-
-    @Column(name = "month")
-    private Integer month;
-
-    @Column(name = "day")
-    private Integer day;
-
-    @Column(name = "img_url")
-    private String img_url;
+    @Column(name = "info")
+    private String info;
 
     @Column(name = "created_at")
     @CreatedDate
