@@ -20,7 +20,7 @@ public class ContentCountry {
     private Long serial;
 
     @Column(name = "content_id")
-    private Long countentId;
+    private Long contentId;
 
     @Column(name = "country_id")
     private Long countryId;

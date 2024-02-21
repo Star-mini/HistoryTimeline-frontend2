@@ -21,7 +21,7 @@ public class ContentPlatform {
     private Long serial;
 
     @Column(name = "content_id")
-    private Long countentId;
+    private Long contentId;
 
     @Column(name = "platform_id")
     private Long platformId;
