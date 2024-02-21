@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Dislike {
+public class Like {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
