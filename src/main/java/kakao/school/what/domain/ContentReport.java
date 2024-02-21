@@ -17,13 +17,13 @@ public class ContentReport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "content_report_id")
-    private Long ContentReportId;
+    private Long contentReportId;
 
     @Column(name = "user_id")
-    private Long UserId;
+    private Long userId;
 
     @Column(name = "report")
-    private String Report;
+    private String report;
 
     @Column(name = "created_at")
     @CreatedDate

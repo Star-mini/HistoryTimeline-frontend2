@@ -16,13 +16,13 @@ public class HistoryReport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "history_report_id")
-    private Long HistoryReportId;
+    private Long historyReportId;
 
     @Column(name = "user_id")
-    private Long UserId;
+    private Long userId;
 
     @Column(name = "report")
-    private String Report;
+    private String report;
 
     @Column(name = "created_at")
     @CreatedDate
