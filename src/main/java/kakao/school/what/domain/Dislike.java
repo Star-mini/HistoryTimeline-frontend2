@@ -13,17 +13,17 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class ContentReport {
+public class Dislike {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "content_report_id")
-    private Long contentReportId;
+    @Column(name = "serial")
+    private Long serial;
 
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "report")
-    private String report;
+    @Column(name = "content_id")
+    private Long contentId;
 
     @Column(name = "created_at")
     @CreatedDate
