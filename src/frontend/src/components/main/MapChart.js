@@ -6,10 +6,6 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 const korea = ["South Korea", "North Korea"]
 
 /* 
-* 🚨 node modules 추가
-* yarn add react-simple-maps  
-* yarn add react-tooltip 
-
 * 지도 컴포넌트, react-simple-map을 통해 구현하였음
 * 현재 onClick, onMouseEnter, onMouseLeave 이벤트 구현 완료.
 * onClick 나라이름 및 id 출력, 추후 선택된 나라 id를 전달 예정
@@ -33,7 +29,7 @@ function MapChart() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "#0d0d34",
+        background: "#264364",
       }}
     >
       <Tooltip>{content}</Tooltip>
@@ -52,11 +48,11 @@ function MapChart() {
               
                 return (
                   <Geography
-                    stroke="#ffffff"
-                    strokeWidth="0.03"
+                    stroke="#000000"
+                    strokeWidth="0.2"
                     key={geo.rsmKey}
                     geography={geo}
-                    fill={ korea.includes(name) ? "#5CFFD1" : "#2a0c66"}
+                    fill={ korea.includes(name) ? "#5CFFD1" : "#f4e9c9"} // #2a0c66
                     onClick={
                       handleClick(geo.properties, geo.id)
                     }
@@ -67,7 +63,7 @@ function MapChart() {
                     onMouseLeave={() => setcontent("")}
                     style={{
                       hover: {
-                        fill: korea.includes(name) ? "#5CFFD1" : "#FF81DB",
+                        fill: korea.includes(name) ? "#5CFFD1" : "#deb488",
                         outline: "none",
                       },
                       default: { outline: "none" },
