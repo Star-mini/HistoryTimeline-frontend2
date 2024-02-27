@@ -1,0 +1,15 @@
+.timeline-labels {
+    background-color: #0d0d32;
+    border-bottom: 3px solid #5cffd1;
+    display: grid;
+    grid-template-columns: 4fr 1fr 4fr;
+    height: 100px;
+}
+
+.timeline-labels > .label {
+    color: #5cffd1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: medium;
+}
