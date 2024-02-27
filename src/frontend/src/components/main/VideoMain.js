@@ -2,9 +2,8 @@ import React from "react";
 import VideoBack from "./VideoBack";
 
 /*
- * 첫 입장? 메인 페이지 컴포넌트
+ * 첫 입장 메인 페이지 컴포넌트
  * 뒷 배경색 통일을 위해 backColor 변수를 사용
- * 모바일 접속시 스크롤 기능 고려할 필요 있음
  */
 function VideoMain() {
     const backColor = "#264364"; // 배경색

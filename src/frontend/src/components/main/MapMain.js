@@ -1,6 +1,9 @@
 import React from "react";
 import MapChart from "./MapChart";
 
+/**
+ * 지도 메인화면
+ */
 function MapMain() {
     const backColor = "#264364"; // 배경색
     return (

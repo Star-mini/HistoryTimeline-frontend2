@@ -1,6 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import VideoMain from "./VideoMain";
 
+/**
+ * handleScroll
+ * 비디오 화면 중간을 기준으로 확대/축소 기능
+ * 
+ */
 function VideoZoomInOut() {
     const backColor = "#264364";
     const [zoomLevel, setZoomLevel] = useState(1);
@@ -8,8 +13,8 @@ function VideoZoomInOut() {
     const containerRef = useRef(null);
     const animationRef = useRef(null);
 
-    const handleScroll = (e) => {
-        const deltaY = e.deltaY;
+    const handleScroll = (event) => {
+        const deltaY = event.deltaY;
         const container = containerRef.current;
 
         cancelAnimationFrame(animationRef.current);
@@ -20,8 +25,8 @@ function VideoZoomInOut() {
                 const clampedZoomLevel = newZoomLevel < minZoomLevel ? minZoomLevel : newZoomLevel;
 
                 const containerRect = container.getBoundingClientRect();
-                const mouseX = e.clientX - containerRect.left;
-                const mouseY = e.clientY - containerRect.top;
+                const mouseX = event.clientX - containerRect.left;
+                const mouseY = event.clientY - containerRect.top;
                 const centerX = containerRect.width / 2;
                 const centerY = containerRect.height / 2;
 
