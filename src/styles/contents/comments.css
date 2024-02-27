@@ -1,0 +1,76 @@
+/* App.css 또는 다른 CSS 파일 */
+.textarea-custom {
+  background-color: #0d0d36; /* 배경색 설정 */
+}
+/* .textarea: <textarea> 요소에 대한 스타일. 텍스트 입력 영역이 폼의 전체 너비를 차지하도록 설정합니다.
+     width: 100%; - 부모 요소의 전체 너비를 차지하도록 설정합니다.*/
+.textarea {
+  width: 100%;
+}
+
+/* .button-container: 버튼을 포함하는 컨테이너에 대한 스타일. 버튼을 오른쪽 끝으로 정렬합니다.
+           display: flex; - Flexbox 레이아웃을 활성화합니다.
+           justifyContent: flex-end; - 자식 요소들을 컨테이너의 끝(오른쪽)으로 정렬합니다.
+           font-size: 15px; - 버튼의 폰트 크기를 15px로 설정합니다. */
+.button-container {
+  display: flex;
+  justifycontent: flex-end;
+  font-size: 15px;
+  background-color: #f7f7f7;
+}
+
+/* .comments-container: 댓글 목록을 포함하는 컨테이너에 대한 스타일. 스크롤 가능한 목록으로 스타일링합니다.
+           border: 1px solid #ccc; - 회색(#ccc)의 1px 두께 테두리를 추가합니다.
+           padding: 10px; - 내부 여백을 10px로 설정합니다.
+           marginBottom: 20px; - 요소 아래에 20px의 공간을 둡니다.
+           overflowY: auto; - 수직 스크롤바가 필요할 경우 자동으로 나타나도록 설정합니다.
+           maxHeight: 200px; - 컨테이너의 최대 높이를 200px로 제한합니다.
+           fontFamily: monospace; - 폰트를 고정폭(monospace) 폰트로 설정합니다.
+           width: 100%; - 부모 요소의 전체 너비를 차지하도록 설정합니다. */
+.comments-container {
+  border: 0.01px solid #ccc;
+  padding: 10px;
+  overflowy: auto;
+  maxheight: 200px;
+  fontfamily: monospace;
+  width: 100%;
+  background-color: #0d0d36;
+}
+
+/* .comments-list: 댓글 목록(<ul>)에 대한 스타일. 기본 리스트 스타일을 제거합니다.
+           listStyleType: none; - 리스트 항목 앞의 기본 마커(순서 없는 리스트의 경우 불릿 등)를 제거합니다.
+           padding: 0; - 내부 여백을 없앱니다. */
+.comments-list {
+  liststyletype: none;
+  padding: 0;
+}
+
+.button {
+  white-space: nowrap; /* 버튼 텍스트를 한 줄로 유지 */
+  width: auto; /* 버튼 너비를 텍스트 길이에 맞춤 */
+  overflow: hidden; /* 너비를 초과하는 텍스트를 숨김 */
+  text-overflow: ellipsis; /* 너비를 초과하는 텍스트를 줄임표로 표시 */
+  background-color: #5cffd1;
+}
+  
+/* .form-container: 폼 컨테이너에 대한 스타일. Flexbox 레이아웃을 사용하여 폼 요소들을 수직 방향으로 정렬합니다.
+   display: flex; - Flexbox 레이아웃을 활성화합니다.
+   flexDirection: column; - 자식 요소들을 수직 방향(열)으로 배치합니다. */
+.form-container {
+  display: flex;
+  flexdirection: column;
+}
+/* 댓글 리스트의 각 항목과 '댓글이 없습니다' 메시지의 색상 설정 */
+.comment-item,
+.comments-container > p {
+  color: #f7f7f7;
+}
+.textarea-custom::placeholder {
+  color: #f7f7f7; /* 플레이스홀더 텍스트 색상 */
+  opacity: 1; /* 브라우저에 따라 플레이스홀더 텍스트의 투명도가 기본적으로 적용될 수 있으므로, 필요에 따라 이를 조정 */
+}
+.textarea-custom {
+  resize: none; /* 크기 조절 비활성화 */
+  color:  #f7f7f7; /* 입력 텍스트 색상 */
+  background-color: #0d0d36; /* 배경색 변경이 필요한 경우 추가 */
+}

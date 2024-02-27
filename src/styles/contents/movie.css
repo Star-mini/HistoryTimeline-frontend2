@@ -1,0 +1,29 @@
+.movie-background {
+    background-color: #0d0d36;
+  }
+  .card-title{
+    color: #f7f7f7;
+  }
+
+  .card-img-top {
+    transition: transform 0.3s ease-in-out; /* 부드러운 전환 효과 */
+  }
+  
+  .card-img-top:hover {
+    transform: scale(1.1); /* 마우스 호버 시 1.3배 확대 */
+  }
+  
+  .movie-image {
+    width: 300px;
+    height: auto;
+  }
+  /* App.css */
+  .movie-specific .card-img-top {
+    width: 300px;
+    height: auto;
+  }
+  .card-img-top {
+    width: 300px; /* 이미지 너비 설정 */
+    height: auto; /* 이미지 높이 자동 조절로 비율 유지 */
+    display: block; /* 이미지를 블록 요소로 설정 */
+  }

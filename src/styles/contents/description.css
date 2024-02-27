@@ -1,0 +1,55 @@
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.description,
+.description h3,
+.description p,
+.thumb-up,
+.thumb-down {
+  color: #f7f7f7; /* 모든 텍스트 색상을 #f7f7f7로 설정 */
+}
+
+.description {
+  /* 기존 스타일 */
+  letter-spacing: 0.05em; /* 글자 간격 추가 */
+}
+span.thumb-up > img, span.thumb-down > img {
+  transition: transform 0.3s ease-in-out; /* 부드러운 전환 효과 */
+}
+
+span.thumb-up:hover > img, span.thumb-down:hover > img {
+  transform: scale(1.2); /* 마우스 호버 시 이미지 1.1배 확대 */
+}
+.image-box > img {
+  transition: transform 0.3s ease-in-out; /* 부드러운 전환 효과 */
+}
+
+.image-box:hover > img {
+  transform: scale(1.1); /* 마우스 호버 시 이미지 1.1배 확대 */
+}
+
+.description {
+  max-height: 300px; /* 컨테이너의 최대 너비를 300px로 설정 */
+  overflow-y: auto; /* 컨테이너의 내용이 높이를 초과할 경우 수직 스크롤바를 표시 */
+}
+.flex {
+  display: flex;
+  align-items: flex-start; /* 항목들을 컨테이너의 시작점에 맞춰 정렬 */
+}
+
+.image-box {
+  flex-shrink: 0; /* 이미지 크기가 줄어들지 않도록 설정 */
+  margin-right: 16px; /* 이미지와 설명 사이의 공간을 설정 */
+}
+
+.description {
+  flex-grow: 1; /* 설명 부분이 남은 공간을 모두 차지하도록 설정 */
+}
