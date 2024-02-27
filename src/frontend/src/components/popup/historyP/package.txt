@@ -1,0 +1,28 @@
+history.js
+react-bootstrap
+yarn add react-bootstrap bootstrap
+
+framer-motion 	
+yarn add framer-motrion
+
+
+패키지 설치
+
+yarn add @mui/material @emotion/react @emotion/styled
+
+패키지 아이콘 설치
+
+yarn add @mui/icons-material
+
+
+영화 이미지 슬라이드 패키지
+
+yarn add react-slick
+
+css 명령어 추가
+
+yarn add slick-carousel
+
+Fade
+
+yarn add react-reveal
