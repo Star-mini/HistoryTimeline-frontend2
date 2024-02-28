@@ -1,20 +1,19 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css'; // Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS
-import './App.css'; // Custom CSS
 import Comments from './Comments';
-import Cart from './Cart';
+import MovieCard from './MovieCard';
 import Description from './Description';
-import './ContensP.css'; // ContensP.css 파일을 임포트합니다.
+import '../../../styles/contents/ContentsPopup.css'// ContentsPopup.css 파일을 임포트합니다.
 
 
-function ContensP() {
+function ContentsPopup() {
   return (
-    <div className="ContensP pink-background font-sans">
+    <div className="ContentsPopup pink-background font-sans">
       <div className="container mx-auto">
         <Description />
         <div style={{ marginTop: '20px' }}>
-          <Cart />
+          <MovieCard />
         </div>
         <Comments />
       </div>  
@@ -22,4 +21,4 @@ function ContensP() {
   );
 }
 
-export default ContensP;
+export default ContentsPopup;

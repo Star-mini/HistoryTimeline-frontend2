@@ -1,5 +1,4 @@
-import './App.css';
-import './movie.css';
+import '../../../styles/contents/movie.css';
 
 function Movie(props) {
     return (
