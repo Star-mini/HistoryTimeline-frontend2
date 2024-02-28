@@ -1,6 +1,5 @@
 import React, { useState } from "react"; // React 라이브러리와 useState 훅을 임포트
-import "./App.css"; // App 컴포넌트에 대한 CSS 스타일을 임포트
-import "./comments.css"; // 댓글 관련 스타일을 정의한 CSS 파일을 임포트
+import "../../../styles/contents/comments.css";// 댓글 관련 스타일을 정의한 CSS 파일을 임포트
 
 function Comments() {
   const [comments, setComments] = useState([]); // 댓글 목록을 저장하는 상태 변수와 그 상태를 업데이트하는 함수입니다. 초기값은 빈 배열

@@ -1,7 +1,6 @@
 // Description.js
 import React, { useState } from "react";
-import "./App.css"; // CSS 파일을 임포트합니다. 파일 경로는 프로젝트 구조에 따라 달라질 수 있습니다.
-import "./description.css"; // description.css 파일을 임포트합니다. 파일 경로는 프로젝트 구조에 따라 달라질 수 있습니다.
+import '../../../styles/contents/description.css'// description.css 파일을 임포트
 import Fade from "react-reveal/Fade";
 
 const Description = () => {
