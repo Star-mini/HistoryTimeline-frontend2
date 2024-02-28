@@ -5,12 +5,12 @@ import './App.css'; // Custom CSS
 import Comments from './Comments';
 import Cart from './Cart';
 import Description from './Description';
-import './copy.css'; // copy.css 파일을 임포트합니다.
+import './ContensP.css'; // ContensP.css 파일을 임포트합니다.
 
 
-function Copy() {
+function ContensP() {
   return (
-    <div className="Copy pink-background font-sans">
+    <div className="ContensP pink-background font-sans">
       <div className="container mx-auto">
         <Description />
         <div style={{ marginTop: '20px' }}>
@@ -22,4 +22,4 @@ function Copy() {
   );
 }
 
-export default Copy;
+export default ContensP;
