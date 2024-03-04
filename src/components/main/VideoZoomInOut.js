@@ -1,74 +1,60 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import VideoMain from "./VideoMain";
 
-/**
- * handleScroll
- * 비디오 화면 중간을 기준으로 확대/축소 기능
- * 
- */
 function VideoZoomInOut() {
-    const backColor = "#264364";
-    const [zoomLevel, setZoomLevel] = useState(1);
-    const minZoomLevel = 1;
     const containerRef = useRef(null);
-    const animationRef = useRef(null);
-
-    const handleScroll = (event) => {
-        const deltaY = event.deltaY;
-        const container = containerRef.current;
-
-        cancelAnimationFrame(animationRef.current);
-
-        animationRef.current = requestAnimationFrame(() => {
-            setZoomLevel((prevZoomLevel) => {
-                const newZoomLevel = prevZoomLevel + deltaY * 0.001;
-                const clampedZoomLevel = newZoomLevel < minZoomLevel ? minZoomLevel : newZoomLevel;
-
-                const containerRect = container.getBoundingClientRect();
-                const mouseX = event.clientX - containerRect.left;
-                const mouseY = event.clientY - containerRect.top;
-                const centerX = containerRect.width / 2;
-                const centerY = containerRect.height / 2;
-
-                const scale = clampedZoomLevel / prevZoomLevel;
-                const translateX = (mouseX - centerX) * (1 - scale);
-                const translateY = (mouseY - centerY) * (1 - scale);
-
-                return clampedZoomLevel;
-            });
-        });
-    };
+    const backColor = "#264364";
+    const navigate = useNavigate();
 
     useEffect(() => {
         const container = containerRef.current;
-        container.addEventListener("wheel", handleScroll);
+
+        const handleScroll = (event) => {
+            event.preventDefault();
+
+            const delta = event.deltaY || event.detail || event.wheelDelta;
+            const scale = delta > 0 ? 1.05 : 0.6;
+
+            const currentScale = container.style.transform
+                ? parseFloat(container.style.transform.replace("scale(", "").replace(")", ""))
+                : 1;
+
+            const newScale = currentScale * scale;
+
+            const minScale = 1.0;
+            const maxScale = 7.0;
+            console.log(newScale)
+            if (newScale >= minScale && newScale <= maxScale) {
+                container.style.transformOrigin = "50% 50%";
+                container.style.transform = `scale(${newScale})`;
+
+                // 수정된 부분: newScale이 maxScale에 근접하면 페이지를 이동
+                if (newScale >= maxScale - 0.3 && newScale <= maxScale + 0.3) {
+                    navigate("/map");
+                }
+            }
+        };
+
+        container.addEventListener("wheel", handleScroll, { passive: false });
 
         return () => {
             container.removeEventListener("wheel", handleScroll);
-            cancelAnimationFrame(animationRef.current);
         };
-    }, []);
+    }, [navigate]);
 
     return (
         <div
             ref={containerRef}
             style={{
-                height: "100vh",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
                 background: backColor,
+                overflowY: "scroll",
+                height: "100vh",
+                margin: 0,
+                transition: "transform 0.5s",
             }}
         >
-            <div
-                style={{
-                    transform: `scale(${zoomLevel})`,
-                    transition: "transform 0.3s ease-out",
-                    overflow: "hidden",
-                }}
-            >
-                <VideoMain />
-            </div>
+            <VideoMain />
         </div>
     );
 }
