@@ -41,28 +41,25 @@
     align-items: center;
 }
 
-
 .memo {
-    /* Webkit 스크롤바 스타일 */
-    ::-webkit-scrollbar {
-        width: 10px; /* 스크롤바 너비 */
-    }
-    
-    /* 스크롤바 트랙 */
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1; /* 스크롤바 트랙 배경색 */
-    }
-    
-    /* 스크롤바 색상 */
-    ::-webkit-scrollbar-thumb {
-        background: #888; /* 스크롤바 색상 */
-    }
-    
-    /* 스크롤바 호버 색상 */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555; /* 스크롤바 호버 색상 */
-    }
+    padding: 0 0.5em;
+    max-width: 400px;
+    height: 400px;
+    overflow: auto;
 }
+.memo::-webkit-scrollbar {
+    width: 10px;
+}
+.memo::-webkit-scrollbar-track {
+    background-color: gray;
+}
+.memo::-webkit-scrollbar-thumb { 
+    background-color: skyblue;
+}
+.memo::-webkit-scrollbar-button {
+    display: none;
+}
+
 
 
 @keyframes slidein{
