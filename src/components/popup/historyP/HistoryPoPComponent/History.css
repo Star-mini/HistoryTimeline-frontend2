@@ -1,0 +1,78 @@
+.main-bg{
+    height: 500px;
+    color: #000000;
+    background-color: #264364;
+    background-size: cover;
+    background-position: center;
+}
+
+.row{
+    color: rgb(0, 0, 0);
+    background-color: #264364;
+}
+
+.wrap{
+    color: rgb(255, 255, 255);
+    height: 200px;
+    background-color: #264364;
+}
+
+.p1{
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+
+.p2{
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+
+.memo{
+    color: #f4e9c9;
+    overflow:auto; 
+    height:400px;
+    flex: 1;
+    
+}
+
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+
+.memo {
+    /* Webkit 스크롤바 스타일 */
+    ::-webkit-scrollbar {
+        width: 10px; /* 스크롤바 너비 */
+    }
+    
+    /* 스크롤바 트랙 */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1; /* 스크롤바 트랙 배경색 */
+    }
+    
+    /* 스크롤바 색상 */
+    ::-webkit-scrollbar-thumb {
+        background: #888; /* 스크롤바 색상 */
+    }
+    
+    /* 스크롤바 호버 색상 */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555; /* 스크롤바 호버 색상 */
+    }
+}
+
+
+@keyframes slidein{
+    from{
+        margin-left: 100%;
+        width: 300%;
+    }
+    to{
+        margin-left: 0%;
+        width: 100%;
+    }
+
+}

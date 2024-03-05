@@ -5,7 +5,7 @@ import Fade from 'react-reveal/Fade';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './Movie.css';
+
 
 const Movie = () => {
     const sliderSettings = {

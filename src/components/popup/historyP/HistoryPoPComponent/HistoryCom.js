@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useScroll } from 'framer-motion';
-import './History.css';
+import "./History.css";
 
 const HistoryCom = ({ imageUrl, content }) => {
     const { scrollYProgress } = useScroll();

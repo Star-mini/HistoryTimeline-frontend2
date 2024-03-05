@@ -4,6 +4,7 @@ import Movie from './HistoryPoPComponent/Movie';
 import MovieCom from './HistoryPoPComponent/MovieCom';
 
 
+
 const movies = [
   {
     title: "서울의 봄 (2023)",
