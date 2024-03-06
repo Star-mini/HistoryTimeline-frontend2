@@ -1,3 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans&display=swap');
+.nav{
+    background-color: #f4e9c9;
+    height: 50px;
+    display: flex;
+    justify-content: left; 
+    
+}
+
+.nav-link {
+    color: #fff; 
+    margin-left: 20px; 
+    margin-right:1px;
+    margin-top: 20px; 
+    text-align: left; 
+    line-height: 50px; 
+}
+.nav-link:hover {
+    color: #ccc;
+}
+.nav-link {
+    padding: 5px 10px;
+    border-radius: 10px; 
+    background-color: #264364; 
+    border: none; 
+    transition: background-color 0.3s; 
+}
+.nav-link:hover {
+    background-color: #425368; 
+}
+
+
+.history-image {
+    max-width: 90px;
+    height: 10px;
+}
 .main-bg{
     height: 500px;
     color: #000000;
@@ -17,35 +53,33 @@
     background-color: #264364;
 }
 
-.p1{
-    animation-duration: 3s;
-    animation-name: slidein;
-}
-
-.p2{
-    animation-duration: 3s;
-    animation-name: slidein;
-}
-
-.memo{
-    color: #f4e9c9;
-    overflow:auto; 
-    height:400px;
-    flex: 1;
-    
-}
-
-
 .wrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+.photo{
+    width: 30%;
+}
+.history-slide {
+    text-align: center;
+    width: 50%; /* 부모 요소에 맞게 이미지를 확대합니다. */
 }
 
+.history-image {
+    max-width: 50%; /* 이미지의 최대 너비를 조정합니다. */
+    max-height: 50%; /* 이미지의 최대 높이를 조정합니다. */
+    height: auto; 
+    width: auto;/* 이미지의 높이를 자동으로 조정합니다. */
+}
 .memo {
     padding: 0 0.5em;
-    max-width: 400px;
+    max-width: 600px;
     height: 400px;
     overflow: auto;
+    margin-left: 100px;
+    
+    font-family: 'Google Sans', sans-serif; 
 }
 .memo::-webkit-scrollbar {
     width: 10px;
