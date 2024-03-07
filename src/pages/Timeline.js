@@ -1,6 +1,6 @@
-import TimelineComponent from "../components/Timeline";
-import '../css/timeline.css'
-import ScrollLoadingBox from "../components/ScrollLoadingBox";
+import TimelineComponent from "../components/timeline/Timeline";
+import "../styles/timeline/timeline.css"
+import ScrollLoadingBox from "../components/timeline/ScrollLoadingBox";
 
 
 // 타임라인 페이지

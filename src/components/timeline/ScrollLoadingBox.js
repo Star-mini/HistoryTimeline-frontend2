@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/scrollLoadingBox.css';
+import '../../styles/timeline/scrollLoadingBox.css';
 import {useEffect, useState} from "react";
 
 const ScrollLoadingBox = ({isLoading}) => {

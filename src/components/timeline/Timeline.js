@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/timeline.css'
+import '../../styles/timeline/timeline.css'
 import HistoryLabel from "./HistoryLabel";
 import { useState, useEffect } from 'react';
 import TimelineLabel from './TimelineLabel';

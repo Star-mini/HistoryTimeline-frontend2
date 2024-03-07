@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/timelineLabel.css';
+import '../../styles/timeline/timelineLabel.css'
 import DropDown from './DropDown';
 
 // 연도, 나라를 선택할 바

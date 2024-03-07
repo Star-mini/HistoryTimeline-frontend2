@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/timeline.css';
+import '../../styles/timeline/timeline.css';
 import { useRef, useEffect, useState } from 'react';
 
 // 역사를 보여주는 박스(레이블)

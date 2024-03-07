@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../css/dropdown.css';
+import '../../styles/timeline/dropdown.css';
 
 const DropDown = ({defaultLabel, valueList, value, setValue}) => {
     const [isVisible, setIsVisible] = useState(false);
