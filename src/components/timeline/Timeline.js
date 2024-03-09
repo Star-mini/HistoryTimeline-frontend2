@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from 'react';
 import TimelineLabel from './TimelineLabel';
 import ScrollLoadingBox from './ScrollLoadingBox';
 import axios from 'axios';
+import {years} from "../../constants/years";
 
 /* Timeline Component -> 나라 선택 부터 history Label까지 포함 */
 const Timeline = () => {
@@ -20,7 +21,6 @@ const Timeline = () => {
 
     // 나라, 연도 리스트 가져오기
     const countries = axios.get("/countries");
-    const years = axios.get("/years");
 
     // 페이지가 열렸을 때 Timeline이 천천히 보이도록 함.
     useEffect(() => {
