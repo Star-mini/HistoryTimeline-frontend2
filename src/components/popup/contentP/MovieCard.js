@@ -1,6 +1,7 @@
 import React from "react";
 import Moovie from "./Movie";
 import Fade from "react-reveal/Fade";
+import "../../../styles/contents/movieCard.css";
 
 const MovieCard = () => {
   return (

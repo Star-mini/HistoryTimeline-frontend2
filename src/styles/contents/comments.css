@@ -1,6 +1,6 @@
 /* App.css 또는 다른 CSS 파일 */
 .textarea-custom {
-  background-color: #264364 ; /* 배경색 설정 */
+  background: linear-gradient(to right, #264364 , #093d79 ); /* 시작 색상과 끝 색상 */
 }
 /* .textarea: <textarea> 요소에 대한 스타일. 텍스트 입력 영역이 폼의 전체 너비를 차지하도록 설정합니다.
      width: 100%; - 부모 요소의 전체 너비를 차지하도록 설정합니다.*/
@@ -34,7 +34,7 @@
   maxheight: 200px;
   fontfamily: monospace;
   width: 100%;
-  background-color: #264364 ;
+  background: linear-gradient(to right, #264364 , #093d79 ); /* 시작 색상과 끝 색상 */
 }
 
 /* .comments-list: 댓글 목록(<ul>)에 대한 스타일. 기본 리스트 스타일을 제거합니다.

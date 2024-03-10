@@ -1,0 +1,4 @@
+.movie-container {
+    background: linear-gradient(to right, #264364 , #093d79); /* 시작 색상과 끝 색상 */
+    /* 다른 스타일들 */
+}
