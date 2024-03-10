@@ -13,7 +13,14 @@
     background-color: #264364;
 }
 
+.movie-frame {
+    border: 8px solid #f4e9c9;
+    border-radius: 10px; 
+    
+}
+
 .col-md-4 {
+
     text-align: center;
     color: #ffffff;
     font-family: 'Google Sans', sans-serif;
@@ -31,6 +38,6 @@
 }
 .container2 {
     
-    width: 90%; 
+    width: 95%; 
     margin: 0 auto; 
 }

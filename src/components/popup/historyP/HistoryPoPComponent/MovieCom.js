@@ -45,9 +45,9 @@ const MovieCom = ({ movies }) => {
                 {movies.map((movie, index) => (
                     <div className="col-md-4" key={index}>
                         <Fade bottom delay={index * 500}>
-                            <img className='MF'
+                            <img className='MF movie-frame'
                                 src={movie.imageUrl}
-                                width="30%"
+                                width="40%"
                             />
                             <h4>{movie.title}</h4>
                         </Fade>

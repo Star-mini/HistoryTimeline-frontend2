@@ -72,19 +72,25 @@
 }
 .history-image {
     max-width: 500px;
-    height: 400px;
+    height: 350px;
     object-fit: contain;
     margin: auto;
     display: block;
+    background-color: #264364;
+    
+}
+.history-image {
+    border: 8px solid #f4e9c9;
+    border-radius: 10px;
     
 }
 .memo {
     padding: 0 0.5em;
-    max-width: 600px;
+    max-width: 650px;
     height: 400px;
     overflow: auto;
     margin-left: 100px;
-    
+    margin-top: 30px;
     font-family: 'Google Sans', sans-serif; 
 }
 .memo::-webkit-scrollbar {

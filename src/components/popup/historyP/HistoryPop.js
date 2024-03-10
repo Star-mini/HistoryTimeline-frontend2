@@ -2,6 +2,7 @@ import History from './HistoryPoPComponent/History';
 import HistoryCom from './HistoryPoPComponent/HistoryCom';
 import Movie from './HistoryPoPComponent/Movie';
 import MovieCom from './HistoryPoPComponent/MovieCom';
+import "./HistoryPop.css"
 
 
 
