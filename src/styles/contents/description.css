@@ -66,5 +66,5 @@ span.thumb-up:hover > img, span.thumb-down:hover > img {
   transition: transform 0.3s ease-in-out; /* 부드러운 전환 효과 */
 }
 .image-box:hover {
-  transform: scale(1.05); /* 마우스 호버 시 1.5배 확대 */
+  transform: scale(1.05); /* 마우스 호버 시 1.05배 확대 */
 }
