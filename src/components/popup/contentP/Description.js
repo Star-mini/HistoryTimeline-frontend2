@@ -23,7 +23,7 @@ const Description = () => {
       <div className="image-box mr-4 flex-none">
         <Fade bottom delay={500}>
           <img
-            src="a.png"
+            src="서울의봄.png"
             alt="설명 이미지"
             style={{ width: "400px", height: "auto" }}
           />
