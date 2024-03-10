@@ -1,5 +1,5 @@
 .movie-background {
-    background-color: #0d0d36;
+    background-color: #264364 ;
   }
   .card-title{
     color: #f7f7f7;
@@ -17,4 +17,8 @@
     width: 300px; /* 이미지 너비 설정 */
     height: auto; /* 이미지 높이 자동 조절로 비율 유지 */
     display: block; /* 이미지를 블록 요소로 설정 */
+  }
+  .card {
+    border: none; /* 테두리를 제거합니다. */
+    /* 기타 스타일 */
   }
