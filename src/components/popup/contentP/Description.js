@@ -25,7 +25,7 @@ const Description = () => {
           <img
             src="a.png"
             alt="설명 이미지"
-            style={{ width: "250px", height: "auto" }}
+            style={{ width: "400px", height: "auto" }}
           />
         </Fade>
       </div>
