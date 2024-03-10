@@ -12,25 +12,9 @@
   .card-img-top:hover {
     transform: scale(1.1); /* 마우스 호버 시 1.3배 확대 */
   }
-  
-  .movie-image {
-    width: 300px;
-    height: auto;
-  }
-  /* App.css */
-  .movie-specific .card-img-top {
-    width: 300px;
-    height: auto;
-  }
+
   .card-img-top {
     width: 300px; /* 이미지 너비 설정 */
     height: auto; /* 이미지 높이 자동 조절로 비율 유지 */
     display: block; /* 이미지를 블록 요소로 설정 */
   }
-  .row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
