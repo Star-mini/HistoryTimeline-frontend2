@@ -1,3 +1,10 @@
 .ContentsPopup{
     background-color: #264364 ;
 }
+.movie-right {
+    margin-left: auto; /* 부모가 Flex 컨테이너인 경우, 이 속성은 요소를 오른쪽으로 밀어냅니다. */
+  }
+  .movie-right {
+    float: right; /* 요소를 오른쪽으로 정렬합니다. */
+  }
+  

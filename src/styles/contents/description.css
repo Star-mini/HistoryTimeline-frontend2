@@ -55,3 +55,16 @@ span.thumb-up:hover > img, span.thumb-down:hover > img {
 .description {
   flex-grow: 1; /* 설명 부분이 남은 공간을 모두 차지하도록 설정 */
 }
+.movie-img {
+  width: 400px; /* 이미지 너비 설정 */
+  height: auto; /* 이미지 높이 자동 조절로 비율 유지 */
+  display: block; /* 이미지를 블록 요소로 설정 */
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
+.image-box{
+  transition: transform 0.3s ease-in-out; /* 부드러운 전환 효과 */
+}
+.image-box:hover {
+  transform: scale(1.05); /* 마우스 호버 시 1.5배 확대 */
+}
