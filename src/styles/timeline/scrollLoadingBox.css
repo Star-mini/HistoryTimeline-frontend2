@@ -1,5 +1,7 @@
 .loading-box {
-    background-color: #0d0d36;
+    position: relative;
+    z-index: 2;
+    background-color: #264364;
     width: 100%;
     height: 200px;
     display: flex;

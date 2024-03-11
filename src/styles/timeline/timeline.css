@@ -1,5 +1,5 @@
 body {
-    background-color: #0d0d32;
+    background-color: #264364;
     font-family: Poppins, sans-serif;
     color: #121212;
     font-size: 14px;
@@ -18,7 +18,6 @@ body {
 
 .timeline-wrapper {
     width: 100%;
-    height: 200vh;
 }
 
 .img-hero {
@@ -54,6 +53,7 @@ width: 50%;
 
 .scoll-wrap-hero {
 position: absolute;
+    top: 0;
 display: -webkit-box;
 display: -webkit-flex;
 display: -ms-flexbox;
@@ -79,17 +79,12 @@ align-items: center;
     position: absolute;
     top: 0px;
     width: 6px;
-    /* height: 100%; */
     background-color: #5cffd1;
     -webkit-transform-origin: 50% 0%;
     -ms-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
     transition: height 0.3s ease-out;
-  }
-  
-  .scroll-animate._2 {
-    height: 100%;
-  }
+}
 
 .dot-hero {
 position: relative;
