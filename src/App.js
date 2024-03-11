@@ -19,7 +19,7 @@ function App() {
                 <Route path="/map" element={<MapMain />} />
                 <Route path="/adminInsert" element={<AdminInsert/>} />
                 <Route path="/timeline" element={<Timeline />} />
-                <Route path="/" element={<ContentsPopup />} />
+                <Route path="/contents" element={<ContentsPopup />} />
             </Routes>
         </Router>
     );
