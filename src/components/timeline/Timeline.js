@@ -18,7 +18,7 @@ const Timeline = () => {
     const [noMorePage, setNoMorePage] = useState(false);
 
     const [isVisible, setIsVisible] = useState(false); // 타임라인 보이기 여부
-    const [scrollHeight, setScrollHeight] = useState(0); // scroll의 y 위치에 따른 타임라인의 길이
+    const [scrollHeight, setScrollHeight] = useState(window.scrollY +  window.innerHeight * 3 / 4); // scroll의 y 위치에 따른 타임라인의 길이
     const [selectedCountry, setSelectedCountry] = useState(null); // 선택된 나라
     const [selectedYear, setSelectedYear] = useState({
     name: 2000}); // 선택된 연도 - 가져온 연도 리스트에서 첫번째 연도로 했음.
@@ -91,10 +91,10 @@ const Timeline = () => {
     // 스크롤 위치에 따라 타임라인 중심선 높이를 동적으로 설정
     useEffect(() => {
         const handleScroll = () => {
-            const newHeight = window.scrollY + 500;
+            const newHeight = window.scrollY +  window.innerHeight * 3 / 4;
             setScrollHeight(newHeight);
         };
-    
+
         // 스크롤 이벤트 리스너 등록
         window.addEventListener('scroll', handleScroll);
 

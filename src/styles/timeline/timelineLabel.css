@@ -1,5 +1,5 @@
 .timeline-labels {
-    position: relative;
+    position: fixed;
     z-index: 5;
     background-color: #264364;
     border-bottom: 3px solid #5cffd1;
