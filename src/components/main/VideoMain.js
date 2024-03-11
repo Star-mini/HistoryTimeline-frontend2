@@ -13,16 +13,19 @@ function VideoMain() {
             className="videoMain"
             style={{
                 overflow: "hidden",
+                width:"100%"
             }}
         >
             <VideoBack />
             <div
                 style={{
-                    display: "flex",
+                    position:"absolute",
+                    top: "50%",
+                    left:"50%",
+                    transform: "translate(-50%, -50%)",
                     justifyContent: "center",
                     alignItems: "center",
                     boxSizing: "border-box",
-                    background: backColor,
                 }}
             >
                 <div

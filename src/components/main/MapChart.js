@@ -22,8 +22,8 @@ function MapChart() {
         console.log(geo.name + "#" + id);
         event.stopPropagation();
     };
-    const initialCoordinates = [127, 37];
-    const initialZoom = 4;
+    const initialCoordinates = [10,17];
+    const initialZoom = 1.1;
     const backColor = "#264364"; // 배경색
     const mapColor = "#f4e9c9"; // 지도색
     const mapClickColor = "#deb488"; // 마우스&지도색
@@ -33,22 +33,16 @@ function MapChart() {
         <div
             className="Map"
             style={{
-                width: "80%",
-                height: "auto",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                width: "100%",
+                display: "inline-block",
                 background: backColor,
             }}
         >
             <Tooltip>{content}</Tooltip>
-            <ComposableMap>
+            <ComposableMap viewBox="0 0 900 400" width={900} height={400}>
                 <ZoomableGroup
                     center={initialCoordinates}
                     zoom={initialZoom}
-                    onMoveStart={({ coordinates, zoom }) => {
-                        console.log(coordinates, zoom);
-                    }}
                 >
                     <Geographies geography={geoUrl}>
                         {({ geographies }) =>

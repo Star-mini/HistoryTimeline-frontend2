@@ -1,6 +1,5 @@
-import TimelineComponent from "../components/Timeline";
-import '../css/timeline.css'
-import ScrollLoadingBox from "../components/ScrollLoadingBox";
+import TimelineComponent from "../components/timeline/Timeline";
+import "../styles/timeline/timeline.css"
 
 
 // 타임라인 페이지
@@ -9,8 +8,6 @@ const Timeline = () => {
         <div>
             {/* 타임라인 컴포넌트 */}
             <TimelineComponent />
-            {/* 로딩때만 보일 로딩 박스 */}
-            <ScrollLoadingBox isLoading={true}/>
         </div>
     );
 };
