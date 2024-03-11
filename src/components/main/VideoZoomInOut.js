@@ -14,7 +14,7 @@ function VideoZoomInOut() {
             event.preventDefault();
 
             const delta = event.deltaY || event.detail || event.wheelDelta;
-            const scale = delta > 0 ? 1.05 : 0.1;
+            const scale = delta > 0 ? 1.05 : 0.6;
 
             const currentScale = container.style.transform
                 ? parseFloat(container.style.transform.replace("scale(", "").replace(")", ""))
