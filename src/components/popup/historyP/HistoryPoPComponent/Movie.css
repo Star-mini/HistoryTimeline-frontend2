@@ -10,11 +10,11 @@
 }
 
 .container2 {
-    background-color: #264364;
+    background-color: #000000;
 }
 
 .movie-frame {
-    border: 8px solid #f4e9c9;
+    border: 8px solid #000000;
     border-radius: 10px; 
     
 }
@@ -38,6 +38,6 @@
 }
 .container2 {
     
-    width: 95%; 
+    width: 90%; 
     margin: 0 auto; 
 }

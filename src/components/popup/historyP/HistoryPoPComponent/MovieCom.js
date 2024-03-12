@@ -47,7 +47,7 @@ const MovieCom = ({ movies }) => {
                         <Fade bottom delay={index * 500}>
                             <img className='MF movie-frame'
                                 src={movie.imageUrl}
-                                width="40%"
+                                width="70%"
                             />
                             <h4>{movie.title}</h4>
                         </Fade>

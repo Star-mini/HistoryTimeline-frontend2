@@ -43,10 +43,12 @@ const historyData = {
 function HistoryPop() {
   return (
     <div className="HistoryPop">
-      <HistoryCom imageUrl={historyData.imageUrl} content={historyData.content} />
-      
-      <MovieCom movies={movies} />
-
+      <div className="history-container">
+        <HistoryCom imageUrl={historyData.imageUrl} content={historyData.content} />
+      </div>
+      <div className="movie-container">
+        <MovieCom movies={movies} />
+      </div>
     </div>
   );
 }

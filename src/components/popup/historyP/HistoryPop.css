@@ -1,5 +1,10 @@
-body {
-    margin-left: 200px; 
-    margin-right: 200px;
-    background-color: black;
-}
+.history-container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .movie-container {
+    position: relative;
+    z-index: 2;
+  }
+  
