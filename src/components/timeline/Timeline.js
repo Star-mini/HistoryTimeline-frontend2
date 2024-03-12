@@ -166,7 +166,7 @@ const Timeline = () => {
             }
             {/* 타임라인에 있는 역사 리스트 */}
             {selectedCountry !== null &&
-                <div className={`timeline-transition ${isVisible ? '-visible' : ''}`}>
+                <div className={`timeline-transition${isVisible ? '-visible' : ''}`}>
                     <div className="timeline-wrapper">
                         <div className="img-hero">
                             <div className="scroll-hero">
