@@ -27,6 +27,7 @@ const Timeline = () => {
         setIsVisible(true);
     }, []);
 
+    // 옵저버로 loading bar 나오면 loadMore 동작
     useEffect(() => {
         const observer = new IntersectionObserver(
             entries => {
@@ -44,23 +45,38 @@ const Timeline = () => {
         return () => observer.disconnect();
     }, [isLoading, morePage]);
 
+    // loadMore로 페이지가 바뀔 따마다 fetch
     useEffect(()=> {
         fetchHistories();
     }, [page]);
 
+    // 새 설정이 들어왔을 때 새 데이터 fetch
     useEffect(() => {
-        setHistories([]);
+        setIsVisible(false);
         setMorePage(true);
-        setPage(1);
-        fetchHistories();
+
+        if (page == 1) {
+            fetchHistories();
+        }
+        else {
+            setPage(1);
+        }
+
         MoveToTop();
+        setTimeout(() => {
+            setIsVisible(true);
+        }, 300);
+
     }, [selectedYear, selectedCountry]);
 
     // 스크롤 위치에 따라 타임라인 중심선 높이를 동적으로 설정
     useEffect(() => {
         const handleScroll = () => {
             // 맨 아래에 도달하면 중심선 길이는 최대로
-            if (!morePage) setScrollHeight(window.scrollY + window.innerHeight);
+            if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 10) {
+                setScrollHeight(document.body.scrollHeight);
+            }
+
             else setScrollHeight(window.scrollY +  window.innerHeight * 3 / 4);
         };
 
@@ -77,6 +93,7 @@ const Timeline = () => {
         setPage(page + 1);
     };
 
+    // 새로운 역사 리스트를 fetch하는 함수
     const fetchHistories = async () => {
         // 나라가 선택되었는지에 따라 api가 달라진다.
         const { data } = selectedCountry ?
@@ -97,13 +114,13 @@ const Timeline = () => {
                 }
             })
         if (data.content.length < 10) setMorePage(false);
+        if (page === 1 ) setHistories(data.content)
         else setHistories(histories.concat(data.content));
         setIsLoading(false);
     };
 
     // 페이지 맨 위로 올라가는 함수
     const MoveToTop = () => {
-        // top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -120,7 +137,7 @@ const Timeline = () => {
             />
             {/* 타임라인 선 */}
             {selectedCountry === null &&
-                <div className={`timeline-transition ${isVisible ? 'visible' : ''}`}>
+                <div className={`timeline-transition${isVisible ? '-visible' : ''}`}>
                     <div className="timeline-wrapper">
                         <div className="img-hero" style={{
                             alignItems: 'start',
@@ -149,7 +166,7 @@ const Timeline = () => {
             }
             {/* 타임라인에 있는 역사 리스트 */}
             {selectedCountry !== null &&
-                <div className={`timeline-transition ${isVisible ? 'visible' : ''}`}>
+                <div className={`timeline-transition ${isVisible ? '-visible' : ''}`}>
                     <div className="timeline-wrapper">
                         <div className="img-hero">
                             <div className="scroll-hero">
@@ -177,7 +194,7 @@ const Timeline = () => {
                 </div>
             }
             {/* 로딩때만 보일 로딩 박스 */}
-            <ScrollLoadingBox ref={loader} morePage={morePage}/>
+            { morePage && <ScrollLoadingBox ref={loader} />}
         </div>
 
     );

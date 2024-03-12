@@ -2,14 +2,9 @@ import React, {forwardRef} from 'react';
 import '../../styles/timeline/scrollLoadingBox.css';
 import {useEffect, useState} from "react";
 
-const ScrollLoadingBox = forwardRef((morePage, ref) => {
+const ScrollLoadingBox = forwardRef(( props, ref) => {
     // loading bar의 애니메이션을 위한 width 설정
     const [width,  setWidth] = useState(0);
-
-    // loading 중에만 보이도록 한다.
-    const display = {
-        display: morePage ? 'flex' : 'none'
-    }
 
     // 일정 시간마다 길이가 바뀌는 애니메이션 삽입
     useEffect(() => {
@@ -22,7 +17,7 @@ const ScrollLoadingBox = forwardRef((morePage, ref) => {
     }, []);
 
     return (
-        <div className="loading-box" ref={ref} style={display}>
+        <div className="loading-box" ref={ref}>
             <div className="loading-content">
                 <div className="loading-bar-mask">
                     <div className="loading-bar" style={{width: width}}></div>
