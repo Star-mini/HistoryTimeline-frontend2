@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import MapMain from "./components/main/MapMain";
 import HistoryPop from "./components/popup/historyP/HistoryPop";
 import Test from "./components/popup/historyP/Test";
 
@@ -14,7 +14,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Test />} />
-               
+                <Route path="/map" element={<MapMain />} />
               
             </Routes>
         </Router>

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
 
-.nav{
-    background-color: azure;
+.hispopnav{
+    background-color: skyblue;
     height: 50px;
     display: flex;
     justify-content: left; 
@@ -18,9 +18,11 @@
     line-height: 50px; 
     font-family: "Gothic A1", sans-serif;
 }
+
 .nav-link:hover {
     color: #ccc;
 }
+
 .nav-link {
     padding: 5px 10px;
     border-radius: 10px; 
@@ -28,16 +30,12 @@
     border: none; 
     transition: background-color 0.3s; 
 }
+
 .nav-link:hover {
     background-color: #425368; 
 }
 
-
-.history-image {
-    max-width: 90px;
-    height: 10px;
-}
-.main-bg{
+.historyPopMain{
     margin-bottom: 50px;
     color: #000000;
     background-color: #000000;
@@ -45,91 +43,63 @@
     background-position: center;
 }
 
-.row{
-    color: rgb(0, 0, 0);
-    background-color: #000000;
-}
-
-.wrap{
-    color: #ffffff;
-    height: 200px;
-    background-color: #000000;
-    margin-bottom: 50px;
-}
-
-.wrapper {
-   
+.historyWiki{
     display: block;
     align-items: center;
     justify-content: center;
-    
-   
 }
-.photo{
+
+.historyPhoto{
     
     width: 90%; 
     margin: 0 auto; 
     margin-top: 50px;
    
 }
-.history-slide {
-    text-align: center;
-    height: 300px;
-    width: 800px;
-    
+.historyPhotoSlide{
+   
 }
-.history-image {
+.historyImage{
     max-width: 800px;
     height: 300px;
     margin: auto;
-    
     display: flex;
     background-color: #000000;
-    
 }
-.history-image {
-    border: 8px solid #000000;
-    border-radius: 10px;
-    
+.historyTitle{
+    margin-top: 30px;
+    margin-left: 30px;
+    color: #ffffff;
+    font-family: "Gothic A1", sans-serif; 
 }
-.memo {
+
+.historyMemo {
     padding: 1 0.5em;
     max-width: auto;
     margin : 0 auto;
     height: 300px;
-    
     overflow: auto;
     margin-left: 30px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-right: 30px;
     line-height: 200%;
     font-size: 115%;
+    color: #ffffff;
     font-family: "Gothic A1", sans-serif; 
 }
-.memo::-webkit-scrollbar {
-    
+
+.historyMemo::-webkit-scrollbar {
     width: 8px;
 }
-.memo::-webkit-scrollbar-track {
+
+.historyMemo::-webkit-scrollbar-track {
     background-color: gray;
 }
-.memo::-webkit-scrollbar-thumb { 
+
+.historyMemo::-webkit-scrollbar-thumb { 
     background-color: skyblue;
 }
-.memo::-webkit-scrollbar-button {
+
+.historyMemo::-webkit-scrollbar-button {
     display: none;
-}
-
-
-
-@keyframes slidein{
-    from{
-        margin-left: 100%;
-        width: 300%;
-    }
-    to{
-        margin-left: 0%;
-        width: 100%;
-    }
-
 }

@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans&display=swap');
 
-.col-md-4:hover {
+.moviePosterSlide {
+    background-color: #000000;
+    width: 90%; 
+    margin: 0 auto; 
+}
+
+.moviePoster {
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Google Sans', sans-serif;
+}
+
+.moviePoster:hover {
     transform: scale(1.2);
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
@@ -9,26 +21,11 @@
     transition: transform 0.5s; 
 }
 
-.container2 {
-    background-color: #000000;
+.moviePosterFrame {
+    border-radius: 20px; 
+    margin: 0 auto;
 }
 
-.movie-frame {
-    border: 8px solid #000000;
-    border-radius: 10px; 
-    
-}
-
-.col-md-4 {
-
-    text-align: center;
-    color: #ffffff;
-    font-family: 'Google Sans', sans-serif;
-}
-.MF {
-    display: block; 
-    margin: 0 auto; 
-}
 .slick-prev {
     left: -30px; 
 }
@@ -36,8 +33,4 @@
 .slick-next {
     right: -30px; 
 }
-.container2 {
-    
-    width: 90%; 
-    margin: 0 auto; 
-}
+

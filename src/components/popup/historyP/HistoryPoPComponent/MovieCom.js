@@ -40,15 +40,14 @@ const MovieCom = ({ movies }) => {
 
     return (
         <div className='row justify-content-center'>
-            {/* 슬라이더 */}
-            <Slider {...sliderSettings} className="container2">
+           
+            <Slider {...sliderSettings} className="moviePosterSlide">
                 {movies.map((movie, index) => (
-                    <div className="col-md-4" key={index}>
+                    <div className="moviePoster" key={index}>
                         <Fade bottom delay={index * 500}>
-                            <img className='MF movie-frame'
+                            <img className='moviePosterFrame'
                                 src={movie.imageUrl}
-                                width="70%"
-                            
+                                width="70%"                            
                             />
                             <h4>{movie.title}</h4>
                         </Fade>

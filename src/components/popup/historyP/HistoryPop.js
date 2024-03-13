@@ -27,7 +27,10 @@ const movies = [
 
 const historyData = {
   imageUrl:[ "https://upload.wikimedia.org/wikipedia/ko/2/2a/12%C2%B712_%EA%B5%B0%EC%82%AC%EB%B0%98%EB%9E%80_%EC%A3%BC%EB%8F%99%EC%9E%90.jpeg",
-  "https://img.movist.com/?img=/x00/04/93/47_p1.jpg","https://img.movist.com/?img=/x00/04/93/47_p1.jpg"],
+  "https://i.namu.wiki/i/NrK0Z6DvGlyTXZzKa0J3toa9RbIZT04NsEVrBuQQowX4lhxymXipGWk6K_4rcySbebwqtPQ7KDxagY4jk0clOw.webp","https://lh3.googleusercontent.com/proxy/vbQsFy9rzVZRCoMUWyuh6TywCNxOQEra1I5OTtpxs--2MFik1uHEFERMLl39zUboJcfZFuG0EUGjJAB0vcCBQkeV5UZpNCegSl1ZeKF5CqRfzdvWzlxH_SgN"],
+  
+  title : "12.12 사태",
+  
   content: [
 
       "1979년 10.26 사건 이후 새벽 4시 김재규가 체포된 후 국방부 회의실에서 각료들은 서둘러 비상조치를 내렸다. 신현확은 대통령이 서거했고 그 범인은 김재규였다는 것을 알리며, 국가적 위기 상황에 국가원수직이 비어있으면 안 된다고 말했다. 그러면서 법에 의하면 대통령 유고 시 국무총리가 승계하도록 돼 있으니, 지금부터 최규하 국무총리가 대통령 권한대행이 되어야 한다고 주장했다. 이 제안을 받아들여 최규하 국무총리가 대통령 권한대행이 되었고, 박정희 대통령 시해로 인한 계엄의 선포로 인해 정승화 육군참모총장이 계엄사령관으로 임명되어 대통령 권한대행과 함께 정국을 이끌게 되었다.",
@@ -44,8 +47,7 @@ function HistoryPop() {
   return (
     <div className="HistoryPop">
       <div className="history-container">
-        <HistoryCom imageUrl={historyData.imageUrl} content={historyData.content} />
-        
+        <HistoryCom imageUrl={historyData.imageUrl} title={historyData.title} content={historyData.content} />
       </div>
      
       <div className="movie-container">
