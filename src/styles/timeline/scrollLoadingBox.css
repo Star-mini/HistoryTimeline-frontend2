@@ -1,7 +1,9 @@
+@import url('./colorConst.css');
+
 .loading-box {
     position: relative;
     z-index: 2;
-    background-color: #264364;
+    background-color: var(--backgroundColor);
     width: 100%;
     height: 200px;
     display: flex;
@@ -18,12 +20,12 @@
 
 .loading-bar {
     height: 30px;
-    background-color: #5cffd1;
+    background-color: var(--pointColor);
     border-radius: 30px;
 }
 
 .loading-bar-label {
     text-align: center;
-    color: #5cffd1;
+    color: var(--pointColor);
     margin-top: 10px;
 }

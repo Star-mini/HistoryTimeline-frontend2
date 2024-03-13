@@ -1,15 +1,17 @@
+@import url('./colorConst.css');
+
 .timeline-labels {
     position: fixed;
     z-index: 5;
-    background-color: #264364;
-    border-bottom: 3px solid #5cffd1;
+    background-color: var(--backgroundColor);
+    border-bottom: 3px solid var(--pointColor);
     display: grid;
     grid-template-columns: 4fr 1fr 4fr;
     height: 100px;
 }
 
 .timeline-labels > .label {
-    color: #5cffd1;
+    color: var(--pointColor);
     display: flex;
     align-items: center;
     justify-content: center;

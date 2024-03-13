@@ -1,7 +1,9 @@
+@import url('./colorConst.css');
+
 body {
-    background-color: #264364;
+    background-color: var(--backgroundColor);
     font-family: Poppins, sans-serif;
-    color: #121212;
+    color: var(--fontColor);
     font-size: 14px;
     line-height: 20px;
     font-weight: 600;
@@ -83,7 +85,7 @@ align-items: center;
     position: absolute;
     top: 0px;
     width: 6px;
-    background-color: #5cffd1;
+    background-color: var(--pointColor);
     -webkit-transform-origin: 50% 0%;
     -ms-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
@@ -96,7 +98,7 @@ z-index: 3;
 width: 12px;
 height: 12px;
 border-radius: 50%;
-background-color: #eeeff4;
+background-color: var(--pointColor);
 }
 
 .step-hero {
@@ -117,7 +119,8 @@ background-color: #eeeff4;
     -ms-flex-align: center;
     align-items: center;
     border-radius: 16px;
-    background-color: #fff; /* HistoryLabel 배경색 */
+    background-color: var(--backgroundColor);
+    box-shadow: 3px 3px #2222
 }
 
 .step-block-hero-container {
@@ -139,7 +142,7 @@ top: 10px;
 width: 16px;
 height: 16px;
 border-radius: 50%;
-background-color: #5cffd1;
+background-color: var(--pointColor);
 }
 
 .scroll-hero {
@@ -166,12 +169,12 @@ height: 100%;
 }
 
 .label-title {
-    color: #000;
+    color: var(--titleColor);
     font-weight: 700;
 }
 
 .label-brief {
-    color: #505050;
+    color: var(--briefColor);
     font-weight: 500;
 }
 
