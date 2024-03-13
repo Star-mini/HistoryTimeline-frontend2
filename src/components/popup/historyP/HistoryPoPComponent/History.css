@@ -50,20 +50,20 @@
 }
 
 .historyPhoto{
-    
     width: 90%; 
     margin: 0 auto; 
     margin-top: 50px;
-   
+    
 }
+
 .historyPhotoSlide{
    
 }
 .historyImage{
-    max-width: 800px;
-    height: 300px;
-    margin: auto;
-    display: flex;
+    max-width: auto;
+    height: auto;
+    margin: 0 auto;
+    display: contents;
     background-color: #000000;
 }
 .historyTitle{
