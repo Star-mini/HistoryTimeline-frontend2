@@ -1,20 +1,21 @@
-@import url('./colorConst.css');
+@import url('./variable.css');
 
 .timeline-labels {
     position: fixed;
     z-index: 5;
-    background-color: var(--backgroundColor);
-    border-bottom: 3px solid var(--pointColor);
+    background-color: var(--pointColor);
+    /*border-bottom: 3px solid var(--pointColor);*/
     display: grid;
     grid-template-columns: 4fr 1fr 4fr;
     height: 100px;
+    font-weight: 1000;
 }
 
 .timeline-labels > .label {
-    color: var(--pointColor);
+    color: var(--fontWhiteColor);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: medium;
     min-width: 200px;
+    font-size: 20px;
 }
