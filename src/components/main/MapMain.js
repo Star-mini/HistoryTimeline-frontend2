@@ -1,5 +1,5 @@
 import React from "react";
-import MapChart from "./MapChart";
+import MapChartV2 from "./MapChartV2";
 import Header from "../Header";
 import MapTimeLine from "./MapTimeLine";
 import Footer from "../Footer";
@@ -12,9 +12,11 @@ function MapMain() {
     return (
         <div
             style={{
-                background: backColor,
                 paddingLeft: "50px",
                 paddingRight: "50px",
+                textAlign: "center",
+                height: "1000px",
+                background: "linear-gradient(45deg, rgb(209, 202, 252), rgb(234, 226, 253))"
             }}
         >
             <Header />
@@ -24,14 +26,19 @@ function MapMain() {
                     justifyContent: "center",
                     alignItems: "center",
                     margin : "auto",
-                    textAlign: "center"
+                    textAlign: "center",
+                    width: "80%",
+                    height: "80vh",
+                    position: "fixed",
+                    top: "120px",
+                    left: "150px",
                 }}
             >
-                <MapChart />
+                <MapChartV2 />
             </div>
-            <br /><br />
+            {/* <br /><br />
             <MapTimeLine />
-            <br /><br />
+            <br /><br /> */}
             <Footer/>
         </div>
     );
