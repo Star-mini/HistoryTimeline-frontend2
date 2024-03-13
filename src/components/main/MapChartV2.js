@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
+import Pin from "./Pin.js";
 
 function MapChartV2() {
     const [scrollY, setScrollY] = useState(window.scrollY);
-    const [showButton, setShowButton] = useState(false);
+    const [pins, setPins] = useState([
+        { x:"30%", y: "20%"},
+        //{ x: "10", y: "10" },
+    ]);
 
     useEffect(() => {
         const handleScroll = () => {
             setScrollY(window.scrollY);
-            if (window.scrollY === maxScroll) {
-                setShowButton(true);
-            } else {
-                setShowButton(false);
-            }
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -22,53 +21,53 @@ function MapChartV2() {
         };
     }, []);
 
-    const mapBoxHeight = 1000; // 페이지의 높이
-    const maxScroll = mapBoxHeight - window.innerHeight; // 페이지의 높이 - 브라우저 높이
+    const mapBoxHeight = 1000;
+    const maxScroll = mapBoxHeight - window.innerHeight;
 
     const mapBoxStyle = useSpring({
-        top: scrollY <= maxScroll ? `${scrollY}px` : `${maxScroll}px`, // 스크롤 위치에 따라 이동
+        top: scrollY <= maxScroll ? `${scrollY}px` : `${maxScroll}px`,
     });
 
     const westStyle = useSpring({
-        top: scrollY <= maxScroll ? `${Math.min(scrollY, 100)}px` : "5px", // 스크롤 위치에 따라 이동, 최대 100px로 제한
-        left: scrollY <= maxScroll ? `${Math.min(scrollY, 50)}px` : "5px", // 스크롤 위치에 따라 이동
+        top: scrollY <= maxScroll ? `${Math.min(scrollY, 5)}vw` : "5vw",
+        left: scrollY <= maxScroll ? `${Math.min(scrollY + 6, 12)}vw` : "12vw",
     });
 
     const eastStyle = useSpring({
-        top: scrollY <= maxScroll ? `${Math.min(scrollY, 100)}px` : "5px", // 스크롤 위치에 따라 이동, 최대 100px로 제한
-        right: scrollY <= maxScroll ? `${Math.min(scrollY, 50)}px`: "5px", // 스크롤 위치에 따라 이동
+        top: scrollY <= maxScroll ? `${Math.min(scrollY, 5)}vw` : "5vw",
+        right: scrollY <= maxScroll ? `${Math.min(scrollY + 5, 12)}vw` : "12vw",
     });
 
     const containerStyle = useSpring({
-        top: scrollY <= maxScroll ? `${Math.min(scrollY, 60)}px` : "5px", // 스크롤 위치에 따라 이동, 최대 100px로 제한
-        right: scrollY <= maxScroll ? `${scrollY}px` : "5px", // 스크롤 위치에 따라 이동
+        top: scrollY <= maxScroll ? `${Math.min(scrollY, 1)}vw` : "1vw",
+        right: scrollY <= maxScroll ? `${Math.min(scrollY, 5)}vw` : "5vw",
         width:
             scrollY <= maxScroll
-                ? `${50 - (scrollY / maxScroll) * 20}vw`
-                : "40vw", // 스크롤 위치에 따라 width 점차적으로 조정
+                ? `${50 - (scrollY / maxScroll) * 10}vw`
+                : "40vw",
         height:
             scrollY <= maxScroll
-                ? `${20 + (scrollY / maxScroll) * 10}vw`
-                : "40vw", // 스크롤 위치에 따라 height 점차적으로 조정
+                ? `${30 + (scrollY / maxScroll) * 10}vw`
+                : "40vw",
         borderRadius:
             scrollY <= maxScroll
                 ? `${5 + (scrollY / maxScroll) * 45}vw`
-                : "40vw", // 스크롤 위치에 따라 borderRadius 점차적으로 조정
+                : "40vw",
     });
 
     return (
         <div
             className="mapBox"
             style={{
-                maxWidth: "70vw",
-                width: "70vw",
-                height: `${mapBoxHeight}px`, // 페이지의 높이
+                maxWidth: "60vw",
+                width: "60vw",
+                height: `${mapBoxHeight}px`,
                 margin: "0 auto",
                 position: "relative",
                 textAlign: "center",
                 display: "flex",
                 justifyContent: "center",
-                overflow: "hidden", // 스크롤시 이미지가 페이지 밖으로 나가지 않도록 함
+                overflow: "hidden",
             }}
         >
             <div
@@ -102,6 +101,16 @@ function MapChartV2() {
                         ...eastStyle,
                     }}
                 />
+                <div>
+                    {pins.map((pin, index) => (
+                        <Pin
+                            key={index}
+                            x={pin.x}
+                            y={pin.y}
+                            imageOffset={{ left: 0, top: 0 }}
+                        />
+                    ))}
+                </div>
             </div>
 
             <div
@@ -126,27 +135,6 @@ function MapChartV2() {
                     }}
                 ></animated.div>
             </div>
-
-            {showButton && (
-                <button
-                    onClick={() => {
-                        // 버튼을 클릭하면 맨 위로 스크롤
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                    style={{
-                        position: "fixed",
-                        top: "380px",
-                        right: "280px",
-                        zIndex: 3,
-                        width: "15px",
-                        height: "15px",
-                        borderRadius: "50%",
-                        border: "none",
-                        background: "#7a45de"
-                    }}
-                >
-                </button>
-            )}
         </div>
     );
 }
