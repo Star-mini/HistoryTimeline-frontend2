@@ -71,7 +71,7 @@ const HistoryLabel = ({direction, data, isHidden}) => {
                                  alt="test"/>
                         }
                         <p className="label-date">{data.year}</p>
-                        {data.month !== null && <p className="label-date">.{data.month}</p>}
+                        {data.month !== null && data.month !== 0 && <p className="label-date">.{data.month}</p>}
                         {data.day !== null && <p className="label-date">.{data.day}</p>}
                         <br/>
                         {
