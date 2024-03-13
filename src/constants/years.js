@@ -1,6 +1,6 @@
 // 연도 리스트 상수
 const years = [];
-for (let i = 1300; i <= 1900; i += 100) {
+for (let i = 1300; i < 1900; i += 100) {
     years.push({
         key: years.length,
         name: i
