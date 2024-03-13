@@ -1,15 +1,16 @@
 import React from "react";
 
 function Footer(props) {
-    const backColor = "#264364"; // 배경색
-    const fontColor = "#f4e9c9"; // 글씨
+    const fontColor = "#0d0d0d"; // 글씨
     return (
         <div
             className="container"
             style={{
-                background: backColor,
                 margin: 0,
                 maxWidth: "100%",
+                position: "fixed",
+                bottom: "10px",
+                right: "20px",
             }}
         >
             <div className="row">

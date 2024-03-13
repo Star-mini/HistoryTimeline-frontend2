@@ -1,15 +1,17 @@
 import React from "react";
 
 function Header(props) {
-    const backColor = "#264364"; // 배경색
-    const fontColor = "#f4e9c9"; // 글씨
+    const fontColor = "#0d0d0d"; // 글씨
     return (
         <div
             className="container"
             style={{
-                background: backColor,
                 margin: 0,
-                maxWidth: "100%"
+                maxWidth:"100%",
+                transform : "translateY(0%)",
+                position: "fixed",
+                top: 0,
+                left: 0,
             }}
         >
             <div className="row">
