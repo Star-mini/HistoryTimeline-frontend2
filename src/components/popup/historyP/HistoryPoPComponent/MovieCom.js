@@ -48,6 +48,7 @@ const MovieCom = ({ movies }) => {
                             <img className='MF movie-frame'
                                 src={movie.imageUrl}
                                 width="70%"
+                            
                             />
                             <h4>{movie.title}</h4>
                         </Fade>

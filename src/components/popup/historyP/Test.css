@@ -10,6 +10,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 
+
 }
 
 .modal {
@@ -18,7 +19,7 @@ background-color: rgb(0, 0, 0);
 
 width: 45%;
 max-height: 90%; 
-overflow-y: auto; 
+overflow: auto; 
 }
 
 .modal-content {
@@ -38,3 +39,5 @@ overflow-y: auto;
 .modal::-webkit-scrollbar-button {
     display: none;
 }
+
+  

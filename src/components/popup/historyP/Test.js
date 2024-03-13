@@ -42,8 +42,8 @@ const Test = () => {
 
   return (
     <div>
-      <h1>내 페이지</h1>
-      <button onClick={openModal}>모달 열기</button>
+      
+      <button onClick={openModal}>open</button>
       <Modal isOpen={modalOpen} onClose={closeModal} />
     </div>
   );
