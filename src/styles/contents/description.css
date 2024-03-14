@@ -39,7 +39,7 @@ span.thumb-up:hover > img, span.thumb-down:hover > img {
 }
 
 .description {
-  max-height: 500px; /* 컨테이너의 최대 너비를 300px로 설정 */
+  max-height: 500px; /* 컨테이너의 최대 너비를 500px로 설정 */
   overflow-y: auto; /* 컨테이너의 내용이 높이를 초과할 경우 수직 스크롤바를 표시 */
 }
 .flex {
@@ -67,4 +67,8 @@ span.thumb-up:hover > img, span.thumb-down:hover > img {
 }
 .image-box:hover {
   transform: scale(1.05); /* 마우스 호버 시 1.05배 확대 */
+}
+.description p{
+  font-size: 15px;
+  letter-spacing: 0.2em;
 }
