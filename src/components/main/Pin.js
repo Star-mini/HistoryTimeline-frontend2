@@ -1,9 +1,7 @@
 import React from "react";
 import { animated } from "react-spring";
 
-function Pin({ x, y, imageOffset }) {
-    const imageX = x - imageOffset.left;
-    const imageY = y - imageOffset.top;
+function Pin({x, y}) {
 
     return (
         <animated.div
@@ -13,7 +11,7 @@ function Pin({ x, y, imageOffset }) {
                 height: "10px",
                 borderRadius: "50%",
                 background: "red",
-                transform: `translate(${imageX}px, ${imageY}px)`, 
+                transform: `translate(${x}vw, ${y}vw)`, 
             }}
         />
     );
