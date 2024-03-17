@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import Pin from "./Pin.js";
 import MapTimeLineV2 from "./MapTimeLineV2.js";
+import "./Map.scss"
 
 function MapChartV2() {
     const [scrollY, setScrollY] = useState(window.scrollY);
     const [showTimeline, setShowTimeline] = useState(false);
-    const [pins, setPins] = useState([
-        { x: "30", y: "10" },
-        //{ x: "10", y: "10" },
+    const [pins] = useState([
+        { x: "35.6", y: "14.5", country: "대한민국" },
+        { x: "2", y: "13", country: "미국" },
+        { x: "31", y: "12.5", country: "중국" },
+        { x: "18", y: "11", country: "유럽" },
+        { x: "37.5", y: "14", country: "일본" },
     ]);
 
     useEffect(() => {
@@ -62,9 +66,28 @@ function MapChartV2() {
                 : "40vw",
     });
 
+    const [showPins, setShowPins] = useState([]);
+
+    useEffect(() => {
+        if (scrollY > 800) {
+            const newShowPins = [];
+            pins.forEach((pin, index) => {
+                if (
+                    scrollY > 800 + index * 250 &&
+                    !newShowPins.includes(index)
+                ) {
+                    newShowPins.push(index);
+                }
+            });
+            setShowPins(newShowPins);
+        } else {
+            setShowPins([]);
+        }
+    }, [scrollY]);
+
     return (
-        <div class="container">
-            <div className="row" style={{justifyContent: "center"}}>
+        <div className="container">
+            <div className="row" style={{ justifyContent: "center" }}>
                 <div
                     className="col-7"
                     style={{
@@ -85,7 +108,7 @@ function MapChartV2() {
                             zIndex: 1,
                             ...mapBoxStyle,
                             width: "40vw",
-                            height: "40vw"
+                            height: "40vw",
                         }}
                     >
                         <animated.img
@@ -108,13 +131,12 @@ function MapChartV2() {
                             }}
                         />
                         <div>
-                            {pins.map((pin, index) => (
+                            {showPins.map((pinIndex) => (
                                 <Pin
-                                    key={index}
-                                    x={pin.x}
-                                    y={pin.y}
-                                    imageOffset={{ left: 0, top: 0 }}
-                                    style
+                                    key={pinIndex}
+                                    x={pins[pinIndex].x}
+                                    y={pins[pinIndex].y}
+                                    country={pins[pinIndex].country}
                                 />
                             ))}
                         </div>
@@ -147,8 +169,8 @@ function MapChartV2() {
                     className="col-5"
                     style={{
                         display: showTimeline ? "flex" : "none",
-                        width:"20vw",
-                        textAlign: "center"
+                        width: "20vw",
+                        textAlign: "center",
                     }}
                 >
                     <MapTimeLineV2 />

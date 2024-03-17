@@ -1,7 +1,6 @@
 import React from "react";
 import MapChartV2 from "./MapChartV2";
 import Header from "../Header";
-import MapTimeLineV2 from "./MapTimeLineV2";
 import Footer from "../Footer";
 
 /**
@@ -23,7 +22,7 @@ function MapMain() {
                     margin : "auto",
                     textAlign: "center",
                     width: "100%",
-                    height: "80vh",
+                    height: "100vh",
                     position: "fixed",
                     top: "120px",
                 }}
