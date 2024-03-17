@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import Pin from "./Pin.js";
 import MapTimeLineV2 from "./MapTimeLineV2.js";
-import "./Map.scss"
+import "../../styles/main/Map.scss"
 
 function MapChartV2() {
     const [scrollY, setScrollY] = useState(window.scrollY);

@@ -1,7 +1,7 @@
 import React from "react";
 import { animated } from "react-spring";
 import { useNavigate } from "react-router-dom";
-import "./Pin.scss";
+import "../../styles/main/Pin.scss";
 
 function Pin({ x, y, country }) {
 
