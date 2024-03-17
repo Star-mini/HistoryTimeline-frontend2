@@ -54,6 +54,30 @@
     margin: 0 auto; 
     margin-top: 50px;
     
+    
+}
+.slick-dots {
+    
+    background-color: transparent;
+}
+
+.slick-dots li {
+    
+    margin: 0 4px;
+    
+}
+
+.slick-dots li button {
+    margin-top: 20px;
+    width: 1px;
+    height: 1px;
+    border-radius: 100%;
+    background-color: #fff;
+    
+}
+
+.slick-dots li.slick-active button {
+    background-color: skyblue;
 }
 
 .historyPhotoSlide{
@@ -61,7 +85,7 @@
 }
 .historyImage{
     max-width: auto;
-    height: auto;
+    max-height: 400px;
     margin: 0 auto;
     display: contents;
     background-color: #000000;

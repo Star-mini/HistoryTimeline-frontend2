@@ -10,6 +10,7 @@
     text-align: center;
     color: #ffffff;
     font-family: 'Google Sans', sans-serif;
+    
 }
 
 .moviePoster:hover {
@@ -19,6 +20,9 @@
     -ms-transform: scale(1.2); 
     -o-transform: scale(1.2);
     transition: transform 0.5s; 
+    
+    
+    
 }
 
 .moviePosterFrame {
@@ -28,9 +32,11 @@
 
 .slick-prev {
     left: -30px; 
+    top: 125px;
 }
 
 .slick-next {
     right: -30px; 
+    top: 125px;
 }
 

@@ -27,6 +27,10 @@ const HistoryCom = ({ imageUrl, title, content }) => {
         speed: 1000,
         slidesToShow: 1,
         slidesToScroll: 1,
+        autoplay: true, 
+        autoplaySpeed: 3000, 
+        fade: true,
+        cssEase: 'linear'
     };
 
     return (
@@ -42,7 +46,7 @@ const HistoryCom = ({ imageUrl, title, content }) => {
             </Navbar>
             <div className="historyPopMain">
                 <div className="historyWiki">
-                    <Slider className='historyPhoto' {...sliderSettings}>
+                    <Slider className='historyPhoto' {...sliderSettings} dots={true}>
                         {images.map((image, index) => (
                             <div key={index} className="historyPhotoSlide">
                                 <motion.img 
