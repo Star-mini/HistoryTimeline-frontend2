@@ -4,6 +4,8 @@ import { cusomizedAxios as axios } from "../../constants/customizedAxios";
 function MapTimeLineV2(props) {
     const [lineColors, setLineColors] = useState(Array(6).fill("rgba(255, 255, 255, 1)"));
     const [showTexts, setShowTexts] = useState([false, false, false, false, false]);
+    const [showDots, setShowDots] = useState([true, false, false, false, false]);
+
     const [data, setData] = useState([]);
 
     const getData = useCallback(async () => {
@@ -32,11 +34,21 @@ function MapTimeLineV2(props) {
                             newShowTexts[i] = true;
                             return newShowTexts;
                         });
+                        setShowDots(prevShowDots => {
+                            const newShowDots = [...prevShowDots];
+                            newShowDots[i] = true; 
+                            return newShowDots;
+                        });
                     } else if (alpha < 0.4 && showTexts[i]) {
                         setShowTexts(prevShowTexts => {
                             const newShowTexts = [...prevShowTexts];
                             newShowTexts[i] = false;
                             return newShowTexts;
+                        });
+                        setShowDots(prevShowDots => {
+                            const newShowDots = [...prevShowDots];
+                            newShowDots[i] = false;
+                            return newShowDots;
                         });
                     }
                 }
@@ -44,6 +56,7 @@ function MapTimeLineV2(props) {
             } else {
                 setLineColors(Array(6).fill("rgba(255, 255, 255, 1)"));
                 setShowTexts([false, false, false, false, false]);
+                setShowDots([true, false, false, false, false]);
             }
         };
 
@@ -63,16 +76,35 @@ function MapTimeLineV2(props) {
             {lineColors.map(
                 (color, index) =>
                     index < 5 && (
-                        <div
-                            key={index}
-                            style={{
-                                position: "absolute",
-                                top: `${index * 15}vh`,
-                                width: "2px",
-                                height: "15vh",
-                                backgroundColor: color,
-                            }}
-                        ></div>
+                        <React.Fragment key={index}>
+                            {/* 점 추가 */}
+                            {showDots[index] && (
+                                <div
+                                    className={`dot-${index}`}
+                                    style={{
+                                        position: "absolute",
+                                        top: `${index * 15 + 10}vh`,
+                                        left: "1",
+                                        width: "10px",
+                                        height: "10px",
+                                        borderRadius: "50%",
+                                        backgroundColor: color,
+                                        transform: "translate(-45%, -50%)",
+                                    }}
+                                />
+                            )}
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: `${index * 15}vh`,
+                                    left: "0",
+                                    width: "2px",
+                                    height: "15vh",
+                                    backgroundColor: color,
+                                    borderRadius: "35px",
+                                }}
+                            />
+                        </React.Fragment>
                     )
             )}
             {showTexts.map(
@@ -84,12 +116,12 @@ function MapTimeLineV2(props) {
                                 key={index}
                                 style={{
                                     position: "absolute",
-                                    top: `${index * 15 + 6}vh`,
+                                    top: `${index * 15 + 10}vh`,
                                     transform: "translateY(-50%)",
                                     backgroundColor: "rgba(255, 255, 255, 0.8)",
                                     padding: "10px",
                                     borderRadius: "5px",
-                                    margin: "12px",
+                                    margin: "2px 10px 5px 10px",
                                     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                                     width: "20vw",
                                     textAlign: "left"
