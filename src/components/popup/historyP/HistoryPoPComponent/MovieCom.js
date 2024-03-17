@@ -43,7 +43,8 @@ const MovieCom = ({ movies }) => {
 
     return (
         <div className='row justify-content-center'>
-           
+            <h3 className='movieTitle'>관련 영화</h3>
+            
             <Slider {...sliderSettings} className="moviePosterSlide">
                 {movies.map((movie, index) => (
                     <div className="moviePoster" key={index}>
