@@ -17,8 +17,10 @@ const AnimatedText = ({ children }) => {
     );
 };
 
-
 const HistoryCom = ({ imageUrl, title, content }) => {
+    // 이미지 URL을 배열로 변환
+    const images = Array.isArray(imageUrl) ? imageUrl : [imageUrl];
+
     const sliderSettings = {
         dots: false,
         infinite: true,
@@ -26,6 +28,7 @@ const HistoryCom = ({ imageUrl, title, content }) => {
         slidesToShow: 1,
         slidesToScroll: 1,
     };
+
     return (
         <div>
             <Navbar className='hispopnav'>
@@ -40,7 +43,7 @@ const HistoryCom = ({ imageUrl, title, content }) => {
             <div className="historyPopMain">
                 <div className="historyWiki">
                     <Slider className='historyPhoto' {...sliderSettings}>
-                        {imageUrl.map((image, index) => (
+                        {images.map((image, index) => (
                             <div key={index} className="historyPhotoSlide">
                                 <motion.img 
                                     src={image} 
@@ -50,9 +53,7 @@ const HistoryCom = ({ imageUrl, title, content }) => {
                             </div>
                         ))}
                     </Slider>            
-                    <h1 className='historyTitle'>{title}
-                    </h1>
-                            
+                    <h1 className='historyTitle'>{title}</h1>
                     <div className="historyMemo">
                         {content.map((paragraph, index) => (
                             <p key={index}>{paragraph}</p>
@@ -61,7 +62,6 @@ const HistoryCom = ({ imageUrl, title, content }) => {
                 </div>
             </div>
         </div>
-        
     );
 };
 
