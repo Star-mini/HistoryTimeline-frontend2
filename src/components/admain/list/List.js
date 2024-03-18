@@ -4,7 +4,9 @@ import ListBox from "./ListBox";
 import '../../../styles/admin/adminList.css'
 import PageBar from "./PageBar";
 
+// 선택 바부터 페이지 바까지 포함하는 리스트 컴포넌트
 const List = () => {
+    // 리스트 옵션
     const listOption = [
         {
             id: 0,
@@ -16,7 +18,7 @@ const List = () => {
         }
     ];
 
-    const [listId, setListId] = useState(0);
+    const [listId, setListId] = useState(0); // 리스트 옵션
     const [items, setItems] = useState([]);
     const [page, setPage] = useState(1);
 

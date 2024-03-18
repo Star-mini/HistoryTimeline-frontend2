@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../styles/admin/adminList.css'
 
+// 리스트 아이템 나열 박스
 const ListBox = ({ items, setItems }) => {
     return (
         <div className="list-box">

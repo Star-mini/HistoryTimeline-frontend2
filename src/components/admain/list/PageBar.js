@@ -1,7 +1,9 @@
 import React from 'react';
 import '../../../styles/admin/adminList.css';
 
+// 페이지 상태 + 선택 바
 const PageBar = ({ page, setPage, maxPage }) => {
+    // page 범위 안에 있을 경우 page set 실행
     const onClickPageOption = (pageOption) => {
         if (pageOption > 0 && pageOption <= maxPage) setPage(pageOption);
     }
