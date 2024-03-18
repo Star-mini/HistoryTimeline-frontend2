@@ -12,7 +12,7 @@ const Timeline = () => {
     // 맨 아래에서 scroll할 때마다 / 나라를 선택할 때 data를 fetch한다.
     const loader = useRef(null);
     const [histories, setHistories] = useState([]);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [morePage, setMorePage] = useState(true);
 
@@ -56,11 +56,11 @@ const Timeline = () => {
         setIsVisible(false);
         setMorePage(true);
 
-        if (page == 1) {
+        if (page == 0) {
             fetchHistories();
         }
         else {
-            setPage(1);
+            setPage(0);
         }
 
         MoveToTop();
@@ -115,7 +115,7 @@ const Timeline = () => {
                 }
             })
         if (data.content.length < 10) setMorePage(false);
-        if (page === 1 ) setHistories(data.content)
+        if (page === 0 ) setHistories(data.content)
         else setHistories(histories.concat(data.content));
         setIsLoading(false);
     };
