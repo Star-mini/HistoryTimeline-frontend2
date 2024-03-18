@@ -2,11 +2,16 @@ import React, { useState, useEffect, useCallback } from "react";
 import { cusomizedAxios as axios } from "../../constants/customizedAxios";
 import "../../styles/font.css"
 
+/**
+ * 한국 데이터 최신순으로 우선순위가 1인 데이터를 5개 보여준다.
+ * 스크롤 이벤트를 통해 차례로 나타나게 구현하였다.
+ * 스크롤 이벤트에서 showDots, showTexts는 동일하게 표시되고 사라지도록 구현하였다.
+ * 데이터는 year, title, brief가 표시된다.
+ */
 function MapTimeLineV2(props) {
     const [lineColors, setLineColors] = useState(Array(6).fill("rgba(255, 255, 255, 1)"));
     const [showTexts, setShowTexts] = useState([false, false, false, false, false]);
     const [showDots, setShowDots] = useState([true, false, false, false, false]);
-
     const [data, setData] = useState([]);
 
     const getData = useCallback(async () => {
@@ -78,7 +83,6 @@ function MapTimeLineV2(props) {
                 (color, index) =>
                     index < 5 && (
                         <React.Fragment key={index}>
-                            {/* 점 추가 */}
                             {showDots[index] && (
                                 <div
                                     className={`dot-${index}`}

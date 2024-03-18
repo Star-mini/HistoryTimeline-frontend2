@@ -5,15 +5,25 @@ import MapTimeLineV2 from "./MapTimeLineV2.js";
 import "../../styles/main/Map.scss"
 import "../../styles/font.css"
 
+/**
+ * 지도 컴포넌트
+ * 핀의 클릭이벤트로 타임라인 페이지로 이동 가능. => Pin.js에 구현되어있음
+ * 핀은 스크롤에 따라 하나씩 나타나도록 구현하였다.
+ * 스크롤 이벤트를 통해 사각형 -> 원으로 표현
+ * 타임라인은 스크롤이 800이상이어야 표시됨.
+ * 
+ * OOOStyle 메소드 들은 스크롤에 따라 이동 시키는 메소드이다.
+ */
+
 function MapChartV2() {
     const [scrollY, setScrollY] = useState(window.scrollY);
     const [showTimeline, setShowTimeline] = useState(false);
     const [pins] = useState([
-        { x: "35.6", y: "14.5", country: "대한민국" },
-        { x: "2", y: "13", country: "미국" },
-        { x: "31", y: "12.5", country: "중국" },
-        { x: "18", y: "11", country: "유럽" },
-        { x: "37.5", y: "14", country: "일본" },
+        { x: "35.6", y: "14.5", country: "410" }, // 한국
+        { x: "2", y: "13", country: "840" }, // 미국
+        { x: "31", y: "12.5", country: "156" }, // 중국
+        { x: "18", y: "11", country: "826" }, // 영국
+        { x: "37.5", y: "14", country: "392" }, // 일본
     ]);
 
     useEffect(() => {
