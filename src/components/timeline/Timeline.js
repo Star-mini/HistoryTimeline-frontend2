@@ -20,6 +20,7 @@ const Timeline = () => {
     const [scrollHeight, setScrollHeight] = useState(window.scrollY +  window.innerHeight * 3 / 4); // scroll의 y 위치에 따른 타임라인의 길이
     const [selectedCountry, setSelectedCountry] = useState(null); // 선택된 나라
     const [selectedYear, setSelectedYear] = useState({ name: 1500 }); // 선택된 연도 - 가져온 연도 리스트에서 첫번째 연도로 했음.
+    const countriesExcludeKorea = countries.filter((country) => country.countryId !== 410)
 
     // 페이지가 열렸을 때 Timeline이 천천히 보이도록 함.
     useEffect(() => {
@@ -130,7 +131,7 @@ const Timeline = () => {
             <TimelineLabel
                 selectedCountry={selectedCountry}
                 setSelectedCountry={setSelectedCountry}
-                countries={countries}
+                countries={countriesExcludeKorea}
                 selectedYear={selectedYear}
                 setSelectedYear={setSelectedYear}
                 years={years}
