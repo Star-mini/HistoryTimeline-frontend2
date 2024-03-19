@@ -1,0 +1,17 @@
+.earthBox {
+    border: 3px solid #eaeafc;
+    border-radius: 50%;
+
+    animation: load 5s ease-in-out infinite;
+}
+@keyframes load {
+    0%,
+    100% {
+        transform: scale(0.95);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.0);
+        opacity: 1;
+    }
+}

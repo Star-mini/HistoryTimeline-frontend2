@@ -1,12 +1,10 @@
-import React from 'react';
-import InsertHistory from './InsertHistory';
-import InsertContent from './InsertContent';
+import React from "react";
+import InsertHistory from "./InsertHistory";
 
 function AdminInsert(props) {
     return (
-        <div>
-            {/* <InsertHistory/> */}
-            <InsertContent/>
+        <div className="insertPop">
+            <InsertHistory/>
         </div>
     );
 }

@@ -1,17 +1,18 @@
+@import url('./variable.css');
+
 .select-dropdown {
     z-index: 3;
     position: absolute;
-    width: 100px;
-    top: 50px;
+    top: 65px;
     height: auto;
-    background-color: #fff;
+    background-color: var(--backgroundColor);
     display: flex;
     flex-direction: column;
     padding: 15px;
     border-radius: 20px;
     max-height: 300px;
     overflow: scroll;
-    border: 3px solid #f4e9c9;
+    border: 3px solid var(--pointColor);
 }
 
 .select-dropdown::-webkit-scrollbar {
@@ -20,11 +21,11 @@
 
 .select-dropdown-option {
     z-index: 3;
-    color: #000;
+    color: var(--fontColor);
     text-align:center;
     position: relative;
     display: block;
     list-style: none;
     padding: 5px;
-    
+    font-size: 15px;
 }
