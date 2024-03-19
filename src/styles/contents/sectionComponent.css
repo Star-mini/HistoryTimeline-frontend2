@@ -1,0 +1,22 @@
+프.container {
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px; /* px-7 대응 */
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    margin-right: 8px; /* mr-2 대응 */
+    height: 50px;
+    width: auto;
+  }
+  .text {
+    margin-left: 30px; /* 마지막 로고와의 간격 설정 */
+    color: white; /* 텍스트 색상을 흰색으로 설정 */
+  }
+    
+  

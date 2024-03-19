@@ -1,17 +1,20 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.css"; // Bootstrap CSS
-import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS
-import Comments from "./Comments";
-import MovieCard from "./MovieCard";
-import Description from "./Description";
-import "../../../styles/contents/ContentsPopup.css"; // ContentsPopup.css 파일을 임포트합니다.
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css'; // Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS
+import Comments from './Comments';
+import MovieCard from './MovieCard';
+import Description from './Description';
+import SectionComponent from './SectionComponent';
+import '../../../styles/contents/ContentsPopup.css'// ContentsPopup.css 파일을 임포트합니다.
+
 
 function ContentsPopup() {
   return (
-    <div className="ContentsPopup pink-background font-sans">
-      <div className="container mx-auto">
+    <div className="ContentsPopup">
+      <div>
         <Description />
-        <div style={{ marginTop: "100px" }}>
+        <SectionComponent />
+        <div className="movie-card-margin">
           <MovieCard />
         </div>
         <div style={{ marginTop: "100px" }}>

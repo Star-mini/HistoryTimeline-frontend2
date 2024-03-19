@@ -1,9 +1,5 @@
 .movie-container {
-  background: linear-gradient(
-    to right,
-    #264364,
-    #093d79
-  ); /* 시작 색상과 끝 색상 */
+background-color: #13161a; /* 시작 색상과 끝 색상 */
   /* 다른 스타일들 */
 }
 
@@ -12,4 +8,7 @@
 }
 .movie-right {
   float: right; /* 요소를 오른쪽으로 정렬합니다. */
+}
+.video-title {
+  color: white;
 }
