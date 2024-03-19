@@ -39,6 +39,20 @@ const List = () => {
         setIsVisible(true);
     }
 
+    // deleteId로 History 삭제
+    // DeleteModal에 전달
+    const onClickDelete = () => {
+        axios.delete('/adminList/delete', {
+            params: {
+                historyId: deleteId,
+            }
+        }).then(() => {
+            setIsVisibleDelete(false);
+            setDeleteId();
+            fetchHistories();
+        })
+    }
+
     return (
         <div className="list-container">
             { isVisible && <div style={{
@@ -49,6 +63,7 @@ const List = () => {
                     deleteId={deleteId}
                     setDeleteId={setDeleteId}
                     setIsVisibleDelete={setIsVisibleDelete}
+                    onClickDelete={onClickDelete}
                 />
             }
             <div className="list-title">

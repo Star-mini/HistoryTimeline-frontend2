@@ -1,18 +1,7 @@
 import React from 'react';
-import axios from "axios";
+import {cusomizedAxios as axios} from "../../../constants/customizedAxios";
 
-const DeleteModal = ({ deleteId, setDeleteId, setIsVisibleDelete }) => {
-    // deleteId로 History 삭제
-    const onClickDelete = () => {
-        axios.delete('/adminList/delete', {
-            params: {
-                historyId: deleteId,
-            }
-        }).then(() => {
-            setIsVisibleDelete(false);
-            setDeleteId();
-        })
-     }
+const DeleteModal = ({ onClickDelete, setIsVisibleDelete }) => {
     // 취소 시 모달 창 닫음
     const onClickCancel = () => {
         setIsVisibleDelete(false);
