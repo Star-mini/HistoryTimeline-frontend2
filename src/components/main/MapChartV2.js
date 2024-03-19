@@ -3,6 +3,7 @@ import { useSpring, animated } from "react-spring";
 import Pin from "./Pin.js";
 import MapTimeLineV2 from "./MapTimeLineV2.js";
 import "../../styles/main/Map.scss"
+import "../../styles/font.css"
 
 function MapChartV2() {
     const [scrollY, setScrollY] = useState(window.scrollY);

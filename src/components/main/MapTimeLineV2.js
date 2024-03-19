@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { cusomizedAxios as axios } from "../../constants/customizedAxios";
+import "../../styles/font.css"
 
 function MapTimeLineV2(props) {
     const [lineColors, setLineColors] = useState(Array(6).fill("rgba(255, 255, 255, 1)"));

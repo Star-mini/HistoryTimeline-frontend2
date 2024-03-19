@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/font.css"
 
 function Header(props) {
     const fontColor = "#0d0d0d"; // 글씨
@@ -7,18 +8,17 @@ function Header(props) {
             className="container"
             style={{
                 margin: 0,
-                maxWidth:"100%",
-                transform : "translateY(0%)",
+                maxWidth: "100%",
                 position: "fixed",
-                top: 0,
-                left: 0,
+                top: "10px",
+                right: "20px", 
             }}
         >
             <div className="row">
                 <div className="col-4">
                     <img
                         src="logo.png"
-                        style={{ width: "90px", height: "90px" }}
+                        style={{ width: "90px", height: "90px"}}
                     ></img>
                 </div>
                 <div className="col-8">
@@ -27,7 +27,7 @@ function Header(props) {
                             <a
                                 className="nav-link"
                                 href="#"
-                                style={{ color: fontColor, paddingRight:"15px",fontSize:"16pt" }}
+                                style={{ color: fontColor, paddingRight:"15px",fontSize:"15pt" }}
                             >
                                 Login
                             </a>
@@ -36,7 +36,7 @@ function Header(props) {
                             <a
                                 className="nav-link"
                                 href="#"
-                                style={{ color: fontColor, paddingRight:"0px",fontSize:"16pt" }}
+                                style={{ color: fontColor, paddingRight:"0px",fontSize:"15pt" }}
                             >
                                 Join
                             </a>

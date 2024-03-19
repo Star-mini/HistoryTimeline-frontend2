@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/font.css"
 
 function Footer(props) {
     const fontColor = "#0d0d0d"; // 글씨
@@ -22,7 +23,7 @@ function Footer(props) {
                             style={{
                                 color: fontColor,
                                 paddingRight: "0px",
-                                fontSize: "16pt",
+                                fontSize: "15pt",
                             }}
                         >
                             제보하기
