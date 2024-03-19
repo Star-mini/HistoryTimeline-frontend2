@@ -17,7 +17,7 @@
   .detail-content {
     color: white; /* text-white */
     font-size: 1rem; /* text-base */
-    max-height: 6rem; /* max-h-24, for detail-collapsed */
+    max-height: 9rem; /* max-h-24, for detail-collapsed */
     overflow: hidden;
   }
   
