@@ -12,7 +12,7 @@ function ContentsPopup() {
     <div className="ContentsPopup pink-background font-sans">
       <div className="container mx-auto">
         <Description />
-        <div style={{ marginTop: '20px' }}>
+        <div>
           <MovieCard />
         </div>
         <Comments />
