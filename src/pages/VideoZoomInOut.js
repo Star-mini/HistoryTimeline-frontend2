@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import VideoMain from "./VideoMain";
+import VideoMain from "../components/main/VideoMain";
 
 /**
  * 마우스 이벤트에 따라 동작하며 가운데를 기준으로 확대 및 축소된다.

@@ -1,8 +1,8 @@
 import React from "react";
-import MapChartV2 from "./MapChartV2";
-import Header from "../Header";
-import Footer from "../Footer";
-import "../../styles/font.css"
+import MapChartV2 from "../components/main/MapChartV2";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "../styles/font.css"
 
 /**
  * 지도 메인화면
