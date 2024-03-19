@@ -22,6 +22,11 @@ const Timeline = () => {
     const [selectedYear, setSelectedYear] = useState({ name: 1500 }); // 선택된 연도 - 가져온 연도 리스트에서 첫번째 연도로 했음.
     const countriesExcludeKorea = countries.filter((country) => country.countryId !== 410)
 
+    // Popup state
+    const [isHistoryVisible, setIsHistoryVisible] = useState(false);
+    const [historyId, setHistoryId] = useState(null);
+    const [isContentVisible, setIsContentVisible] = useState(false);
+
     // 페이지가 열렸을 때 Timeline이 천천히 보이도록 함.
     useEffect(() => {
         // ** data 초기 세팅 해야함  
@@ -125,8 +130,26 @@ const Timeline = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    // 보여줄 역사 아이디를 저장하는 함수
+    const onClickHistoryLabel = (historyId) => {
+        setHistoryId(historyId);
+    }
+
+    // 역사 팝업에서 나올 때 historyId -> null
+    const onClickHistoryPopupQuit = () => {
+        setIsHistoryVisible(false);
+        setHistoryId(null);
+    }
+
+    // 콘텐츠 팝업에서 나올 때
+    const onClickContentPopupQuit = () => {
+        setIsContentVisible(false);
+    }
+
     return (
         <div>
+            {/* 역사 팝업 들어갈 자리 - 클릭한 역사 아이디, 닫기 onClick 함수 전달 */}
+            {/* 콘텐츠 팝업 들어갈 자리 - 클릭한 콘텐츠 아이디, 닫기 onClick 함수 전달 */}
             {/* 국가, 연도 선택 바 */}
             <TimelineLabel
                 selectedCountry={selectedCountry}
@@ -155,7 +178,9 @@ const Timeline = () => {
                             <div className="scroll-hero" style={{marginLeft: '23px'}}>
                                 <div className="steps right">
                                     {histories.map((step) => (
-                                        <HistoryLabel direction="right" data={step} isHidden={step.countryId !== 410}/>
+                                        <HistoryLabel
+                                            onClickHistoryLabel={onClickHistoryLabel}
+                                            direction="right" data={step} isHidden={step.countryId !== 410}/>
                                     ))}
 
                                 </div>
@@ -173,12 +198,16 @@ const Timeline = () => {
                             <div className="scroll-hero">
                                 <div className="steps left">
                                     {histories.map((step) => (
-                                        <HistoryLabel direction="left" data={step} isHidden={step.countryId !== 410}/>
+                                        <HistoryLabel
+                                            onClickHistoryLabel={onClickHistoryLabel}
+                                            direction="left" data={step} isHidden={step.countryId !== 410}/>
                                     ))}
                                 </div>
                                 <div className="steps right">
                                     {histories.map((step) => (
-                                        <HistoryLabel direction="right" data={step} isHidden={step.countryId === 410}/>
+                                        <HistoryLabel
+                                            onClickHistoryLabel={onClickHistoryLabel}
+                                            direction="right" data={step} isHidden={step.countryId === 410}/>
                                     ))}
 
                                 </div>

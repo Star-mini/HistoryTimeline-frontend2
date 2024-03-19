@@ -55,9 +55,11 @@ const List = () => {
 
     return (
         <div className="list-container">
+            {/* 추가&수정 창 - 수정일 경우 postId 넣음*/}
             { isVisible && <div style={{
                 width: '400px', height: '400px', position: 'fixed',top: '20%', left: '50%', border: '3px solid black', transform: 'translate(-50%, 0)'
             }}>컴포넌트 들어갈 자리</div>}
+            {/* 삭제 확인 창 */}
             { isVisibleDelete &&
                 <DeleteModal
                     deleteId={deleteId}
