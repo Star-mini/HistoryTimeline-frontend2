@@ -3,6 +3,7 @@ import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
+import "../../../styles/font.css"
 
 /**
  * props에 데이터가 전달된다면 해당 값의 history 데이터가 표시된다.
@@ -28,7 +29,7 @@ function InsertHistory(props) {
             setData(response.data[0]);
 
             const responseDetail = await axios.get(
-                "/historyDeatilPop/one?historyId=" + props.historyId
+                "/historyDeatil/one?historyId=" + props.historyId
             );
             setDetail(responseDetail.data[0]);
         } catch (error) {
