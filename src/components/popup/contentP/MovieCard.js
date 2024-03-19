@@ -5,7 +5,9 @@ import "../../../styles/contents/movieCard.css";
 
 const MovieCard = () => {
   return (
-    <div className="row row-cols-1 row-cols-sm-3 row-cols-md-3 g-3 mb-10 movie-container">
+    <div >
+      <h3 className="video-title">비디오| 다른컨텐츠</h3>      
+      <div className="row row-cols-1 row-cols-sm-5 row-cols-md-5 g-3 mb-10 movie-container">
       <Fade bottom delay={500}>
         <Moovie name="태극기휘날리며" src="태극기휘날리며.jpg" className="movie-left" />
       </Fade>
@@ -15,6 +17,13 @@ const MovieCard = () => {
       <Fade bottom delay={500}>
         <Moovie name="태극기휘날리며" src="태극기휘날리며.jpg" className="movie-right" />
       </Fade>
+      <Fade bottom delay={500}>
+        <Moovie name="태극기휘날리며" src="태극기휘날리며.jpg" className="movie-right" />
+      </Fade>
+      <Fade bottom delay={500}>
+        <Moovie name="태극기휘날리며" src="태극기휘날리며.jpg" className="movie-right" />
+      </Fade>
+    </div>
     </div>
   );
 };

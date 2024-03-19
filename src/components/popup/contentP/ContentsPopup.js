@@ -10,11 +10,13 @@ import '../../../styles/contents/ContentsPopup.css'// ContentsPopup.css 파일�
 
 function ContentsPopup() {
   return (
-    <div className="ContentsPopup pink-background font-sans">
-      <div className="container mx-auto">
+    <div className="ContentsPopup">
+      <div>
         <Description />
         <SectionComponent />
-        <MovieCard />
+        <div className="movie-card-margin">
+          <MovieCard />
+        </div>
         <Comments />
       </div>  
     </div>

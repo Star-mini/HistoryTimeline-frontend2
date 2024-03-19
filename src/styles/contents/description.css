@@ -19,6 +19,7 @@ span.thumb-up:hover > img, span.thumb-down:hover > img {
   transform: scale(1.2); /* 마우스 호버 시 이미지 1.1배 확대 */
 }
 .custom-body {
+  background-color: #13161a;
   color: white; /* text-white */
   font-family: sans-serif; /* font-sans */
 }
@@ -44,6 +45,7 @@ span.thumb-up:hover > img, span.thumb-down:hover > img {
 }
 
 .hero-image {
+  background-color: #13161a;
   width: 100%; /* 이미지가 전체 너비를 차지하도록 설정 */
   height: 700px; /* 높이 설정 */
   object-fit: cover; /* 이미지가 태그 크기에 맞게 조절되도록 설정 */
