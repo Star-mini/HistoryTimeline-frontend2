@@ -14,7 +14,9 @@ function ContentsPopup() {
     <div className="ContentsPopup">
       <div>
         <Description />
+        <div style={{ marginTop: "15px" }}>
         <SectionComponent />
+        </div>
         <div className="movie-card-margin">
           <MovieCard />
         </div>
