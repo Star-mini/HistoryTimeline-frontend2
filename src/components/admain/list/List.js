@@ -4,6 +4,7 @@ import '../../../styles/admin/adminList.css'
 import PageBar from "./PageBar";
 import {cusomizedAxios as axios} from "../../../constants/customizedAxios";
 import DeleteModal from "./DeleteModal";
+import InsertHistory from "../insert/InsertHistory";
 
 // 선택 바부터 페이지 바까지 포함하는 리스트 컴포넌트
 const List = () => {
@@ -55,10 +56,10 @@ const List = () => {
 
     return (
         <div className="list-container">
-            {/* 추가&수정 창 - 수정일 경우 postId 넣음*/}
-            { isVisible && <div style={{
-                width: '400px', height: '400px', position: 'fixed',top: '20%', left: '50%', border: '3px solid black', transform: 'translate(-50%, 0)'
-            }}>컴포넌트 들어갈 자리</div>}
+            { isVisible && <InsertHistory
+                postId={postId}
+                setIsVisible={setIsVisible}
+            />}
             {/* 삭제 확인 창 */}
             { isVisibleDelete &&
                 <DeleteModal

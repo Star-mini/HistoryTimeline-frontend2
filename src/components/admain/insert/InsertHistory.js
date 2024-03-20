@@ -3,7 +3,8 @@ import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
-import "../../../styles/font.css"
+// import "../../../styles/font.css";
+import "../../../styles/admin/insertHistory.css";
 
 /**
  * props에 데이터가 전달된다면 해당 값의 history 데이터가 표시된다.
@@ -24,12 +25,12 @@ function InsertHistory(props) {
             setCountries(responseCountry.data);
 
             const response = await axios.get(
-                "/history/one?historyId=" + props.historyId
+                "/history/one?historyId=" + props.postId
             );
             setData(response.data[0]);
 
             const responseDetail = await axios.get(
-                "/historyDeatil/one?historyId=" + props.historyId
+                "/historyDetail/one?historyId=" + props.postId
             );
             setDetail(responseDetail.data[0]);
         } catch (error) {
@@ -60,7 +61,8 @@ function InsertHistory(props) {
                 };
                 console.log(formData);
                 await axios.post(`//localhost:8080/saveHistory`, formData);
-                navigate("/adminList");
+                // navigate("/adminList");
+                props.setIsVisible(false);
             } catch (error) {
                 console.error("Error saving data:", error);
                 window.confirm("다시한번 시도해보세요.");
@@ -73,7 +75,8 @@ function InsertHistory(props) {
     const cancel = () => {
         const confirmed = window.confirm("취소하시겠습니까?");
         if (confirmed) {
-            navigate("/adminList");
+            // navigate("/adminList");
+            props.setIsVisible(false);
         }
     };
 
@@ -84,12 +87,12 @@ function InsertHistory(props) {
     return (
         <div
             className="col-md-5"
-            style={{
-                background: "white",
-                padding: "10px",
-                width: "80%",
-                textAlign: "center",
-            }}
+            // style={{
+            //     background: "white",
+            //     padding: "10px",
+            //     width: "80%",
+            //     textAlign: "center",
+            // }}
         >
             <form>
                 <div className="input-group mb-4">
