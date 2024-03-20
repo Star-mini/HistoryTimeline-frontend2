@@ -4,7 +4,7 @@ import HistoryLabel from "./HistoryLabel";
 import TimelineLabel from './TimelineLabel';
 import ScrollLoadingBox from './ScrollLoadingBox';
 import {years} from "../../constants/years";
-import {countries} from "../../constants/countries";
+import {countries, koreaImgUrl} from "../../constants/countries";
 import {cusomizedAxios as axios} from "../../constants/customizedAxios";
 
 /* Timeline Component -> 나라 선택 부터 history Label까지 포함 */
@@ -180,7 +180,9 @@ const Timeline = () => {
                                     {histories.map((step) => (
                                         <HistoryLabel
                                             onClickHistoryLabel={onClickHistoryLabel}
-                                            direction="right" data={step} isHidden={step.countryId !== 410}/>
+                                            direction="right" data={step} isHidden={step.countryId !== 410}
+                                            defaultImage={koreaImgUrl}
+                                        />
                                     ))}
 
                                 </div>
@@ -200,14 +202,17 @@ const Timeline = () => {
                                     {histories.map((step) => (
                                         <HistoryLabel
                                             onClickHistoryLabel={onClickHistoryLabel}
-                                            direction="left" data={step} isHidden={step.countryId !== 410}/>
+                                            direction="left" data={step} isHidden={step.countryId !== 410}
+                                            defaultImage={koreaImgUrl}
+                                        />
                                     ))}
                                 </div>
                                 <div className="steps right">
                                     {histories.map((step) => (
                                         <HistoryLabel
                                             onClickHistoryLabel={onClickHistoryLabel}
-                                            direction="right" data={step} isHidden={step.countryId === 410}/>
+                                            direction="right" data={step} isHidden={step.countryId === 410}
+                                            defaultImage={selectedCountry.imgUrl}/>
                                     ))}
 
                                 </div>
