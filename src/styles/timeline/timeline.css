@@ -225,3 +225,11 @@ justify-content: space-between;
 -ms-flex-align: center;
 align-items: center;
 }
+
+.no-data-alert {
+    position: fixed;
+    top: 50%;
+    right: 25%;
+    font-size: 150%;
+    color: var(--briefColor);
+}

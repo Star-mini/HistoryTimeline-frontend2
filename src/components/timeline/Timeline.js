@@ -20,7 +20,10 @@ const Timeline = () => {
     const [scrollHeight, setScrollHeight] = useState(window.scrollY +  window.innerHeight * 3 / 4); // scroll의 y 위치에 따른 타임라인의 길이
     const [selectedCountry, setSelectedCountry] = useState(null); // 선택된 나라
     const [selectedYear, setSelectedYear] = useState({ name: 1500 }); // 선택된 연도 - 가져온 연도 리스트에서 첫번째 연도로 했음.
-    const countriesExcludeKorea = countries.filter((country) => country.countryId !== 410)
+    const countriesExcludeKorea = countries.filter((country) => country.countryId !== 410);
+
+    // 선택한 나라가 데이터가 없을 때
+    const [noData, setNoData] = useState(false);
 
     // Popup state
     const [isHistoryVisible, setIsHistoryVisible] = useState(false);
@@ -60,6 +63,7 @@ const Timeline = () => {
     useEffect(() => {
         setIsVisible(false);
         setMorePage(true);
+        setNoData(false);
 
         if (page == 0) {
             fetchHistories();
@@ -119,6 +123,15 @@ const Timeline = () => {
                     year: selectedYear.name
                 }
             })
+
+        if (selectedCountry !== null) {
+            const { data } = await axios.get('/checkData', {
+                params : {
+                    countryId: selectedCountry.countryId
+                }
+            })
+            setNoData(!data);
+        }
         if (data.content.length < 10) setMorePage(false);
         if (page === 0 ) setHistories(data.content)
         else setHistories(histories.concat(data.content));
@@ -150,6 +163,7 @@ const Timeline = () => {
         <div>
             {/* 역사 팝업 들어갈 자리 - 클릭한 역사 아이디, 닫기 onClick 함수 전달 */}
             {/* 콘텐츠 팝업 들어갈 자리 - 클릭한 콘텐츠 아이디, 닫기 onClick 함수 전달 */}
+            {noData && <div className="no-data-alert">데이터 수집 중...</div>}
             {/* 국가, 연도 선택 바 */}
             <TimelineLabel
                 selectedCountry={selectedCountry}
