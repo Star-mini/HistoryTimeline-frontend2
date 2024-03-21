@@ -3,7 +3,7 @@ import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
-import "../../../styles/font.css"
+import "../../../styles/font.css";
 
 /**
  * props에 데이터가 전달된다면 해당 값의 history 데이터가 표시된다.
@@ -27,7 +27,6 @@ function InsertHistory(props) {
                 "/history/one?historyId=" + props.historyId
             );
             setData(response.data[0]);
-
             const responseDetail = await axios.get(
                 "/historyDeatil/one?historyId=" + props.historyId
             );
@@ -37,19 +36,14 @@ function InsertHistory(props) {
         }
     }, []);
 
-    const getCountryIdByName = (countryName) => {
-        const selectedCountry = countries.find(country => country.name === countryName);
-        return selectedCountry ? selectedCountry.countryId : null;
-    };
-
     const save = async () => {
         const confirmed = window.confirm("저장하시겠습니까?");
-
-        if (confirmed && getCountryIdByName(data.countryId) != null) {
+        console.log(data);
+        if (confirmed) {
             try {
                 const formData = {
                     title: data.title,
-                    countryId: getCountryIdByName(data.countryId),
+                    countryId: data.countryId,
                     year: data.year,
                     month: data.month,
                     day: data.day,
@@ -59,7 +53,7 @@ function InsertHistory(props) {
                     detail: detail.detail,
                 };
                 console.log(formData);
-                await axios.post(`//localhost:8080/saveHistory`, formData);
+                await axios.post(`/saveHistory`, formData);
                 navigate("/adminList");
             } catch (error) {
                 console.error("Error saving data:", error);
@@ -117,17 +111,18 @@ function InsertHistory(props) {
                     </div>
                     <select
                         className="custom-select col-10 form-select"
+                        name="countryOption"
+                        value={data.countryId || ""}
+                        required
                         onChange={(e) =>
                             setData({ ...data, countryId: e.target.value })
                         }
-                        value={data.countryId || ""}
-                        required
                     >
                         <option value="" disabled>
                             국가 선택
                         </option>
                         {countries.map((country) => (
-                            <option key={country.id} value={country.id}>
+                            <option key={country.countryId} value={country.countryId} selected={country.countryId === data.countryId}>
                                 {country.name}
                             </option>
                         ))}
