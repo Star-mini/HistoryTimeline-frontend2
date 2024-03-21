@@ -89,7 +89,13 @@ span.thumb-up:hover > img, span.thumb-down:hover > img {
 .description {
   margin-bottom: 16px; /* mb-4 */
   max-width: 32rem; /* max-w-lg */
-}
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 보여줄 줄의 수 */
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis; /* 텍스트가 넘칠 때 '...'을 표시 */
+  }
+  
 
 .cast,
 .producers {
