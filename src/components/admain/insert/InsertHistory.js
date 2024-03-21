@@ -53,6 +53,7 @@ function InsertHistory(props) {
                 };
                 await axios.post(`/saveHistory`, formData);
                 props.setIsVisible(false);
+                props.setPostId(null);
             } catch (error) {
                 console.error("Error saving data:", error);
                 window.confirm("다시한번 시도해보세요.");
@@ -66,6 +67,7 @@ function InsertHistory(props) {
         const confirmed = window.confirm("취소하시겠습니까?");
         if (confirmed) {
             props.setIsVisible(false);
+            props.setPostId(false);
         }
     };
 

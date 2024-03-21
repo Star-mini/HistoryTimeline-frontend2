@@ -58,6 +58,7 @@ const List = () => {
         <div className="list-container">
             { isVisible && <InsertHistory
                 postId={postId}
+                setPostId={setPostId}
                 setIsVisible={setIsVisible}
             />}
             {/* 삭제 확인 창 */}
