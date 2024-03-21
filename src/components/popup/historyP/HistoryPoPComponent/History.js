@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap'; 
 import { motion } from 'framer-motion'; 
-import { useScroll } from 'framer-motion';; 
+import { useScroll } from 'framer-motion';
 
 const History = () => {
     const { scrollYProgress } = useScroll();
