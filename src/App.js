@@ -5,6 +5,7 @@ import VideoZoomInOut from "./pages/VideoZoomInOut";
 import MapMain from "./pages/MapMain";
 import Timeline from "./pages/Timeline";
 import AdminList from "./pages/AdminList";
+import InsertReport from "./pages/InsertReport";
 
 /*
  * "/" 동영상 있는 메인페이지
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/map" element={<MapMain />} />
                 <Route path="/adminList" element={<AdminList />} />
                 <Route path="/timeline" element={<Timeline />} />
+                <Route path="/report" element={<InsertReport />} />
             </Routes>
         </Router>
     );
