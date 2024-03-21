@@ -3,7 +3,6 @@ import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
-// import "../../../styles/font.css";
 import "../../../styles/admin/insertHistory.css";
 
 /**
