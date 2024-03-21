@@ -67,7 +67,7 @@ function InsertHistory(props) {
         const confirmed = window.confirm("취소하시겠습니까?");
         if (confirmed) {
             props.setIsVisible(false);
-            props.setPostId(false);
+            props.setPostId(null);
         }
     };
 
