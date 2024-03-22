@@ -60,6 +60,20 @@ const Description = (props) => {
     fetchMovieDetails();
   }, [movie_id]);
 
+  useEffect(() => {
+    // 서버에서 추천 수 가져오기
+    const fetchThumbsUpCount = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/likes/count/1`);
+        setThumbsUp(response.data); // 서버에서 받은 추천 수로 상태 업데이트
+      } catch (error) {
+        console.error("추천 수 가져오기 실패:", error);
+      }
+    };
+
+    fetchThumbsUpCount();
+  }, [movie_id]); // movie_id가 변경될 때마다 추천 수를 다시 가져옴
+
   const handleThumbsUp = () => {
     setThumbsUp(thumbsUp + 1);
   };
