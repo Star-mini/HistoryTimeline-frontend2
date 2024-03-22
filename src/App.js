@@ -11,7 +11,7 @@ import AdminInsert from "./components/admain/insert/AdminInsert";
 import MapChartV2 from "./components/main/MapChartV2";
 import Timeline from "./pages/Timeline";
 import AdminList from "./pages/AdminList";
-
+import Login from "./components/login/login";
 /*
  * "/" 동영상 있는 메인페이지ghb
 
@@ -21,16 +21,18 @@ function App() {
     return (
         <Router>
             <Routes>
-               
                 {/* <Route path="/test" element={<Test />} />
                 <Route path="/test1" element={<HistoryPoptest />} />
                 <Route path="/test2" element={<HistoryPoptest2/>} /> */}
                 <Route path="/" element={<VideoZoomInOut />} />
                 <Route path="/map" element={<MapMain />} />
                 <Route path="/mapv2" element={<MapChartV2 />} />
-                <Route path="/adminInsert" element={<AdminInsert/>} />
-                <Route path="/adminList" element={<AdminList/>} />
+                <Route path="/adminInsert" element={<AdminInsert />} />
+                <Route path="/adminList" element={<AdminList />} />
                 <Route path="/timeline" element={<Timeline />} />
+                <Route path="/login" element={<Login />} />
+                {/*<Route path="/app/login/kakao" element={<Login />} />*/}
+                {/*<Route path="/app/login/naver" element={<Login />} />*/}
                 {/* <Route path="/contents" element={<ContentsPopup />} /> */}
             </Routes>
         </Router>
