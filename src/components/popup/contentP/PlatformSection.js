@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../../../styles/contents/sectionComponent.css";
+import "../../../styles/contents/platformSection.css";
 
-const SectionComponent = ({ contentId }) => {
+const PlatformSection = ({ contentId }) => {
   const [trailerUrl, setTrailerUrl] = useState("");
 
   const TMDB_API_KEY = "0decfffb82411d82c9af75fdfaba9b34";
@@ -49,4 +49,4 @@ const SectionComponent = ({ contentId }) => {
   );
 };
 
-export default SectionComponent;
+export default PlatformSection;
