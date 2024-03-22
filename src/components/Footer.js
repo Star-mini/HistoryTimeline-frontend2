@@ -19,7 +19,7 @@ function Footer(props) {
                     <li className="nav-item">
                         <a
                             className="nav-link"
-                            href="#"
+                            href="/report"
                             style={{
                                 color: fontColor,
                                 paddingRight: "0px",

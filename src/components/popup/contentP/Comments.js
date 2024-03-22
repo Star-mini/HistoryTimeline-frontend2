@@ -1,56 +1,64 @@
-import React, { useState } from "react"; // React 라이브러리와 useState 훅을 임포트
-import "../../../styles/contents/comments.css"; // 댓글 관련 스타일을 정의한 CSS 파일을 임포트
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import "../../../styles/contents/comments.css";
 
 function Comments() {
-  const [comments, setComments] = useState([]); // 댓글 목록을 저장하는 상태 변수, 초기값은 빈 배열입니다.
-  const [inputValue, setInputValue] = useState(""); // 입력 필드의 현재 값을 저장하는 상태 변수, 초기값은 빈 문자열입니다.
-  const [userNickname, setUserNickname] = useState("user1"); // 사용자 닉네임을 저장하는 상태 변수, 초기값은 'user1'입니다.
+  // 댓글을 위한 상태
+  const [comments, setComments] = useState([]);
+  // 입력된 댓글 텍스트를 위한 상태
+  const [newComment, setNewComment] = useState('');
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value); // 입력 필드가 변경될 때마다 이 함수가 호출되어 inputValue 상태를 업데이트합니다.
-  };
+  useEffect(() => {
+    // 서버에서 댓글 데이터를 불러오는 함수
+    const fetchComments = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/comments?contentId=1');
+        setComments(response.data); // 서버 응답으로 받은 댓글 데이터로 상태 업데이트
+      } catch (error) {
+        console.error("댓글을 불러오는데 실패했습니다:", error);
+      }
+    };
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // 폼 제출 시 페이지가 새로고침되는 기본 동작을 방지합니다.
-    const newComment = { nickname: userNickname, text: inputValue }; // 사용자 닉네임과 댓글 내용을 객체로 저장합니다.
-    setComments([newComment, ...comments]); // 새로운 댓글 객체를 배열의 맨 앞에 추가합니다.
-    setInputValue(""); // 입력 필드를 초기화합니다.
+    fetchComments();
+  }, []); // 컴포넌트가 마운트될 때 한 번만 실행
+
+  // 댓글 작성 핸들러
+  const handleCommentSubmit = () => {
+    if (!newComment.trim()) return; // 빈 댓글은 추가하지 않음
+    const updatedComments = [...comments, { author: "익명", body: newComment }];
+    setComments(updatedComments);
+    setNewComment(''); // 입력 필드 초기화
   };
-  
-  // 최신 5개의 댓글만 선택하여 렌더링합니다.
-  const recentComments = comments.slice(Math.max(comments.length - 5, 0));
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="form-container">
+    <section className="comment-section">
+      <h2 className="section-title">댓글</h2>
+
+      <div className="comment-form">
         <textarea
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="댓글을 입력하세요"
-          rows="3"
-          className="textarea textarea-custom"
-        />
-        <div className="button-container">
-          <br />
-          <button type="submit" className="button">
-            댓글 달기
-          </button>
-        </div>
-      </form>
-      <div className="comments-container">
-        {recentComments.length > 0 ? (
-          <ul className="comments-list">
-            {recentComments.map((comment, index) => (
-              <li key={index} className="comment-item">
-                {`${comment.nickname}: ${comment.text}`}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>댓글이 없습니다.</p>
-        )}
+          className="textarea"
+          placeholder="댓글을 입력하세요..."
+          value={newComment}
+          onChange={(e) => setNewComment(e.target.value)}
+        ></textarea>
+        <button className="submit-button" onClick={handleCommentSubmit}>
+          댓글 작성
+        </button>
       </div>
-    </div>
+
+      <div className="comment-list">
+        {comments.map((comment, index) => (
+          <div className="comment" key={index}>
+            <div className="comment-header">
+              <span className="comment-author">{comment.userId}</span>
+            </div>
+            <p className="comment-body">
+              {comment.note}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 

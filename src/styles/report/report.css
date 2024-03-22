@@ -1,0 +1,54 @@
+@import url('../timeline/variable.css');
+
+.insert-report-background {
+    width: 100%;
+    height: 100%;
+}
+
+.insert-report-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 800px;
+    border: 3px solid var(--pointColor);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.insert-report-title {
+    display: block;
+    margin: 0;
+    padding: 10px 20px;
+    font-size: 25px;
+    background-color: var(--pointColor);
+    color: var(--backgroundColor);
+}
+
+.insert-report-textarea {
+    display: inline;
+    margin: 20px;
+    height: 400px;
+    vertical-align: top;
+    padding: 10px;
+    resize: none;
+    border: none;
+    border-top: 2px solid var(--pointColor);
+    border-bottom: 2px solid var(--pointColor);
+}
+
+.insert-report-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 2px solid var(--pointColor);
+    background-color: var(--backgroundColor);
+}

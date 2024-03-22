@@ -1,0 +1,37 @@
+.detail-section {
+    background-color: #2d3748; /* bg-gray-800 */
+    padding: 2.5rem 1.75rem; /* p-10 px-7 */
+    margin: 2.5rem auto; /* m-10 mx-auto */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    overflow: hidden;
+  }
+  
+  .detail-title {
+    color: #f56565; /* text-red-500 */
+    font-weight: bold; /* font-bold */
+    margin-bottom: 0.5rem; /* mb-2 */
+    font-size: 1.125rem; /* text-lg */
+  }
+  
+  .detail-content {
+    color: white; /* text-white */
+    font-size: 1rem; /* text-base */
+    max-height: 9rem; /* max-h-24, for detail-collapsed */
+    overflow: hidden;
+  }
+  
+  .detail-expanded {
+    max-height: none; /* max-h-full when expanded */
+  }
+  
+  .detail-button {
+    color: white; /* text-white */
+    font-weight: bold; /* font-bold */
+    padding: 0.25rem 0.5rem; /* py-1 px-2 */
+    margin-top: 0.5rem; /* mt-2 */
+    background: none; /* Assuming a transparent background */
+    border: none; /* No border */
+    cursor: pointer;
+  }
+  

@@ -1,22 +1,31 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css'; // Bootstrap CSS
-import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Comments from './Comments';
-import MovieCard from './MovieCard';
+import ContentCard from './ContentCard';
 import Description from './Description';
-import '../../../styles/contents/ContentsPopup.css'// ContentsPopup.css 파일을 임포트합니다.
-
+import PlatformSection from './PlatformSection';
+import Detail from './Detail';
+import '../../../styles/contents/ContentsPopup.css';
 
 function ContentsPopup() {
+  const contentId = "550"; // 여기에 해당 영화의 ID를 설정
+
   return (
-    <div className="ContentsPopup pink-background font-sans">
-      <div className="container mx-auto">
-        <Description />
-        <div style={{ marginTop: '20px' }}>
-          <MovieCard />
+    <div className="ContentsPopup">
+      <div>
+        <Description contentId={contentId}/>
+        <div style={{ marginTop: "15px" }}>
+          <PlatformSection contentId={contentId}/>
         </div>
-        <Comments />
-      </div>  
+        <div className="movie-card-margin">
+          <ContentCard contentId={contentId}/>
+        </div>
+        <Detail contentId={contentId} /> 
+        <div style={{ marginTop: "80px" }}>
+          <Comments contentId={contentId}/>
+        </div>
+      </div>
     </div>
   );
 }
