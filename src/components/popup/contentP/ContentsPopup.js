@@ -2,9 +2,9 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Comments from './Comments';
-import MovieCard from './MovieCard';
+import ContentCard from './ContentCard';
 import Description from './Description';
-import SectionComponent from './SectionComponent';
+import PlatformSection from './PlatformSection';
 import Detail from './Detail';
 import '../../../styles/contents/ContentsPopup.css';
 
@@ -16,10 +16,10 @@ function ContentsPopup() {
       <div>
         <Description contentId={contentId}/>
         <div style={{ marginTop: "15px" }}>
-          <SectionComponent contentId={contentId}/>
+          <PlatformSection contentId={contentId}/>
         </div>
         <div className="movie-card-margin">
-          <MovieCard contentId={contentId}/>
+          <ContentCard contentId={contentId}/>
         </div>
         <Detail contentId={contentId} /> 
         <div style={{ marginTop: "80px" }}>
