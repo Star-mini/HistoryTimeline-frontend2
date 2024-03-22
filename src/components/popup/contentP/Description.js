@@ -74,6 +74,20 @@ const Description = (props) => {
     fetchThumbsUpCount();
   }, [movie_id]); // movie_id가 변경될 때마다 추천 수를 다시 가져옴
 
+  useEffect(() => {
+    // 서버에서 비추천 수 가져오기
+    const fetchThumbsDownCount = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/dislikes/count/1`);
+        setThumbsDown(response.data); // 서버에서 받은 비추천 수로 상태 업데이트
+      } catch (error) {
+        console.error("비추천 수 가져오기 실패:", error);
+      }
+    };
+  
+    fetchThumbsDownCount();
+  }, [movie_id]); // movie_id가 변경될 때마다 비추천 수를 다시 가져옴
+
   const handleThumbsUp = () => {
     setThumbsUp(thumbsUp + 1);
   };
