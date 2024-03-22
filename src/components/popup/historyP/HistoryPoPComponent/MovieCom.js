@@ -31,23 +31,27 @@ const MovieCom = ({ movies }) => {
     const sliderSettings = {
         dots: false,
         infinite: true,
-        speed: 500,
+        speed: 2000,
         slidesToShow: 3,
         slidesToScroll: 1,
+        autoplay: true, 
+        autoplaySpeed: 3000, 
+        cssEase: 'ease-out',
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />
     };
 
     return (
         <div className='row justify-content-center'>
-            {/* 슬라이더 */}
-            <Slider {...sliderSettings} className="container2">
+            <h3 className='movieTitle'>관련 영화</h3>
+            
+            <Slider {...sliderSettings} className="moviePosterSlide">
                 {movies.map((movie, index) => (
-                    <div className="col-md-4" key={index}>
-                        <Fade bottom delay={index * 500}>
-                            <img className='MF movie-frame'
+                    <div className="moviePoster" key={index}>
+                        <Fade bottom delay={index * 500} >
+                            <img className='moviePosterFrame'
                                 src={movie.imageUrl}
-                                width="40%"
+                                width="70%"                            
                             />
                             <h4>{movie.title}</h4>
                         </Fade>

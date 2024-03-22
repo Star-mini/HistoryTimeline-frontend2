@@ -1,15 +1,17 @@
 import React from "react";
+import "../styles/font.css"
 
 function Footer(props) {
-    const backColor = "#264364"; // 배경색
-    const fontColor = "#f4e9c9"; // 글씨
+    const fontColor = "#0d0d0d"; // 글씨
     return (
         <div
             className="container"
             style={{
-                background: backColor,
                 margin: 0,
                 maxWidth: "100%",
+                position: "fixed",
+                bottom: "10px",
+                right: "20px",
             }}
         >
             <div className="row">
@@ -17,11 +19,11 @@ function Footer(props) {
                     <li className="nav-item">
                         <a
                             className="nav-link"
-                            href="#"
+                            href="/report"
                             style={{
                                 color: fontColor,
                                 paddingRight: "0px",
-                                fontSize: "16pt",
+                                fontSize: "15pt",
                             }}
                         >
                             제보하기

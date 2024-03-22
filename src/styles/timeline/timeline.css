@@ -1,19 +1,24 @@
+@import url('./variable.css');
+
 body {
-    background-color: #264364;
-    font-family: Poppins, sans-serif;
-    color: #121212;
+    background-color: var(--backgroundColor);
+    font-family: Galmuri14, sans-serif;
+    color: var(--fontColor);
     font-size: 14px;
     line-height: 20px;
-    font-weight: 600;
+    overflow: auto;
 }
 .timeline-transition {
     display: flex;
+    padding-top: 100px;
     opacity:0;
-    transition: all 2s;
 }
 
-.timeline-transition.visible {
+.timeline-transition-visible {
+    display: flex;
+    padding-top: 100px;
     opacity: 1;
+    transition: all 2s;
 }
 
 .timeline-wrapper {
@@ -79,7 +84,7 @@ align-items: center;
     position: absolute;
     top: 0px;
     width: 6px;
-    background-color: #5cffd1;
+    background-color: var(--pointColor);
     -webkit-transform-origin: 50% 0%;
     -ms-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
@@ -92,34 +97,36 @@ z-index: 3;
 width: 12px;
 height: 12px;
 border-radius: 50%;
-background-color: #eeeff4;
+background-color: var(--pointColor);
 }
 
 .step-hero {
-position: relative;
-z-index: 2;
-display: -webkit-box;
-display: -webkit-flex;
-display: -ms-flexbox;
-display: flex;
-padding: 18px;
--webkit-box-pack: center;
--webkit-justify-content: center;
--ms-flex-pack: center;
-justify-content: center;
--webkit-box-align: center;
--webkit-align-items: center;
--ms-flex-align: center;
-align-items: center;
-border-radius: 16px;
-background-color: #fff; /* HistoryLabel 배경색 */
+    position: relative;
+    z-index: 2;
+    display: flex;
+    min-width: 300px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    padding: 18px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    /*border-radius: 16px;*/
+    border: 3px solid var(--pointColor);
+    background-color: var(--backgroundColor);
+    box-shadow: 8px 8px #2224
 }
 
-/* 수정 */
 .step-block-hero-container {
-position: relative;
-margin: 30px;
-transition: opacity 0.5s ease-out;
+    position: relative;
+    margin: 30px;
+    transition: opacity 0.3s ease-out;
 }
 
 .step-block-hero {
@@ -135,7 +142,7 @@ top: 10px;
 width: 16px;
 height: 16px;
 border-radius: 50%;
-background-color: #5cffd1;
+background-color: var(--pointColor);
 }
 
 .scroll-hero {
@@ -148,17 +155,30 @@ height: 100%;
 }
 
 .label {
-    color: #0d0d32;
-    font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
+    width: 100%;
 }
 
 .label-image {
     width: 100px;
-    float: left;
-    margin-right : 10px;
-    margin-bottom: 10px;
+    box-shadow: 3px 3px  rgba(0, 0, 0, 0.2);
+}
+
+.label-date {
+    display: inline;
+}
+
+.label-title {
+    color: var(--titleColor);
+    font-weight: 700;
+    margin-top: 3px;
+}
+
+.label-brief {
+    color: var(--briefColor);
+    font-weight: 500;
+    margin-top: 3px;
 }
 
 .steps {
@@ -204,4 +224,12 @@ justify-content: space-between;
 -webkit-align-items: center;
 -ms-flex-align: center;
 align-items: center;
+}
+
+.no-data-alert {
+    position: fixed;
+    top: 50%;
+    right: 25%;
+    font-size: 150%;
+    color: var(--briefColor);
 }

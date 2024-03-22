@@ -1,43 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 
-.col-md-4:hover {
+
+.movieTitle{
+    color: #a0a5eb;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.moviePosterSlide {
+    background-color: rgb(24, 24, 24);
+    width: 90%; 
+    margin: 0 auto; 
+}
+
+.moviePoster {
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+    
+    
+}
+
+.moviePoster:hover {
     transform: scale(1.2);
     -webkit-transform: scale(1.2);
     -moz-transform: scale(1.2);
     -ms-transform: scale(1.2); 
     -o-transform: scale(1.2);
     transition: transform 0.5s; 
-}
-
-.container2 {
-    background-color: #264364;
-}
-
-.movie-frame {
-    border: 8px solid #f4e9c9;
-    border-radius: 10px; 
+    
+    
     
 }
 
-.col-md-4 {
+.moviePosterFrame {
+    border-radius: 20px; 
+    margin: 0 auto;
+}
 
-    text-align: center;
-    color: #ffffff;
-    font-family: 'Google Sans', sans-serif;
-}
-.MF {
-    display: block; 
-    margin: 0 auto; 
-}
+
 .slick-prev {
     left: -30px; 
+    top: 125px;
 }
 
 .slick-next {
     right: -30px; 
+    top: 125px;
 }
-.container2 {
-    
-    width: 95%; 
-    margin: 0 auto; 
-}
+

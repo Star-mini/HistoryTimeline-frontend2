@@ -17,50 +17,55 @@ const AnimatedText = ({ children }) => {
     );
 };
 
+const HistoryCom = ({ imageUrl, title, content }) => {
+    // 이미지 URL을 배열로 변환
+    const images = Array.isArray(imageUrl) ? imageUrl : [imageUrl];
 
-const HistoryCom = ({ imageUrl, content }) => {
     const sliderSettings = {
         dots: false,
-        infinite: false,
-        speed: 500,
+        infinite: true,
+        speed: 1000,
         slidesToShow: 1,
         slidesToScroll: 1,
+        autoplay: true, 
+        autoplaySpeed: 3000, 
+        fade: true,
+        cssEase: 'linear'
     };
+
     return (
         <div>
-            <Navbar className='nav' bg="dark" variant="dark" fixed="top">
+            <Navbar className='hispopnav'>
                 <Container>
-                    <Nav className="ml-auto">
+                    <Nav className="hispopnavlink">
                         <Nav.Link href="#">상세설명</Nav.Link>
-                        <Nav.Link href="#">사진</Nav.Link>
+                        <Nav.Link href="/map">사진</Nav.Link>
                         <Nav.Link href="#">youtube</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
-            <div className="main-bg">
-                <div className="wrapper">
-                    <Slider className='photo' {...sliderSettings}>
-                        {imageUrl.map((image, index) => (
-                            <div key={index} className="history-slide">
+            <div className="historyPopMain">
+                <div className="historyWiki">
+                    <Slider className='historyPhoto' {...sliderSettings} dots={true}>
+                        {images.map((image, index) => (
+                            <div key={index} className="historyPhotoSlide">
                                 <motion.img 
                                     src={image} 
                                     alt="History" 
-                                    className="history-image" 
+                                    className="historyImage" 
                                 />
                             </div>
                         ))}
-                    </Slider>
-                    <div className="memo">
-                        <div className="wrap">
-                            {content.map((paragraph, index) => (
-                                <p key={index}>{paragraph}</p>
-                            ))}
-                        </div>
+                    </Slider>            
+                    <h1 className='historyTitle'>{title}</h1>
+                    <div className="historyMemo">
+                        {content.map((paragraph, index) => (
+                            <p key={index}>{paragraph}</p>
+                        ))}
                     </div>
                 </div>
             </div>
         </div>
-        
     );
 };
 
