@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../styles/admin/adminList.css'
 
 // 리스트 아이템 나열 박스
-const ListBox = ({ items,setIsVisible, setPostId, setIsVisibleDelete, setDeleteId }) => {
+const ListBox = ({ listId, items,setIsVisible, setPostId, setIsVisibleDelete, setDeleteId }) => {
     const onClickEditButton = (historyId) => {
         setPostId(historyId);
         setIsVisible(true);
@@ -16,29 +16,52 @@ const ListBox = ({ items,setIsVisible, setPostId, setIsVisibleDelete, setDeleteI
 
     return (
         <div className="list-box">
-                {items.map((item, index) => {
-                        return (
-                            <div className="list-item">
-                                <div className="list-item-text">
-                                    <div className="list-item-index"><b>{index + 1}</b></div>
-                                    <div className="list-item-date">{item.year}
-                                        {item.month !== null && <p>.{item.month}</p>}
-                                        {item.day !== null && <p>.{item.day}</p>}</div>
-                                    <div className="list-item-content">{item.title !== null ? item.title : item.brief}</div>
-                                </div>
-                                <div className="list-item-buttons">
-                                    <button
-                                        className="edit-button"
-                                        onClick={() => onClickEditButton(item.historyId)}
-                                    >수정</button>
-                                    <button
-                                        className="delete-button"
-                                        onClick={() => onClickDeleteButton(item.historyId)}
-                                    >삭제</button>
+            {
+                listId === 1 &&
+                items.map((item, index) => {
+                    const length = item.report? item.report.length : 0;
+                    const preview = length > 10 ? item.report.substring(0, 50) + "..." : item.report;
+                    return (
+                        <div className="list-item">
+                            <div className="list-item-text">
+                                <div className="list-item-index"><b>{index + 1}</b></div>
+                                <div className="list-item-content">
+                                    {preview}
                                 </div>
                             </div>
-                        )
-                })}
+                            <div className="list-item-buttons">
+                                <button
+                                    className="delete-button"
+                                    onClick={() => onClickDeleteButton(item.historyId)}
+                                >삭제</button>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+            {listId === 0 && items.map((item, index) => {
+                    return (
+                        <div className="list-item">
+                            <div className="list-item-text">
+                                <div className="list-item-index"><b>{index + 1}</b></div>
+                                <div className="list-item-date">{item.year}
+                                    {item.month !== null && <p>.{item.month}</p>}
+                                    {item.day !== null && <p>.{item.day}</p>}</div>
+                                <div className="list-item-content">{item.title !== null ? item.title : item.brief}</div>
+                            </div>
+                            <div className="list-item-buttons">
+                                <button
+                                    className="edit-button"
+                                    onClick={() => onClickEditButton(item.historyId)}
+                                >수정</button>
+                                <button
+                                    className="delete-button"
+                                    onClick={() => onClickDeleteButton(item.historyId)}
+                                >삭제</button>
+                            </div>
+                        </div>
+                    )
+            })}
         </div>
     );
 };

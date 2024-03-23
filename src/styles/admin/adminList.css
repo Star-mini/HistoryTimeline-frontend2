@@ -1,4 +1,35 @@
 @import url('../timeline/variable.css');
+/* AdminList.js */
+.admin-list {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* AsideBar.js */
+.list-select-bar {
+    width: 150px;
+    height: 100%;
+    background-color: var(--pointColor);
+    display: flex;
+    flex-direction: column;
+    padding-top : 100px;
+    justify-content: start;
+}
+
+.list-select-button {
+    margin: 20px auto;
+    background-color: transparent;
+    border: none;
+    color: var(--backgroundColor);
+    font-size: large;
+}
+
 /* List.js */
 .list-container {
     margin-left: auto;
