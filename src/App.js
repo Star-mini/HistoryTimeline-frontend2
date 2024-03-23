@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 import VideoZoomInOut from "./pages/VideoZoomInOut";
 import MapMain from "./pages/MapMain";
@@ -7,7 +7,6 @@ import Timeline from "./pages/Timeline";
 import AdminList from "./pages/AdminList";
 import Login from "./components/login/login";
 import InsertReport from "./pages/InsertReport";
-import Test from "./components/popup/historyP/Test";
 
 /*
  * "/" 동영상 있는 메인페이지
