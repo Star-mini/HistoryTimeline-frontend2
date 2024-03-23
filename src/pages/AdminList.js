@@ -88,11 +88,19 @@ const AdminList = () => {
             }).then(() => {
                 setIsVisibleDelete(false);
                 setDeleteId();
-                fetchHistories();
+                fetchData();
             })
         }
         if (listId === 1) {
-            
+            axios.delete('/report/delete', {
+                params: {
+                    historyReportId: deleteId,
+                }
+            }).then(() => {
+                setIsVisibleDelete(false);
+                setDeleteId();
+                fetchData();
+            })
         }
     }
     return (

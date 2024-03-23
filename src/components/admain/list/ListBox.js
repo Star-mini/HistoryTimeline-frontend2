@@ -14,8 +14,8 @@ const ListBox = ({ listId, items,setIsVisible, setPostId, setIsVisibleDelete, se
     }
 
     // 삭제 버튼 클릭 시 삭제 아이디를 저장하고 삭제 확인 창을 띄운다.
-    const onClickDeleteButton = (historyId) => {
-        setDeleteId(historyId);
+    const onClickDeleteButton = (id) => {
+        setDeleteId(id);
         setIsVisibleDelete(true);
     }
 
@@ -37,7 +37,7 @@ const ListBox = ({ listId, items,setIsVisible, setPostId, setIsVisibleDelete, se
                             <div className="list-item-buttons">
                                 <button
                                     className="delete-button"
-                                    onClick={() => onClickDeleteButton(item.historyId)}
+                                    onClick={() => onClickDeleteButton(item.historyReportId)}
                                 >삭제</button>
                             </div>
                         </div>
