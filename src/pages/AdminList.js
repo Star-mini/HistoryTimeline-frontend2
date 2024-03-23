@@ -6,6 +6,7 @@ import PageBar from '../components/admain/list/PageBar';
 import AsideBar from '../components/admain/list/AsideBar';
 import { useState, useEffect } from 'react';
 import { cusomizedAxios as axios } from '../constants/customizedAxios';
+import ReportModal from "../components/admain/list/ReportModal";
 
 const listOptions = [
     {
@@ -27,7 +28,9 @@ const AdminList = () => {
     const [isVisible, setIsVisible] = useState(false); // 추가&수정 팝업창 보이기 여부
     const [postId, setPostId] = useState(); // 추가&수정할 History Id
     const [isVisibleDelete, setIsVisibleDelete] = useState(false); // 삭제 시 다시 물어보는 모달창
+    const [isVisibleReport, setIsVisibleReport] = useState(false); // 제보를 자세히 보여주는 모달창
     const [deleteId, setDeleteId] = useState(); // 삭제할 History Id
+    const [reportItem, setReportItem] = useState(null);
 
     // 처음 데이터 fetch
     useEffect(() => {
@@ -94,6 +97,23 @@ const AdminList = () => {
     }
     return (
         <div className='admin-list'>
+            {/* 삭제 확인 창 */}
+            { isVisibleDelete &&
+                <DeleteModal
+                    deleteId={deleteId}
+                    setDeleteId={setDeleteId}
+                    setIsVisibleDelete={setIsVisibleDelete}
+                    onClickDelete={onClickDelete}
+                />
+            }
+            {/* 제보 확인 창 */}
+            { isVisibleReport &&
+                <ReportModal
+                    item={reportItem}
+                    setReportItem={setReportItem}
+                    setIsVisibleReport={setIsVisibleReport}
+                    />
+            }
             {/* 리스트 선택 사이드바 */}
             <AsideBar listOptions={listOptions} setListId={setListId}/>
             {/* 리스트 컴포넌트 */}
@@ -104,15 +124,6 @@ const AdminList = () => {
                     setPostId={setPostId}
                     setIsVisible={setIsVisible}
                 />}
-                {/* 삭제 확인 창 */}
-                { isVisibleDelete &&
-                    <DeleteModal
-                        deleteId={deleteId}
-                        setDeleteId={setDeleteId}
-                        setIsVisibleDelete={setIsVisibleDelete}
-                        onClickDelete={onClickDelete}
-                    />
-                }
                 <div className="list-title">
                     <div>{listOptions.find((option) => option.id === listId).name} 관리 페이지</div>
                     {listId === 0 && <button onClick={() => onClickAdd()}>추가</button>}
@@ -124,6 +135,8 @@ const AdminList = () => {
                     setPostId={setPostId}
                     setIsVisibleDelete={setIsVisibleDelete}
                     setDeleteId={setDeleteId}
+                    setIsVisibleReport={setIsVisibleReport}
+                    setReportItem={setReportItem}
                 />
                 <PageBar
                     page={page}

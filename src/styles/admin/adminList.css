@@ -137,7 +137,7 @@
 }
 
 /* DeleteModal.js */
-.delete-modal-background {
+.modal-background {
     background-color: rgba(0, 0, 0, 20%);
     position: fixed;
     top: 0;
@@ -171,6 +171,33 @@
 }
 
 .delete-modal-button {
+    margin: 0 20px;
+    border-radius: 10px;
+    border: 2px solid var(--pointColor);
+    padding: 5px 10px;
+    background-color: var(--backgroundColor);
+    color: var(--fontColor);
+}
+
+/* ReportModal.js */
+.report-modal {
+    width: 400px;
+    min-height: 100px;
+    margin-bottom: 50px;
+    background-color: var(--backgroundColor);
+    border-radius: 10px;
+    border: 2px solid var(--pointColor);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.report-content {
+
+}
+
+.close-button {
     margin: 0 20px;
     border-radius: 10px;
     border: 2px solid var(--pointColor);

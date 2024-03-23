@@ -7,7 +7,7 @@ const DeleteModal = ({ onClickDelete, setIsVisibleDelete }) => {
         setIsVisibleDelete(false);
     }
     return (
-        <div className="delete-modal-background">
+        <div className="modal-background">
             <div className="delete-modal">
                 <div className="delete-modal-text">정말 삭제하시겠습니까?</div>
                 <div className="delete-modal-buttons">

@@ -2,7 +2,12 @@ import React from 'react';
 import '../../../styles/admin/adminList.css'
 
 // 리스트 아이템 나열 박스
-const ListBox = ({ listId, items,setIsVisible, setPostId, setIsVisibleDelete, setDeleteId }) => {
+const ListBox = ({ listId, items,setIsVisible, setPostId, setIsVisibleDelete, setDeleteId, setIsVisibleReport, setReportItem }) => {
+
+    const onClickReport = (report) => {
+        setReportItem(report);
+        setIsVisibleReport(true);
+    }
     const onClickEditButton = (historyId) => {
         setPostId(historyId);
         setIsVisible(true);
@@ -25,7 +30,7 @@ const ListBox = ({ listId, items,setIsVisible, setPostId, setIsVisibleDelete, se
                         <div className="list-item">
                             <div className="list-item-text">
                                 <div className="list-item-index"><b>{index + 1}</b></div>
-                                <div className="list-item-content">
+                                <div className="list-item-content" onClick={() => onClickReport(item)}>
                                     {preview}
                                 </div>
                             </div>
