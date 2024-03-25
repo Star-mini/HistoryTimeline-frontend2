@@ -1,14 +1,13 @@
 import React from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
-import { motion, useScroll } from "framer-motion";
-import Fade from 'react-reveal/Fade';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Movie.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Fade from 'react-reveal/Fade';
 
+// 슬라이더 화살표 추가용 컴포넌트 
 const NextArrow = (props) => {
     const { className, style, onClick } = props;
     return (
@@ -27,7 +26,9 @@ const PrevArrow = (props) => {
     );
 }
 
+// 영화 포스터용 컴포넌트
 const MovieCom = ({ movies }) => {
+    // 영화 포스터 이미지 슬라이더 설정
     const sliderSettings = {
         dots: false,
         infinite: true,
@@ -45,10 +46,10 @@ const MovieCom = ({ movies }) => {
         <div className='row justify-content-center'>
             <h3 className='movieTitle'>관련 영화</h3>
             
-            <Slider {...sliderSettings} className="moviePosterSlide">
-                {movies.map((movie, index) => (
+            <Slider {...sliderSettings} className="moviePosterSlide" >               
+                {movies && movies.map((movie, index) => (  // 영화 데이터 맵핑 후 포스터 랜더링
                     <div className="moviePoster" key={index}>
-                        <Fade bottom delay={index * 500} >
+                        <Fade bottom delay={index * 500} > 
                             <img className='moviePosterFrame'
                                 src={movie.imageUrl}
                                 width="70%"                            

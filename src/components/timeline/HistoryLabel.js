@@ -29,6 +29,10 @@ const HistoryLabel = ({onClickHistoryLabel, direction, data, isHidden, defaultIm
         marginRight: "10px"}
 
     const componentRef = useRef();
+    const handleClick = () => {
+        onClickHistoryLabel(data.historyId); // Timeline 컴포넌트에서 전달된 함수를 사용하여 historyId를 전달합니다.
+    };
+    
 
     // 스크롤할 때마다 보여줄 지를 체크한다. 보여주기 여부는 prop으로 
     const checkVisibility = () => {
@@ -91,10 +95,11 @@ const HistoryLabel = ({onClickHistoryLabel, direction, data, isHidden, defaultIm
 
                         }
                     </div>
+                
                 </div>
             </div>
         </div>
-
+        
     );
 };
 

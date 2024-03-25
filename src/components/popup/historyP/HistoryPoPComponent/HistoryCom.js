@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./History.css";
 
+
+// 스크롤 이벤트 처리
 const AnimatedText = ({ children }) => {
     const { scrollYProgress } = useScroll();
     
@@ -17,10 +19,11 @@ const AnimatedText = ({ children }) => {
     );
 };
 
-const HistoryCom = ({ imageUrl, title, content }) => {
+// 역사 정보 컴포넌트 (데이터)
+const HistoryCom = ({ imgUrl, title, content, detail}) => {
     // 이미지 URL을 배열로 변환
-    const images = Array.isArray(imageUrl) ? imageUrl : [imageUrl];
-
+    const images = Array.isArray(imgUrl) ? imgUrl : [imgUrl];
+    // 역사 이미지 슬라이더 설정
     const sliderSettings = {
         dots: false,
         infinite: true,
@@ -33,14 +36,19 @@ const HistoryCom = ({ imageUrl, title, content }) => {
         cssEase: 'linear'
     };
 
+    const handleImageClick = () => {
+        
+    };
+
+
     return (
         <div>
             <Navbar className='hispopnav'>
                 <Container>
                     <Nav className="hispopnavlink">
-                        <Nav.Link href="#">상세설명</Nav.Link>
-                        <Nav.Link href="/map">사진</Nav.Link>
-                        <Nav.Link href="#">youtube</Nav.Link>
+                        <Nav.Link className="hispopnavlink1" href="#">상세설명</Nav.Link>
+                        <Nav.Link className="hispopnavlink2" href="#" onClick={handleImageClick}>사진</Nav.Link>
+                        <Nav.Link className="hispopnavlink3" href="#">youtube</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
@@ -58,11 +66,21 @@ const HistoryCom = ({ imageUrl, title, content }) => {
                         ))}
                     </Slider>            
                     <h1 className='historyTitle'>{title}</h1>
-                    <div className="historyMemo">
+                    <div className="historyMemo" >
                         {content.map((paragraph, index) => (
                             <p key={index}>{paragraph}</p>
                         ))}
                     </div>
+                    <div className="historyMemo2">
+                        {detail && (
+                            <div>                        
+                                {detail.map((item, index) => (
+                                    <p key={index}>{item}</p>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -3,14 +3,14 @@
 
 
 .movieTitle{
-    color: #a0a5eb;
+    color: #f87c56;
     margin-left: 30px;
     margin-bottom: 30px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: Galmuri14, sans-serif;
 }
 .moviePosterSlide {
     background-color: rgb(24, 24, 24);
-    width: 90%; 
+    width: 70%; 
     margin: 0 auto; 
 }
 

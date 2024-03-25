@@ -24,7 +24,7 @@ const movies = [
 ];
 
 const historyData = {
-  imageUrl:[ "https://upload.wikimedia.org/wikipedia/ko/2/2a/12%C2%B712_%EA%B5%B0%EC%82%AC%EB%B0%98%EB%9E%80_%EC%A3%BC%EB%8F%99%EC%9E%90.jpeg",
+  imgUrl:[ "https://upload.wikimedia.org/wikipedia/ko/2/2a/12%C2%B712_%EA%B5%B0%EC%82%AC%EB%B0%98%EB%9E%80_%EC%A3%BC%EB%8F%99%EC%9E%90.jpeg",
   "https://i.namu.wiki/i/NrK0Z6DvGlyTXZzKa0J3toa9RbIZT04NsEVrBuQQowX4lhxymXipGWk6K_4rcySbebwqtPQ7KDxagY4jk0clOw.webp",
   "https://cdn.lecturernews.com/news/photo/202101/60129_231167_2833.png",
   "https://archives.kdemo.or.kr/file-img/vol01/007/126/00712624/00712624_0001.jpg"],
@@ -47,7 +47,7 @@ function HistoryPop() {
   return (
     <div className="HistoryPop">
       <div className="history-container">
-        <HistoryCom imageUrl={historyData.imageUrl} title={historyData.title} content={historyData.content} />
+        <HistoryCom imgUrl={historyData.imgUrl} title={historyData.title} content={historyData.content} />
       </div>
      
       <div className="movie-container">
