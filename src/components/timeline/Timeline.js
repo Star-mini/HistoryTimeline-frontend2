@@ -1,4 +1,5 @@
-import React, {useCallback, useRef, useState, useEffect} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import '../../styles/timeline/timeline.css'
 import HistoryLabel from "./HistoryLabel";
 import TimelineLabel from './TimelineLabel';
@@ -9,6 +10,7 @@ import {cusomizedAxios as axios} from "../../constants/customizedAxios";
 
 /* Timeline Component -> 나라 선택 부터 history Label까지 포함 */
 const Timeline = () => {
+    let {countryId} = useParams();
     // 맨 아래에서 scroll할 때마다 / 나라를 선택할 때 data를 fetch한다.
     const loader = useRef(null);
     const [histories, setHistories] = useState([]);
@@ -18,7 +20,9 @@ const Timeline = () => {
 
     const [isVisible, setIsVisible] = useState(false); // 타임라인 보이기 여부
     const [scrollHeight, setScrollHeight] = useState(window.scrollY +  window.innerHeight * 3 / 4); // scroll의 y 위치에 따른 타임라인의 길이
-    const [selectedCountry, setSelectedCountry] = useState(null); // 선택된 나라
+    const [selectedCountry, setSelectedCountry] = useState(
+        countryId === undefined || Number(countryId) === 410 ?
+        null : countries.find((country) => country.countryId === Number(countryId))); // 선택된 나라
     const [selectedYear, setSelectedYear] = useState({ name: 1500 }); // 선택된 연도 - 가져온 연도 리스트에서 첫번째 연도로 했음.
     const countriesExcludeKorea = countries.filter((country) => country.countryId !== 410);
 
@@ -65,7 +69,7 @@ const Timeline = () => {
         setMorePage(true);
         setNoData(false);
 
-        if (page == 0) {
+        if (page === 0) {
             fetchHistories();
         }
         else {
@@ -174,7 +178,7 @@ const Timeline = () => {
                 years={years}
             />
             {/* 타임라인 선 */}
-            {selectedCountry === null &&
+            {(selectedCountry === null || selectedCountry === undefined) &&
                 <div className={`timeline-transition${isVisible ? '-visible' : ''}`}>
                     <div className="timeline-wrapper">
                         <div className="img-hero" style={{
@@ -207,7 +211,7 @@ const Timeline = () => {
                 </div>
             }
             {/* 타임라인에 있는 역사 리스트 */}
-            {selectedCountry !== null &&
+            {selectedCountry !== null && selectedCountry !== undefined &&
                 <div className={`timeline-transition${isVisible ? '-visible' : ''}`}>
                     <div className="timeline-wrapper">
                         <div className="img-hero">

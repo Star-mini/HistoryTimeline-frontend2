@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 import VideoZoomInOut from "./pages/VideoZoomInOut";
 import MapMain from "./pages/MapMain";
@@ -20,6 +20,7 @@ function App() {
                 <Route path="/" element={<VideoZoomInOut />} />
                 <Route path="/map" element={<MapMain />} />
                 <Route path="/adminList" element={<AdminList />} />
+                <Route path="/timeline/:countryId" element={<Timeline />} />
                 <Route path="/timeline" element={<Timeline />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/timeline" element={<Timeline />} />

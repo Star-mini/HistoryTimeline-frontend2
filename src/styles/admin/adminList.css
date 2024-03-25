@@ -1,4 +1,35 @@
 @import url('../timeline/variable.css');
+/* AdminList.js */
+.admin-list {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* AsideBar.js */
+.list-select-bar {
+    width: 150px;
+    height: 100%;
+    background-color: var(--pointColor);
+    display: flex;
+    flex-direction: column;
+    padding-top : 100px;
+    justify-content: start;
+}
+
+.list-select-button {
+    margin: 20px auto;
+    background-color: transparent;
+    border: none;
+    color: var(--backgroundColor);
+    font-size: large;
+}
+
 /* List.js */
 .list-container {
     margin-left: auto;
@@ -106,7 +137,7 @@
 }
 
 /* DeleteModal.js */
-.delete-modal-background {
+.modal-background {
     background-color: rgba(0, 0, 0, 20%);
     position: fixed;
     top: 0;
@@ -140,6 +171,33 @@
 }
 
 .delete-modal-button {
+    margin: 0 20px;
+    border-radius: 10px;
+    border: 2px solid var(--pointColor);
+    padding: 5px 10px;
+    background-color: var(--backgroundColor);
+    color: var(--fontColor);
+}
+
+/* ReportModal.js */
+.report-modal {
+    width: 400px;
+    min-height: 100px;
+    margin-bottom: 50px;
+    background-color: var(--backgroundColor);
+    border-radius: 10px;
+    border: 2px solid var(--pointColor);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.report-content {
+
+}
+
+.close-button {
     margin: 0 20px;
     border-radius: 10px;
     border: 2px solid var(--pointColor);
