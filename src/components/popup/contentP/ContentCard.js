@@ -52,10 +52,10 @@ const ContentCard = ({ contentId, onContentSelect }) => {
         .then((keywordsResponse) => {
             const keywords = keywordsResponse.data.keywords;
             if (keywords.length > 0) {
-                // 키워드 목록 중 첫 번째 키워드 선택
-                const firstKeyword = keywords[0].id;
+                // 키워드 목록 중에서 랜덤으로 하나 선택
+                const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)].id;
                 // 선택된 키워드를 사용하여 관련 영화 목록 가져오기
-                return axios.get(`https://api.themoviedb.org/3/keyword/${firstKeyword}/movies?api_key=${apiKey}&language=ko-KR`);
+                return axios.get(`https://api.themoviedb.org/3/keyword/${randomKeyword}/movies?api_key=${apiKey}&language=ko-KR`);
             } else {
                 throw new Error('No keywords found for this movie.');
             }
