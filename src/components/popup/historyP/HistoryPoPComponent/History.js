@@ -7,6 +7,7 @@ const History = () => {
     const { scrollYProgress } = useScroll();
     return (
     <div>    
+        
         <div className="main-bg">
             <div className="wrapper">
                 <img src="https://upload.wikimedia.org/wikipedia/ko/2/2a/12%C2%B712_%EA%B5%B0%EC%82%AC%EB%B0%98%EB%9E%80_%EC%A3%BC%EB%8F%99%EC%9E%90.jpeg" width="25%" />
@@ -78,5 +79,6 @@ const History = () => {
     </div>
     );
 };
+
 
 export default History;
