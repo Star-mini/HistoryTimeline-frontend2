@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import HistoryPop from './HistoryPop';
+import HistoryPoptest2 from './HistoryPoptest2';
 import "./Test.css";
+import HistoryPoptest from './HistoryPoptest';
+import Timeline from '../../timeline/Timeline';
 
 const Modal = ({ isOpen, onClose }) => {
   const modalRef = useRef();
@@ -22,8 +24,8 @@ const Modal = ({ isOpen, onClose }) => {
 
   return (
     <div className="modal-overlay">
-      <div ref={modalRef} className="modal">
-        <HistoryPop></HistoryPop>
+      <div ref={modalRef} className="modal2">
+        <HistoryPoptest2 historyId={selectedHistoryId}></HistoryPoptest2>
       </div>
     </div>
   );
@@ -31,8 +33,11 @@ const Modal = ({ isOpen, onClose }) => {
 
 const Test = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedHistoryId, setSelectedHistoryId] = useState(null);
 
-  const openModal = () => {
+
+  const openModal = (historyId) => {
+    setSelectedHistoryId(historyId); 
     setModalOpen(true);
   };
 
@@ -42,9 +47,8 @@ const Test = () => {
 
   return (
     <div>
-      
-      <button onClick={openModal}>open</button>
-      <Modal isOpen={modalOpen} onClose={closeModal} />
+      <Timeline onClickHistoryLabel={openModal} />
+      <Modal isOpen={modalOpen} onClose={closeModal} selectedHistoryId={selectedHistoryId} />
     </div>
   );
 };

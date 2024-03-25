@@ -7,6 +7,19 @@ import ScrollLoadingBox from './ScrollLoadingBox';
 import {years} from "../../constants/years";
 import {countries, koreaImgUrl} from "../../constants/countries";
 import {cusomizedAxios as axios} from "../../constants/customizedAxios";
+import HistoryPoptest2 from '../popup/historyP/HistoryPoptest2';
+
+const Modal = ({ isOpen, onClose, historyId }) => {
+    if (!isOpen) return null;
+    
+    return (
+        <div className="modal-overlay" onClick={onClose}>
+            <div className="modal2" onClick={(e) => e.stopPropagation()}>
+                <HistoryPoptest2 historyId={historyId} />
+            </div>
+        </div>
+    );
+};
 
 /* Timeline Component -> 나라 선택 부터 history Label까지 포함 */
 const Timeline = () => {
@@ -33,6 +46,18 @@ const Timeline = () => {
     const [isHistoryVisible, setIsHistoryVisible] = useState(false);
     const [historyId, setHistoryId] = useState(null);
     const [isContentVisible, setIsContentVisible] = useState(false);
+
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
 
     // 페이지가 열렸을 때 Timeline이 천천히 보이도록 함.
     useEffect(() => {
@@ -83,9 +108,12 @@ const Timeline = () => {
 
     }, [selectedYear, selectedCountry]);
 
+
+    
     // 스크롤 위치에 따라 타임라인 중심선 높이를 동적으로 설정
     useEffect(() => {
         const handleScroll = () => {
+            
             // 맨 아래에 도달하면 중심선 길이는 최대로
             if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 10) {
                 setScrollHeight(document.body.scrollHeight);
@@ -150,6 +178,7 @@ const Timeline = () => {
     // 보여줄 역사 아이디를 저장하는 함수
     const onClickHistoryLabel = (historyId) => {
         setHistoryId(historyId);
+        setIsModalOpen(true);
     }
 
     // 역사 팝업에서 나올 때 historyId -> null
@@ -162,6 +191,11 @@ const Timeline = () => {
     const onClickContentPopupQuit = () => {
         setIsContentVisible(false);
     }
+
+
+    //연결중
+
+    
 
     return (
         <div>
@@ -245,9 +279,11 @@ const Timeline = () => {
                         </div>
                     </div>
                 </div>
+                
             }
             {/* 로딩때만 보일 로딩 박스 */}
             { morePage && <ScrollLoadingBox ref={loader} />}
+            <Modal isOpen={isModalOpen} onClose={closeModal} historyId={historyId} />
         </div>
 
     );
