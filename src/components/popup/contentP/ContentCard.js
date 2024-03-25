@@ -46,26 +46,37 @@ const ContentCard = ({ contentId, onContentSelect }) => {
 
   useEffect(() => {
     const apiKey = "0decfffb82411d82c9af75fdfaba9b34";
+    // 영화의 키워드를 가져오는 API 호출
     axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${contentId}/similar?api_key=${apiKey}&language=ko-KR`
-      )
-      .then((response) => {
-        const similarMovies = response.data.results;
-        setContents(
-          similarMovies.map((movie) => ({
-            id: movie.id, // 컨텐츠의 ID도 저장하여 추후 사용합니다.
-            title: movie.title,
-            imgUrl: movie.poster_path
-              ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-              : "/컨텐츠기본이미지.jpg",
-          }))
-        );
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-      });
-  }, [contentId]);
+        .get(`https://api.themoviedb.org/3/movie/${contentId}/keywords?api_key=${apiKey}`)
+        .then((keywordsResponse) => {
+            const keywords = keywordsResponse.data.keywords;
+            if (keywords.length > 0) {
+                // 키워드 목록 중 첫 번째 키워드 선택
+                const firstKeyword = keywords[0].id;
+                // 선택된 키워드를 사용하여 관련 영화 목록 가져오기
+                return axios.get(`https://api.themoviedb.org/3/keyword/${firstKeyword}/movies?api_key=${apiKey}&language=ko-KR`);
+            } else {
+                throw new Error('No keywords found for this movie.');
+            }
+        })
+        .then((moviesResponse) => {
+            const relatedMovies = moviesResponse.data.results;
+            setContents(
+                relatedMovies.map((movie) => ({
+                    id: movie.id,
+                    title: movie.title,
+                    imgUrl: movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                        : "/컨텐츠기본이미지.jpg",
+                }))
+            );
+        })
+        .catch((error) => {
+            console.error("There was an error!", error);
+        });
+}, [contentId]);
+
 
   const handleMouseDown = (e) => {
     setMouseDownPos({ x: e.clientX, y: e.clientY });
