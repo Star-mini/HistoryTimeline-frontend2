@@ -11,4 +11,5 @@ background-color: #13161a; /* 시작 색상과 끝 색상 */
 }
 .video-title {
   color: white;
+  margin-bottom: 40px;
 }

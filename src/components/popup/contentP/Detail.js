@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import '../../../styles/contents/detail.css';
 
 const Detail = ({ contentId }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [details, setDetails] = useState('');
 
   const api_key = "0decfffb82411d82c9af75fdfaba9b34";
@@ -22,21 +21,14 @@ const Detail = ({ contentId }) => {
     fetchMovieDetails();
   }, [contentId]);
 
-  const shouldShowButton = details.length >310;
-
   return (
     <section className="detail-section">
       <h3 className="detail-title">콘텐츠 설명</h3>
-      <div id="detailContent" className={`detail-content ${isExpanded ? 'detail-expanded' : 'detail-collapsed'}`}>
+      <div id="detailContent" className="detail-content">
         <p>
           {details}
         </p>
       </div>
-      {shouldShowButton && (
-        <button id="detailToggle" className="detail-button" onClick={() => setIsExpanded(!isExpanded)}>
-          {isExpanded ? '접기 ▲' : '더보기 ▼'}
-        </button>
-      )}
     </section>
   );
 };
