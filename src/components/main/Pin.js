@@ -12,7 +12,7 @@ import "../../styles/main/Pin.scss";
 function Pin({ x, y, country }) {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate("/timeline?countryId=" + country); 
+        navigate("/timeline/" + country); 
     };
 
     return (
