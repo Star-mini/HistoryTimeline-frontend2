@@ -6,7 +6,7 @@ const PlatformSection = ({ contentId }) => {
   const [trailerUrl, setTrailerUrl] = useState("");
   const [platforms, setPlatforms] = useState([]);
 
-  const TMDB_API_KEY = "0decfffb82411d82c9af75fdfaba9b34";
+  const TMDB_API_KEY = process.env.REACT_APP_API_KEY;
   const BASE_URL = "https://api.themoviedb.org/3/movie";
 
   const fetchTrailer = useCallback(async () => {

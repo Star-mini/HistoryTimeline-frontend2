@@ -19,7 +19,7 @@ const Description = (props) => {
   const [thumbsDown, setThumbsDown] = useState(5);
 
   // TMDB API 키와 영화 ID 설정
-  const api_key = "0decfffb82411d82c9af75fdfaba9b34";
+  const api_key = process.env.REACT_APP_API_KEY;
   const movie_id = props.contentId; 
   const baseUrl = "https://api.themoviedb.org/3";
   const imageUrl = "https://image.tmdb.org/t/p/original/";

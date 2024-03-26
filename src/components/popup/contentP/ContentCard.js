@@ -59,7 +59,7 @@ const ContentCard = ({ contentId, onContentSelect }) => {
   const [mouseDownPos, setMouseDownPos] = useState({ x: null, y: null });
 
   useEffect(() => {
-    const apiKey = "0decfffb82411d82c9af75fdfaba9b34";
+    const apiKey = process.env.REACT_APP_API_KEY;
     // 영화의 키워드를 가져오는 API 호출
     axios
       .get(

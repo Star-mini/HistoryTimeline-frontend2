@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import { CheckContentType } from './CheckContentType';
 
-const API_KEY = '0decfffb82411d82c9af75fdfaba9b34';
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function FetchMovieID({ movieTitle, onMovieIdFetched }) {
     const [contentId, setContentId] = useState('');

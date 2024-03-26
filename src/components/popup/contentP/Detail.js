@@ -5,7 +5,7 @@ import '../../../styles/contents/detail.css';
 const Detail = ({ contentId }) => {
   const [details, setDetails] = useState('');
 
-  const api_key = "0decfffb82411d82c9af75fdfaba9b34";
+  const api_key = process.env.REACT_APP_API_KEY;
   const baseUrl = "https://api.themoviedb.org/3";
 
   useEffect(() => {
