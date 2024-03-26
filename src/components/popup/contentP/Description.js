@@ -61,42 +61,38 @@ const Description = (props) => {
   }, [movie_id]);
 
   useEffect(() => {
-    // 서버에서 추천 수 가져오기
-    const fetchThumbsUpCount = async () => {
-      if (movieDetails.title) { // 제목이 있을 때만 요청을 보내도록 검사
+    const fetchLikeCount = async () => {
         try {
-          // 영화 제목을 URL 인코딩
-          const encodedTitle = encodeURIComponent(movieDetails.title);
-          // 인코딩된 제목을 쿼리 파라미터로 사용하여 요청
-          const response = await axios.get(`http://localhost:8081/likes/count-by-title?title=${encodedTitle}`);
-          setThumbsUp(response.data); // 서버에서 받은 추천 수로 상태 업데이트
+            const response = await axios.get(`http://localhost:8081/likes/count`, {
+                params: { contentId: props.contentId }
+            });
+            setThumbsUp(response.data); // 받은 추천 수로 상태 업데이트
         } catch (error) {
-          console.error("추천 수 가져오기 실패:", error);
+            console.error('추천 수 조회 실패:', error);
         }
-      }
     };
-  
-    fetchThumbsUpCount();
-  }, [movieDetails.title]); // movieDetails.title이 변경될 때마다 추천 수를 다시 가져옴
+
+    if(props.contentId) { // contentId가 있을 때만 요청
+        fetchLikeCount();
+    }
+}, [props.contentId]); // props.contentId가 변경될 때마다 추천 수를 다시 조회
 
   useEffect(() => {
-    // 서버에서 비추천 수 가져오기
-    const fetchThumbsDownCount = async () => {
-      if (movieDetails.title) { // 제목이 있을 때만 요청을 보내도록 검사
+    const fetchDislikeCount = async () => {
         try {
-          // 영화 제목을 URL 인코딩
-          const encodedTitle = encodeURIComponent(movieDetails.title);
-          // 인코딩된 제목을 쿼리 파라미터로 사용하여 요청
-          const response = await axios.get(`http://localhost:8081/dislikes/count-by-title?title=${encodedTitle}`);
-          setThumbsDown(response.data); // 서버에서 받은 비추천 수로 상태 업데이트
+            const response = await axios.get(`http://localhost:8081/dislikes/count`, {
+                params: { contentId: props.contentId }
+            });
+            setThumbsDown(response.data); // 비추천 수로 상태 업데이트
         } catch (error) {
-          console.error("비추천 수 가져오기 실패:", error);
+            console.error('비추천 수 조회 실패:', error);
         }
-      }
     };
-  
-    fetchThumbsDownCount();
-  }, [movieDetails.title]); // movieDetails.title이 변경될 때마다 비추천 수를 다시 가져옴
+
+    if(props.contentId) { // contentId가 있을 때만 요청
+        fetchDislikeCount();
+    }
+}, [props.contentId]); // props.contentId가 변경될 때마다 비추천 수를 다시 조회
 
   const handleThumbsUp = async () => {
     try {
