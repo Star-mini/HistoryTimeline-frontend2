@@ -242,7 +242,7 @@ align-items: center;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -254,7 +254,7 @@ align-items: center;
 
 .modal2 {
     background-color: rgb(24, 24, 24);
-    width: 45%;
+    width: 55%;
     max-height: 90%; 
     overflow: auto; 
     overflow-x: hidden;

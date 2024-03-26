@@ -26,6 +26,8 @@ const PrevArrow = (props) => {
     );
 }
 
+
+
 // 영화 포스터용 컴포넌트
 const MovieCom = ({ movies }) => {
     // 영화 포스터 이미지 슬라이더 설정
@@ -43,7 +45,7 @@ const MovieCom = ({ movies }) => {
     };
 
     return (
-        <div className='row justify-content-center'>
+        <div className='movieContainer'>
             <h3 className='movieTitle'>관련 영화</h3>
             
             <Slider {...sliderSettings} className="moviePosterSlide" >               
@@ -54,7 +56,7 @@ const MovieCom = ({ movies }) => {
                                 src={movie.imageUrl}
                                 width="70%"                            
                             />
-                            <h4>{movie.title}</h4>
+                            <h4 className='movieName'>{movie.title}</h4>
                         </Fade>
                     </div>
                 ))}
