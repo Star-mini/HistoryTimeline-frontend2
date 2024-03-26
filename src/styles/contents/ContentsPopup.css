@@ -4,3 +4,19 @@
 .movie-card-margin {
   margin-top: 40px; 
 }
+
+@keyframes pageTurnEffect {
+  0% {
+    transform: perspective(1500px) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1500px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+.pageTurnAnimation {
+  animation: pageTurnEffect 5s forwards;
+  transform-origin: left center; /* 회전의 기준점을 왼쪽 중앙으로 설정 */
+}
