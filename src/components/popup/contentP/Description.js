@@ -100,11 +100,11 @@ const Description = (props) => {
 
   const handleThumbsUp = async () => {
     try {
-      // 영화 제목과 유저 ID를 서버에 전송
-      const response = await axios.post('http://localhost:8081/likes/add', null, {
+      // 유저 ID와 contentId를 쿼리 파라미터로 서버에 전송
+      const response = await axios.post('http://localhost:8081/likes', null, {
         params: {
-          title: movieDetails.title,
-          userId: 1, // 임시로 1을 사용, 추후 props로 변경 예정
+          userId: 1, // 유저 ID는 1로 고정
+          contentId: props.contentId, // props에서 받은 contentId 사용
         }
       });
       console.log('추천이 성공적으로 추가되었습니다.', response.data);
@@ -117,15 +117,13 @@ const Description = (props) => {
 
   const handleThumbsDown = async () => {
     try {
-      // 영화 제목과 유저 ID를 서버에 전송
-      const response = await axios.post('http://localhost:8081/dislikes/add', null, {
+      const response = await axios.post('http://localhost:8081/dislikes', null, {
         params: {
-          title: movieDetails.title,
-          userId: 1, // 임시로 1을 사용, 추후 props로 변경 예정
+          userId: 1, // 예시로 1 사용
+          contentId: props.contentId,
         }
       });
       console.log('비추천이 성공적으로 추가되었습니다.', response.data);
-      // 비추천 수 상태 업데이트
       setThumbsDown(thumbsDown + 1);
     } catch (error) {
       console.error('비추천 추가 실패:', error);
