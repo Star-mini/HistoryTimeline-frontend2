@@ -33,7 +33,7 @@ function VideoZoomInOut() {
             if (newScale >= minScale && newScale <= maxScale) {
                 container.style.transformOrigin = "50% 50%";
                 container.style.transform = `scale(${newScale})`;
-
+                document.getElementById("root").style.overflow = "hidden";
                 // 수정된 부분: newScale이 maxScale에 근접하면 페이지를 이동
                 if (newScale >= maxScale - 0.3 && newScale <= maxScale + 0.3) {
                     navigate("/map");
