@@ -22,6 +22,8 @@ const PlatformSection = ({ contentId }) => {
       );
       if (youtubeTrailer) {
         setTrailerUrl(`https://www.youtube.com/watch?v=${youtubeTrailer.key}`);
+      } else {
+        setTrailerUrl(""); // 트레일러가 없는 경우 URL을 초기화합니다.
       }
     } catch (error) {
       console.error("Trailer fetch error:", error);
@@ -48,13 +50,12 @@ const PlatformSection = ({ contentId }) => {
 
   useEffect(() => {
     fetchPlatforms();
-    // fetchTrailer(); 여기서 fetchTrailer를 호출할 필요가 없으면 주석 처리 또는 삭제
-  }, [fetchPlatforms]); // 의존성 배열에 fetchPlatforms 추가
+    fetchTrailer(); // contentId가 변경될 때마다 트레일러 정보를 가져오기
+  }, [contentId, fetchPlatforms, fetchTrailer]); // 의존성 배열에 contentId와 fetchTrailer 추가
+
 
   const handleButtonClick = () => {
-    if (!trailerUrl) {
-      fetchTrailer();
-    } else {
+    if (trailerUrl) { // 트레일러 URL이 있을 경우에만 새 탭에서 열기
       window.open(trailerUrl, "_blank");
     }
   };
@@ -63,7 +64,7 @@ const PlatformSection = ({ contentId }) => {
     <section className={styles.container}>
       <div className={styles.content}>
         {platforms.map((platform) => {
-          // 플랫폼 이름의 길이에 따라 className을 동적으로 설정합니다.
+          // 플랫폼 이름의 길이에 따라 className을 동적으로 설정
           const platformNameClassName = platform.provider_name.length > 11 ? 'long-name' : '';
 
           return (
@@ -73,7 +74,7 @@ const PlatformSection = ({ contentId }) => {
                 alt={platform.provider_name}
                 className={styles.logo}
               />
-              {/* className에 동적으로 계산한 값을 추가합니다. */}
+              {/* className에 동적으로 계산한 값을 추가. */}
               <span
                 className={`${styles.platformName} ${platformNameClassName ? styles['long-name'] : ''}`}
               >
