@@ -34,7 +34,7 @@ function MapMain() {
                     width: "100%",
                     height: "100vh",
                     position: "fixed",
-                    top: "120px",
+                    top: "100px",
                 }}
             >
                 <MapChartV2 />

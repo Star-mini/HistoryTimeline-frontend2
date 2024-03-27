@@ -9,7 +9,7 @@ import VideoMain from "../components/main/VideoMain";
  */
 function VideoZoomInOut() {
     const containerRef = useRef(null);
-    const backColor = "#264364";
+    const backColor = "#ffffff";
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,7 +19,7 @@ function VideoZoomInOut() {
             event.preventDefault();
 
             const delta = event.deltaY || event.detail || event.wheelDelta;
-            const scale = delta > 0 ? 1.05 : 0.7;
+            const scale = delta > 0 ? 1.2 : 0.9;
 
             const currentScale = container.style.transform
                 ? parseFloat(container.style.transform.replace("scale(", "").replace(")", ""))
@@ -33,9 +33,10 @@ function VideoZoomInOut() {
             if (newScale >= minScale && newScale <= maxScale) {
                 container.style.transformOrigin = "50% 50%";
                 container.style.transform = `scale(${newScale})`;
-
+                document.getElementById("root").style.overflow = "hidden";
                 // 수정된 부분: newScale이 maxScale에 근접하면 페이지를 이동
-                if (newScale >= maxScale - 0.3 && newScale <= maxScale + 0.3) {
+                console.log(maxScale - 0.5, maxScale + 0.5)
+                if (newScale >= maxScale - 0.5 && newScale <= maxScale + 0.5) {
                     navigate("/map");
                 }
             }
