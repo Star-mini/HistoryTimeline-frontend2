@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
+//슬라이더 설정
 const settings = {
   dots: true,
   infinite: true,
@@ -53,13 +54,14 @@ const settings = {
 };
 
 
-
+//컨텐츠 카드 컴포넌트
 const ContentCard = ({ contentId, onContentSelect }) => {
   const [contents, setContents] = useState([]);
   const [mouseDownPos, setMouseDownPos] = useState({ x: null, y: null });
 
+  //컴포넌트가 마운트될 때 실행
   useEffect(() => {
-    const apiKey = "0decfffb82411d82c9af75fdfaba9b34";
+    const apiKey = process.env.REACT_APP_API_KEY;
     // 영화의 키워드를 가져오는 API 호출
     axios
       .get(
@@ -79,6 +81,7 @@ const ContentCard = ({ contentId, onContentSelect }) => {
           throw new Error("No keywords found for this movie.");
         }
       })
+      // 관련 영화 목록을 가져오는 API 호출
       .then((moviesResponse) => {
         const relatedMovies = moviesResponse.data.results;
         setContents(
@@ -96,10 +99,12 @@ const ContentCard = ({ contentId, onContentSelect }) => {
       });
   }, [contentId]);
 
+  //마우스 다운 이벤트 핸들러
   const handleMouseDown = (e) => {
     setMouseDownPos({ x: e.clientX, y: e.clientY });
   };
-
+  
+//컨텐츠 타입 확인 후 페이지 이동
   const checkContentTypeAndPost = async (content, mouseUpEvent) => {
     if (
       Math.abs(mouseDownPos.x - mouseUpEvent.clientX) > 5 ||
