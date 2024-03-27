@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import HistoryCom from './HistoryPoPComponent/HistoryCom';
 import MovieCom from './HistoryPoPComponent/MovieCom';
+import ContentsPopup from '../contentP/ContentsPopup';
 import "./HistoryPop.css";
 
 const movies = [
@@ -32,6 +33,9 @@ const movies = [
 const HistoryPoptest2 = ({ historyId }) => {
     const [historyData, setHistoryData] = useState(null);
     const [moviesData, setMoviesData] = useState([]);
+    
+    const [selectedMovie, setSelectedMovie] = useState(null);
+   
 
     // 컴포넌트가 마운트될 때 데이터를 불러옴 
     useEffect(() => {
@@ -57,23 +61,35 @@ const HistoryPoptest2 = ({ historyId }) => {
     // 대체 기본 이미지 URL
     const defaultImageUrl = "https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/service/a85d0594017900001.jpg?type=thumb&opt=C800x400";
 
+    const handleMovieSelect = (title) => {
+        setSelectedMovie(title);
+      };
+
     return (
         <div className="HistoryPop">
-            <div className="history-container">                
-                {historyData && (
-                    <HistoryCom 
-                        imgUrl={historyData.imgUrl || defaultImageUrl}  
-                        title={historyData.title} 
-                        content={[historyData.content]} 
-                        detail={historyData.detail} 
-                    />
-                )}
-            </div>
-            <div className="movie-container">
-                <MovieCom movies={movies}  />
-            </div>
+        <div className="history-container">
+            {historyData && (
+            <HistoryCom 
+                imgUrl={historyData.imgUrl || defaultImageUrl}  
+                title={historyData.title} 
+                content={[historyData.content]} 
+                detail={historyData.detail} 
+            />
+            )}
         </div>
-    );
+        <div className="movie-container">
+            <MovieCom movies={movies} onMovieSelect={handleMovieSelect} />
+        </div>
+        <div className="contents-container">
+            {selectedMovie && (
+            <ContentsPopup 
+                movieTitle={selectedMovie} 
+                onClose={() => setSelectedMovie(null)} 
+            />
+            )}
+        </div>
+        </div>
+);
 };
 
 export default HistoryPoptest2;
