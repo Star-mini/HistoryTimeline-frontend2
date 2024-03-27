@@ -68,19 +68,6 @@ function Header(props) {
                         style={{marginTop: "15px" , marginRight: "10px"}}
                     >
                         <li className="nav-item">{LoginAndLogout()}</li>
-                        <li className="nav-item ">
-                            <a
-                                className="nav-link"
-                                href="#"
-                                style={{
-                                    color: fontColor,
-                                    paddingRight: "0px",
-                                    fontSize: "15pt",
-                                }}
-                            >
-                                Join
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
