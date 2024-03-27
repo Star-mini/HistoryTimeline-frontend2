@@ -254,7 +254,7 @@ align-items: center;
 
 .modal2 {
     background-color: rgb(24, 24, 24);
-    width: 55%;
+    width: 50%;
     max-height: 90%; 
     overflow: auto; 
     overflow-x: hidden;
