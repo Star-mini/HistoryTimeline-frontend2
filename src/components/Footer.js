@@ -10,7 +10,7 @@ function Footer(props) {
                 margin: 0,
                 maxWidth: "100%",
                 position: "fixed",
-                bottom: "10px",
+                bottom: "15px",
                 right: "20px",
             }}
         >
