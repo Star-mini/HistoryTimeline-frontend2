@@ -49,7 +49,7 @@ const HistoryPoptest2 = ({ historyId ,countryId, year  }) => {
                 )}
             </div>
             <div className="movie-container">
-                    
+                    <MovieCom movies={contentData}></MovieCom>
             </div>
             <div className="contents-container">
                 {/* 이 부분은 필요에 따라 수정 */}
