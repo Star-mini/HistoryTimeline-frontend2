@@ -9,41 +9,41 @@ import cookie from "react-cookies";
  * 지도 메인화면
  */
 function MapMain() {
-  const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    setEmail(cookie.load("email"));
-    console.log(email);
-  }, []);
+    useEffect(() => {
+        setEmail(cookie.load("email"));
+        console.log(email);
+    }, []);
 
-  return (
-    <>
-      <Header />
-      <div
-        style={{
-          textAlign: "center",
-          height: "3000px",
-          background:
-            "linear-gradient(45deg, rgb(209, 202, 252), rgb(234, 226, 253))",
-        }}
-      >
-        <br />
-        <div
-          style={{
-            margin: "auto",
-            textAlign: "center",
-            width: "100%",
-            height: "100vh",
-            position: "fixed",
-            top: "100px",
-          }}
-        >
-          <MapChartV2 />
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Header />
+            <div
+                style={{
+                    textAlign: "center",
+                    height: "3000px",
+                    background:
+                        "linear-gradient(45deg, rgb(209, 202, 252), rgb(234, 226, 253))",
+                }}
+            >
+                <br />
+                <div
+                    style={{
+                        margin: "auto",
+                        textAlign: "center",
+                        width: "100%",
+                        height: "100vh",
+                        position: "fixed",
+                        top: "100px",
+                    }}
+                >
+                    <MapChartV2 />
+                </div>
+            </div>
+            <Footer />
+        </>
+    );
 }
 
 export default MapMain;
