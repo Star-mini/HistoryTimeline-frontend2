@@ -14,8 +14,7 @@ function MapMain() {
 
     useEffect(() => {
         setEmail(cookie.load('email'));
-        console.log(email);
-    }, [])
+    }, []);
 
     return (
         <div
