@@ -3,6 +3,7 @@ import "../../../styles/contents/description.css";
 import Fade from "react-reveal/Fade";
 import {cusomizedAxios as axios} from "../../../constants/customizedAxios";
 
+// Description 컴포넌트는 영화 상세 정보를 렌더링
 const Description = (props) => {
   const [movieDetails, setMovieDetails] = useState({
     title: "",
@@ -17,6 +18,10 @@ const Description = (props) => {
   });
   const [thumbsUp, setThumbsUp] = useState(10);
   const [thumbsDown, setThumbsDown] = useState(5);
+  const [hasThumbedUp, setHasThumbedUp] = useState(false); // 추천 버튼을 눌렀는지 여부
+  const [hasThumbedDown, setHasThumbedDown] = useState(false); // 비추천 버튼을 눌렀는지 여부
+
+
 
   // TMDB API 키와 영화 ID 설정
   const api_key = process.env.REACT_APP_API_KEY;
@@ -60,6 +65,7 @@ const Description = (props) => {
     fetchMovieDetails();
   }, [movie_id]);
 
+  // 추천 수와 비추천 수를 가져오는 useEffect 추가
   useEffect(() => {
     const fetchLikeCount = async () => {
         try {
@@ -77,6 +83,7 @@ const Description = (props) => {
     }
 }, [props.contentId]); // props.contentId가 변경될 때마다 추천 수를 다시 조회
 
+  // 비추천 수를 가져오는 useEffect 추가
   useEffect(() => {
     const fetchDislikeCount = async () => {
         try {
@@ -94,37 +101,53 @@ const Description = (props) => {
     }
 }, [props.contentId]); // props.contentId가 변경될 때마다 비추천 수를 다시 조회
 
+  // 추천 수와 비추천 수를 업데이트하는 함수 추가
   const handleThumbsUp = async () => {
+    if(hasThumbedUp) {
+      alert('추천은 한번만 가능해요.'); // 경고 메시지 띄우기
+      return; // 추가 처리 방지
+    }
+  
     try {
-      // 유저 ID와 contentId를 쿼리 파라미터로 서버에 전송
+      // 서버에 추천 요청 전송 로직은 여기에 유지
       const response = await axios.post('http://localhost:8081/likes', null, {
         params: {
-          userId: 1, // 유저 ID는 1로 고정
-          contentId: props.contentId, // props에서 받은 contentId 사용
+          userId: 1, // 유저 ID는 예시로 1 사용
+          contentId: props.contentId,
         }
       });
       console.log('추천이 성공적으로 추가되었습니다.', response.data);
-      // 추천 수 상태 업데이트
-      setThumbsUp(thumbsUp + 1);
+      setThumbsUp(thumbsUp + 1); // 추천 수 상태 업데이트
+      setHasThumbedUp(true); // 추천 버튼을 눌렀다고 상태 업데이트
     } catch (error) {
       console.error('추천 추가 실패:', error);
     }
   };
-
+  
+  // 비추천 수를 업데이트하는 함수 추가
   const handleThumbsDown = async () => {
+    if(hasThumbedDown) {
+      alert('비추천은 한번만 가능해요.'); // 경고 메시지 띄우기
+      return; // 추가 처리 방지
+    }
+  
     try {
+      // 서버에 비추천 요청 전송 로직은 여기에 유지
       const response = await axios.post('http://localhost:8081/dislikes', null, {
         params: {
-          userId: 1, // 예시로 1 사용
+          userId: 1, // 유저 ID는 예시로 1 사용
           contentId: props.contentId,
         }
       });
       console.log('비추천이 성공적으로 추가되었습니다.', response.data);
-      setThumbsDown(thumbsDown + 1);
+      setThumbsDown(thumbsDown + 1); // 비추천 수 상태 업데이트
+      setHasThumbedDown(true); // 비추천 버튼을 눌렀다고 상태 업데이트
     } catch (error) {
       console.error('비추천 추가 실패:', error);
     }
   };
+  
+  // Description 컴포넌트에서 추천 수와 비추천 수를 렌더링
   return (
     <div className="custom-body">
       <div className="description-section">
@@ -161,15 +184,15 @@ const Description = (props) => {
                 평점: ★{movieDetails.rating.toFixed(1)}
               </span>
             </div>
-            <h5 className="description">{movieDetails.tagline}</h5>{" "}
+            <h6 className="description">{movieDetails.tagline}</h6>{" "}
             {/* 동적으로 태그라인 설정 */}
             <div>
-              <h2 className="cast">
+              <h6 className="cast">
                 주연: {movieDetails.cast} {/* 동적으로 주연 배우 설정 */}
-              </h2>
-              <h2 className="producers">
+              </h6>
+              <h6 className="producers">
                 제작자: {movieDetails.producers} {/* 동적으로 제작자 설정 */}
-              </h2>
+              </h6>
             </div>
           </div>
         </Fade>
