@@ -16,7 +16,7 @@ body {
 
 .timeline-transition-visible {
     display: flex;
-    padding-top: 100px;
+    padding-top: 200px;
     opacity: 1;
     transition: all 2s;
 }
