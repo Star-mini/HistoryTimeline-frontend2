@@ -8,23 +8,23 @@ import "./Movie.css";
 import Fade from 'react-reveal/Fade';
 
 // 슬라이더 화살표 추가용 컴포넌트 
-const NextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
-            <FontAwesomeIcon icon={faArrowRight} />
-        </div>
-    );
-}
+// const NextArrow = (props) => {
+//     const { className, style, onClick } = props;
+//     return (
+//         <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+//             <FontAwesomeIcon icon={faArrowRight} />
+//         </div>
+//     );
+// }
 
-const PrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
-            <FontAwesomeIcon icon={faArrowLeft} />
-        </div>
-    );
-}
+// const PrevArrow = (props) => {
+//     const { className, style, onClick } = props;
+//     return (
+//         <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+//             <FontAwesomeIcon icon={faArrowLeft} />
+//         </div>
+//     );
+// }
 
 // 영화 포스터용 컴포넌트
 const MovieCom = ({ movies, onMovieSelect }) => {
@@ -57,7 +57,7 @@ const MovieCom = ({ movies, onMovieSelect }) => {
                             alt={movie.title}
                             width="70%"                            
                         />
-                        <h4 className='movieName'>{movie.title}</h4>
+                        <h4 className='movieName'>{movie.title}</h4> 
                     </div>
                 ))}
             </Slider>
