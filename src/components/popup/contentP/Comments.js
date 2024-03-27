@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import "../../../styles/contents/comments.css";
 
+//댓글을 표시하는 컴포넌트
 function Comments({ contentId }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState(''); // 댓글 입력 상태
   const [currentPage, setCurrentPage] = useState(1);
   const [commentsPerPage] = useState(10); // 페이지 당 댓글 수
 
-
+// 댓글을 불러오는 useEffect
   useEffect(() => {
     const fetchComments = async () => {
       try {
