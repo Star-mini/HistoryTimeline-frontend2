@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import '../../../styles/contents/detail.css';
 
+// Detail 컴포넌트는 영화 상세 정보를 렌더링
 const Detail = ({ contentId }) => {
   const [details, setDetails] = useState('');
 
   const api_key = process.env.REACT_APP_API_KEY;
   const baseUrl = "https://api.themoviedb.org/3";
 
+  // 영화 상세 정보를 가져오는 useEffect 추가
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {

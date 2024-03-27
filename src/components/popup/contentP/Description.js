@@ -29,6 +29,7 @@ const Description = (props) => {
   const baseUrl = "https://api.themoviedb.org/3";
   const imageUrl = "https://image.tmdb.org/t/p/original/";
 
+  // 영화 상세 정보를 가져오는 useEffect 추가
   useEffect(() => {
     // 영화 상세 정보 가져오기
     const fetchMovieDetails = async () => {

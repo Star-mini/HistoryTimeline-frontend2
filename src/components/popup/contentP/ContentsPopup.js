@@ -9,6 +9,7 @@ import Detail from "./Detail";
 import "../../../styles/contents/ContentsPopup.css";
 import FetchMovieID from "./FetchMovieID";
 
+// ContentsPopup 컴포넌트
 function ContentsPopup({ movieTitle = "태극기 휘날리며", onClose }) {
   const [contentId, setContentId] = useState("");
   const [title, setTitle] = useState(movieTitle); // movieTitle 상태 추가

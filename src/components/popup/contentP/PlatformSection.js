@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import styles from "../../../styles/contents/platformSection.module.css";
 
+// 플랫폼 정보를 가져오는 컴포넌트
 const PlatformSection = ({ contentId }) => {
   const [trailerUrl, setTrailerUrl] = useState("");
   const [platforms, setPlatforms] = useState([]);
@@ -9,6 +10,8 @@ const PlatformSection = ({ contentId }) => {
   const TMDB_API_KEY = process.env.REACT_APP_API_KEY;
   const BASE_URL = "https://api.themoviedb.org/3/movie";
 
+
+  // 트레일러 정보를 가져오는 함수
   const fetchTrailer = useCallback(async () => {
     try {
       const response = await axios.get(`${BASE_URL}/${contentId}/videos`, {
@@ -23,13 +26,14 @@ const PlatformSection = ({ contentId }) => {
       if (youtubeTrailer) {
         setTrailerUrl(`https://www.youtube.com/watch?v=${youtubeTrailer.key}`);
       } else {
-        setTrailerUrl(""); // 트레일러가 없는 경우 URL을 초기화합니다.
+        setTrailerUrl(""); // 트레일러가 없는 경우 URL을 초기화
       }
     } catch (error) {
       console.error("Trailer fetch error:", error);
     }
   }, [contentId, TMDB_API_KEY]); // useCallback을 사용하여 함수 메모이제이션
 
+  // 플랫폼 정보를 가져오는 함수
   const fetchPlatforms = useCallback(async () => {
     try {
       const response = await axios.get(
@@ -40,7 +44,7 @@ const PlatformSection = ({ contentId }) => {
           },
         }
       );
-
+        // KR 지역의 플랫폼 정보만 가져오기
       const availablePlatforms = response.data.results.KR?.flatrate || [];
       setPlatforms(availablePlatforms);
     } catch (error) {
@@ -48,12 +52,14 @@ const PlatformSection = ({ contentId }) => {
     }
   }, [contentId, TMDB_API_KEY]); // useCallback을 사용하여 함수 메모이제이션
 
+  // useEffect를 사용하여 컴포넌트가 마운트될 때 플랫폼 정보를 가져오기
   useEffect(() => {
     fetchPlatforms();
     fetchTrailer(); // contentId가 변경될 때마다 트레일러 정보를 가져오기
   }, [contentId, fetchPlatforms, fetchTrailer]); // 의존성 배열에 contentId와 fetchTrailer 추가
 
 
+  // 트레일러 URL이 있을 경우 새 탭에서 열기
   const handleButtonClick = () => {
     if (trailerUrl) { // 트레일러 URL이 있을 경우에만 새 탭에서 열기
       window.open(trailerUrl, "_blank");
