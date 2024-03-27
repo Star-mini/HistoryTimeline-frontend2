@@ -66,15 +66,15 @@ function MapChartV2() {
         width:
             scrollY <= maxScroll
                 ? `${50 - (scrollY / maxScroll) * 10}vw`
-                : "40vw",
+                : "38vw",
         height:
             scrollY <= maxScroll
                 ? `${30 + (scrollY / maxScroll) * 10}vw`
-                : "40vw",
+                : "38vw",
         borderRadius:
             scrollY <= maxScroll
                 ? `${5 + (scrollY / maxScroll) * 45}vw`
-                : "40vw",
+                : "38vw",
     });
 
     const [showPins, setShowPins] = useState([]);
@@ -169,8 +169,8 @@ function MapChartV2() {
                                 background: "#eaeafc",
                                 position: "absolute",
                                 borderRadius: "5vw",
-                                width: "50vw",
-                                height: "40vw",
+                                width: "45vw",
+                                height: "35vw",
                                 ...earthBoxStyle,
                             }}
                         ></animated.div>
