@@ -60,11 +60,14 @@ const PlatformSection = ({ contentId }) => {
 
 
   // 트레일러 URL이 있을 경우 새 탭에서 열기
-  const handleButtonClick = () => {
-    if (trailerUrl) { // 트레일러 URL이 있을 경우에만 새 탭에서 열기
-      window.open(trailerUrl, "_blank");
-    }
-  };
+// 트레일러 URL이 있을 경우 새 탭에서 열기, 없을 경우 alert로 메시지 표시
+const handleButtonClick = () => {
+  if (!trailerUrl) {
+    alert("트레일러를 제공하지 않아요.");
+  } else {
+    window.open(trailerUrl, "_blank");
+  }
+};
 
   return (
     <section className={styles.container}>
