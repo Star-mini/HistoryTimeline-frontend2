@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import {cusomizedAxios as axios} from "../../../constants/customizedAxios";
 import HistoryCom from './HistoryPoPComponent/HistoryCom';
 import MovieCom from './HistoryPoPComponent/MovieCom';
 import ContentsPopup from '../contentP/ContentsPopup';
@@ -8,55 +8,32 @@ import "./HistoryPop.css";
 // historyPop 전체 컴포넌트 
 const HistoryPoptest2 = ({ historyId ,countryId, year  }) => {
     const [historyData, setHistoryData] = useState(null);
-    const [contentData, setConetentData] = useState(null);
-    const [selectedMovie, setSelectedMovie] = useState(null);
+    const [contentData, setContentData] = useState([]);
 
     // 컴포넌트가 마운트될 때 데이터를 불러옴 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // 백엔드에서 역사 데이터 가져옴
-                const historyResponse = await axios.get(`http://localhost:8081/historyPop/${historyId}`);
-                const transformedHistoryData = { ...historyResponse.data, content: historyResponse.data.brief };
-                transformedHistoryData.detail = historyResponse.data.detail;
-                setHistoryData(transformedHistoryData);
+                // 역사 데이터 가져오기
+                const historyResponse = await axios.get(`/historyPop/${historyId}`);
+                setHistoryData(historyResponse.data);
+    
+                // 국가와 연도에 따른 콘텐츠 타이틀들 가져오기
+                if (countryId && year) {
+                    const contentResponse = await axios.get(`/historyPop/content/${countryId}/${year}`);
+                    setContentData(contentResponse.data); // 데이터가 없을 경우 빈 배열로 초기화
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
-
+    
         fetchData();
-    }, [historyId]);
+    }, [historyId, countryId, year]);
 
-    useEffect(() => {
-        const fetchMovies = async () => {
-            try {
-                if (countryId && year) {
-                    const response = await axios.get(`http://localhost:8081/historyPop/content`, {
-                        params: {
-                            countryId: countryId,
-                            year: year
-                        }
-                    });
-    
-                    const titles = response.data;
-    
-                    setConetentData(titles);
-                }
-            } catch (error) {
-                console.error('Error fetching movie data:', error);
-            }
-        };
-    
-        fetchMovies();
-    }, [countryId, year]);
 
     // 대체 기본 이미지 URL
     const defaultImageUrl = "https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/service/a85d0594017900001.jpg?type=thumb&opt=C800x400";
-
-    const handleMovieSelect = (title) => {
-        setSelectedMovie(title);
-    };
 
     return (
     
@@ -66,24 +43,21 @@ const HistoryPoptest2 = ({ historyId ,countryId, year  }) => {
                     <HistoryCom 
                         imgUrl={historyData.imgUrl || defaultImageUrl}  
                         title={historyData.title} 
-                        content={[historyData.content]} 
+                        content={[historyData.content]} // 배열로 전달되어야 함
                         detail={historyData.detail} 
                     />
                 )}
             </div>
             <div className="movie-container">
-            {console.log("contentData:", contentData)}
+                    
             </div>
             <div className="contents-container">
-                {selectedMovie && (
-                    <ContentsPopup 
-                        movieTitle={selectedMovie} 
-                        onClose={() => setSelectedMovie(null)} 
-                    />
-                )}
+                {/* 이 부분은 필요에 따라 수정 */}
             </div>
-            {console.log("historyData:", historyData)}
-            {console.log("contentData:", contentData)}
+        
+           {console.log(historyData)}
+
+           {console.log(contentData)}
         </div>
     );
 };

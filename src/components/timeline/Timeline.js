@@ -281,7 +281,14 @@ const Timeline = () => {
             }
             {/* 로딩때만 보일 로딩 박스 */}
             { morePage && <ScrollLoadingBox ref={loader} />}
-            <Modal isOpen={isModalOpen} onClose={closeModal} historyId={historyId} countryId={selectedCountry} year={selectedYear} />
+            {console.log(selectedYear)}
+            <Modal 
+                isOpen={isModalOpen} 
+                onClose={closeModal} 
+                historyId={historyId} 
+                selectedCountry={selectedCountry} 
+                selectedYear={selectedYear} 
+            />
         </div>
 
     );
