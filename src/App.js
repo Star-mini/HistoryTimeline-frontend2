@@ -7,6 +7,7 @@ import Timeline from "./pages/Timeline";
 import AdminList from "./pages/AdminList";
 import Login from "./components/login/login";
 import InsertReport from "./pages/InsertReport";
+import ContentsPopup from "./components/popup/contentP/ContentsPopup";
 
 /*
  * "/" 동영상 있는 메인페이지
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/timeline" element={<Timeline />} />
                 <Route path="/report" element={<InsertReport />} />
+                <Route path="/contents" element={<ContentsPopup />} />
             </Routes>
         </Router>
     );

@@ -8,10 +8,13 @@ import Slider from "react-slick";
 
 const settings = {
   dots: true,
-  infinite: false,
-  speed: 800,
+  infinite: true,
+  speed: 700, // 슬라이드 전환 속도
   slidesToShow: 5,
-  slidesToScroll: 3,
+  slidesToScroll: 2,  
+  autoplay: true,
+  autoplaySpeed: 3000, // 자동 전환 속도
+  cssEase: 'ease-in-out', // 부드러운 전환 효과를 위한 속도 곡선 설정
   responsive: [
     {
       breakpoint: 1024,
@@ -20,6 +23,9 @@ const settings = {
         slidesToScroll: 3,
         infinite: true,
         dots: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        cssEase: 'ease-in-out',
       },
     },
     {
@@ -28,6 +34,9 @@ const settings = {
         slidesToShow: 2,
         slidesToScroll: 2,
         initialSlide: 2,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        cssEase: 'ease-in-out',
       },
     },
     {
@@ -35,10 +44,15 @@ const settings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        cssEase: 'ease-in-out',
       },
     },
   ],
 };
+
+
 
 const ContentCard = ({ contentId, onContentSelect }) => {
   const [contents, setContents] = useState([]);
@@ -46,15 +60,30 @@ const ContentCard = ({ contentId, onContentSelect }) => {
 
   useEffect(() => {
     const apiKey = "0decfffb82411d82c9af75fdfaba9b34";
+    // 영화의 키워드를 가져오는 API 호출
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${contentId}/similar?api_key=${apiKey}&language=ko-KR`
+        `https://api.themoviedb.org/3/movie/${contentId}/keywords?api_key=${apiKey}`
       )
-      .then((response) => {
-        const similarMovies = response.data.results;
+      .then((keywordsResponse) => {
+        const keywords = keywordsResponse.data.keywords;
+        if (keywords.length > 0) {
+          // 키워드 목록 중에서 랜덤으로 하나 선택
+          const randomKeyword =
+            keywords[Math.floor(Math.random() * keywords.length)].id;
+          // 선택된 키워드를 사용하여 관련 영화 목록 가져오기
+          return axios.get(
+            `https://api.themoviedb.org/3/keyword/${randomKeyword}/movies?api_key=${apiKey}&language=ko-KR`
+          );
+        } else {
+          throw new Error("No keywords found for this movie.");
+        }
+      })
+      .then((moviesResponse) => {
+        const relatedMovies = moviesResponse.data.results;
         setContents(
-          similarMovies.map((movie) => ({
-            id: movie.id, // 컨텐츠의 ID도 저장하여 추후 사용합니다.
+          relatedMovies.map((movie) => ({
+            id: movie.id,
             title: movie.title,
             imgUrl: movie.poster_path
               ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
@@ -71,47 +100,17 @@ const ContentCard = ({ contentId, onContentSelect }) => {
     setMouseDownPos({ x: e.clientX, y: e.clientY });
   };
 
-
   const checkContentTypeAndPost = async (content, mouseUpEvent) => {
-    if (Math.abs(mouseDownPos.x - mouseUpEvent.clientX) > 5 || Math.abs(mouseDownPos.y - mouseUpEvent.clientY) > 5) {
-        // 드래그로 간주, 클릭 이벤트 무시
-        return;
+    if (
+      Math.abs(mouseDownPos.x - mouseUpEvent.clientX) > 5 ||
+      Math.abs(mouseDownPos.y - mouseUpEvent.clientY) > 5
+    ) {
+      // 드래그로 간주, 클릭 이벤트 무시
+      return;
     }
-
-    // 컨텐츠가 영화인지 드라마인지 확인하는 API 요청
-    const apiKey = "0decfffb82411d82c9af75fdfaba9b34";
-    let contentType = 0; // 기본적으로 영화로 가정.
-
-    // 영화 정보 확인 시도
-    try {
-        await axios.get(`https://api.themoviedb.org/3/movie/${content.id}?api_key=${apiKey}&language=ko-KR`);
-        // 성공 시 영화로 확인되었으므로 별도의 처리는 필요 없음.
-    } catch (movieError) {
-        // 영화 정보가 없을 경우 드라마 정보를 확인
-        try {
-            await axios.get(`https://api.themoviedb.org/3/tv/${content.id}?api_key=${apiKey}&language=ko-KR`);
-            contentType = 1; // 드라마로 설정
-        } catch (tvError) {
-            console.error("Content 타입 확인 중 에러 발생:", tvError);
-            // 에러가 발생해도 아래의 페이지 이동 로직을 실행하기 위해 여기서 return을 사용하지 않습니다.
-        }
-    }
-
-    // 서버로 저장 시도.
-    try {
-        const response = await axios.post("/ContentsPopup", {
-            title: content.title,
-            imgUrl: content.imgUrl,
-            contentType: contentType,
-        });
-        console.log("저장된 컨텐츠:", response.data);
-    } catch (error) {
-        console.error("Content 저장 중 에러 발생:", error);
-    } finally {
-        // 저장 작업의 성공 여부와 관계없이 페이지 이동
-        onContentSelect(content.title);
-    }
-};
+    // 저장 작업의 성공 여부와 관계없이 페이지 이동
+    onContentSelect(content.title);
+  };
 
   return (
     <div onMouseDown={handleMouseDown}>
