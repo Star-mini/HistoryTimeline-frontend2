@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 const Timeline = () => {
     return (
         <div>
-            <Header />
+            <Header background="white"/>
             {/* 타임라인 컴포넌트 */}
             <TimelineComponent />
             <Footer />
