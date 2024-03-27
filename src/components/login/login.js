@@ -86,7 +86,15 @@ function Login() {
             onClick={handleKakaoLogin}
           />
         </button>
-        <button onClick={handleNaverLogin}> 네이버 로그인 </button>
+        <button style={{ border: "none", background: "none" }} onClick={handleNaverLogin}>
+              <img
+                  src="btnG_완성형.png"
+                  width="222"
+                  alt="네이버 로그인 버튼"
+                  onClick={handleNaverLogin}
+              />
+          </button>
+        
       </div>
     </div>
   );
