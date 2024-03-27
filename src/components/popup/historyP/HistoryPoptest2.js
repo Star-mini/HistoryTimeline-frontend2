@@ -6,7 +6,7 @@ import ContentsPopup from '../contentP/ContentsPopup';
 import "./HistoryPop.css";
 
 // historyPop 전체 컴포넌트 
-const HistoryPoptest2 = ({  historyId ,countryId, year  }) => {
+const HistoryPoptest2 = ({ historyId ,countryId, year  }) => {
     const [historyData, setHistoryData] = useState(null);
     const [contentData, setConetentData] = useState(null);
     const [selectedMovie, setSelectedMovie] = useState(null);
@@ -72,13 +72,7 @@ const HistoryPoptest2 = ({  historyId ,countryId, year  }) => {
                 )}
             </div>
             <div className="movie-container">
-                {contentData && (
-                    <div>
-                        {contentData.map((title, index) => (
-                            <h1 key={index}>{title}</h1>
-                        ))}
-                    </div>
-                )}
+            {console.log("contentData:", contentData)}
             </div>
             <div className="contents-container">
                 {selectedMovie && (
@@ -89,7 +83,7 @@ const HistoryPoptest2 = ({  historyId ,countryId, year  }) => {
                 )}
             </div>
             {console.log("historyData:", historyData)}
-         {console.log("contentData:", contentData)}
+            {console.log("contentData:", contentData)}
         </div>
     );
 };

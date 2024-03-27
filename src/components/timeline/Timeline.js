@@ -9,21 +9,22 @@ import {countries, koreaImgUrl} from "../../constants/countries";
 import {cusomizedAxios as axios} from "../../constants/customizedAxios";
 import HistoryPoptest2 from '../popup/historyP/HistoryPoptest2';
 
-const Modal = ({ isOpen, onClose, historyId, countryId, year }) => {
+const Modal = ({ isOpen, onClose, historyId ,selectedCountry, selectedYear }) => {
     if (!isOpen) return null;
-
+    
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal2" onClick={(e) => e.stopPropagation()}>
-                <HistoryPoptest2
-                    historyId={historyId}
-                    countryId={countryId}
-                    year={year}
-                />
+            <HistoryPoptest2 
+                historyId={historyId} 
+                countryId={selectedCountry?.countryId} 
+                year={selectedYear?.name} 
+            />
             </div>
         </div>
     );
 };
+
 /* Timeline Component -> 나라 선택 부터 history Label까지 포함 */
 const Timeline = () => {
     let {countryId} = useParams();
@@ -280,7 +281,7 @@ const Timeline = () => {
             }
             {/* 로딩때만 보일 로딩 박스 */}
             { morePage && <ScrollLoadingBox ref={loader} />}
-            <Modal isOpen={isModalOpen} onClose={closeModal} historyId={historyId} countryId={selectedCountry?.countryId} year={selectedYear?.name} />
+            <Modal isOpen={isModalOpen} onClose={closeModal} historyId={historyId} countryId={selectedCountry} year={selectedYear} />
         </div>
 
     );
