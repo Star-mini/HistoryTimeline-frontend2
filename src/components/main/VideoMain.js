@@ -6,8 +6,8 @@ import VideoBack from "./VideoBack";
  * 뒷 배경색 통일을 위해 backColor 변수를 사용
  */
 function VideoMain() {
-    const backColor = "#264364"; // 배경색
-    const fontColor = "#f4e9c9"; // 글씨
+    const backColor = "#ffffff"; // 배경색
+    const fontColor = "#0d0d0d"; // 글씨
     return (
         <div
             className="videoMain"
@@ -66,18 +66,22 @@ function VideoMain() {
                                 paddingTop: "20px",
                                 background: backColor,
                                 boxSizing: "border-box",
+                                zIndex: 2,
+                                height: "100px"
                             }}
                         >
                             <div>History</div>
                         </div>
                         <img
-                            src="./whatfont.svg"
+                            src="./whatfont.png"
                             alt="svg"
                             style={{
                                 width: "100%",
                                 height: "auto",
                                 display: "inline-block",
                                 border: "none",
+                                position: "relative",
+                                zIndex: 1,
                             }}
                         />
                         <div
@@ -92,6 +96,8 @@ function VideoMain() {
                                 paddingTop: "10px",
                                 background: backColor,
                                 boxSizing: "border-box",
+                                zIndex: 2,
+                                height: "100px"
                             }}
                         >
                             <div>Time Line</div>
