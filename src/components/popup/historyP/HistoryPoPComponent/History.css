@@ -15,14 +15,10 @@
     font-family: Galmuri14, sans-serif;
     padding: 5px 10px;
     border-radius: 10px; 
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     border: none; 
     transition: background-color 0.3s; 
 }
-
-
-
-
 
 .nav-link:hover {
     background-color: #ffffff; 
@@ -78,15 +74,14 @@
 }
 .historyImage{
     max-width: auto;
-    height: 400px;
+    height: auto;
     margin: 0 auto;
     display: contents;
     background-color: rgb(24, 24, 24);
 }
 .historyTitle{
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-bottom: -10px;
+    margin-top: 5%;
+    margin-left: 3%;
     color: #ffffff;
     font-family: 'Noto Sans KR', sans-serif; 
 }
@@ -97,9 +92,9 @@
     margin : 0 auto;
     height: auto;
     overflow: auto;
-    margin-left: 30px;
-    margin-top: 5px;
-    margin-right: 30px;
+    margin-left:3%;
+    margin-top: 2%;
+    margin-right: 3%;
     line-height: 200%;
     font-size: 115%;
     color: #ffffff;
@@ -129,9 +124,9 @@
     height: 250px;
     overflow: auto;
     overflow-y: auto;
-    margin-left: 30px;
-    margin-top: 0px;
-    margin-right: 30px;
+    margin-left:3%;
+    margin-top: 1%;
+    margin-right: 3%;
     line-height: 200%;
     font-size: 115%;
     color: #ffffff;
