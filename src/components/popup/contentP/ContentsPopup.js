@@ -8,6 +8,8 @@ import PlatformSection from "./PlatformSection";
 import Detail from "./Detail";
 import "../../../styles/contents/ContentsPopup.css";
 import FetchMovieID from "./FetchMovieID";
+import cookie from 'react-cookies';
+
 
 // ContentsPopup 컴포넌트
 function ContentsPopup({ movieTitle = "태극기 휘날리며", onClose }) {
@@ -40,10 +42,10 @@ function ContentsPopup({ movieTitle = "태극기 휘날리며", onClose }) {
         <div style={{ marginTop: "15px" }}>
           <PlatformSection contentId={contentId} />
         </div>
+        <Detail contentId={contentId} />
         <div className="movie-card-margin">
           <ContentCard contentId={contentId} onContentSelect={handleContentSelect} />
         </div>
-        <Detail contentId={contentId} />
         <div style={{ marginTop: "80px" }}>
           <Comments contentId={contentId}/> {/* useParams 대신 movieTitle 프롭스를 사용합니다. */}
         </div>
