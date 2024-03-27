@@ -24,14 +24,14 @@
 }
 .movie {
   display: flex; /* Flexbox 레이아웃을 활성화합니다. */
-  flex-direction: column; /* 아이템들을 수직 방향으로 쌓습니다. */
-  justify-content: center; /* 수직 방향(주 축)으로 중앙 정렬합니다. */
-  align-items: center; /* 수평 방향(교차 축)으로 중앙 정렬합니다. */
-  text-align: center; /* 텍스트를 중앙 정렬합니다. */
+  flex-direction: column; /* 아이템들을 수직 방향으로 쌓기. */
+  justify-content: center; /* 수직 방향(주 축)으로 중앙 정렬. */
+  align-items: center; /* 수평 방향(교차 축)으로 중앙 정렬. */
+  text-align: center; /* 텍스트를 중앙 정렬. */
 }
 
 .card-body {
-  width: 100%; /* 부모 컨테이너의 전체 너비를 차지하도록 설정합니다. */
+  width: 100%; /* 부모 컨테이너의 전체 너비를 차지하도록 설정. */
 }
 
 .card-img-top {

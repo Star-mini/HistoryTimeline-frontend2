@@ -4,10 +4,10 @@ background-color: #13161a; /* 시작 색상과 끝 색상 */
 }
 
 .movie-left {
-  float: left; /* 요소를 왼쪽으로 정렬합니다. */
+  float: left; /* 요소를 왼쪽으로 정렬. */
 }
 .movie-right {
-  float: right; /* 요소를 오른쪽으로 정렬합니다. */
+  float: right; /* 요소를 오른쪽으로 정렬. */
 }
 .video-title {
   color: white;
@@ -15,9 +15,9 @@ background-color: #13161a; /* 시작 색상과 끝 색상 */
 }
 
 .slick-dots li button:before {
-  color: white !important; /* 이 부분을 통해 점의 색상을 흰색으로 설정합니다. */
+  color: white !important; /* 이 부분을 통해 점의 색상을 흰색으로 설정 */
 }
 
 .slick-dots li.slick-active button:before {
-  color: rgb(170, 175, 76) !important;/* 현재 활성화된 슬라이드를 나타내는 점의 색상도 흰색으로 설정합니다. */
+  color: rgb(170, 175, 76) !important;/* 현재 활성화된 슬라이드를 나타내는 점의 색상도 흰색으로 설정. */
 }

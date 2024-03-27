@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import { CheckContentType } from './CheckContentType';
 
-const API_KEY = '0decfffb82411d82c9af75fdfaba9b34';
+const API_KEY = process.env.REACT_APP_API_KEY;
 
+
+// 컨텐츠 ID를 가져오는 컴포넌트
 function FetchMovieID({ movieTitle, onMovieIdFetched }) {
     const [contentId, setContentId] = useState('');
     const [error, setError] = useState('');
     const [contentType, setContentType] = useState(''); // 컨텐츠 타입을 저장할 상태 추가
 
+    // 컨텐츠 ID를 가져오는 useEffect 추가
     useEffect(() => {
         const fetchContentId = async () => {
             if (!movieTitle) return;
