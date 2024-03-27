@@ -127,6 +127,7 @@ background-color: var(--pointColor);
     position: relative;
     margin: 30px;
     transition: opacity 0.3s ease-out;
+    width: 380px;
 }
 
 .step-block-hero {
