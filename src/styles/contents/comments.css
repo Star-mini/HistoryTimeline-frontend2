@@ -62,3 +62,19 @@
   padding: 0.5rem;
   border-radius: 0.375rem;
 }
+.page-numbers button {
+  background-color: #f1f1f1; /* 버튼 배경 색상 */
+  border: none;
+  color: black;
+  padding: 2px 15px; /* 패딩 조정으로 버튼 납작하게 만들기 */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px; /* 동그라미가 아닌 약간 납작한 형태를 위해 조정 */
+}
+
+.page-numbers button:hover {
+  background-color: #ddd; /* 호버 시 배경 색상 변경 */
+}

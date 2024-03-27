@@ -76,6 +76,7 @@ span.thumb-up:hover > img, span.thumb-down:hover > img {
   align-items: center;
   margin-top: 12px;
   margin-bottom: 16px; /* mb-4 */
+  color: rgb(170, 175, 76);
 }
 
 .tag {
@@ -106,4 +107,5 @@ span.thumb-up:hover > img, span.thumb-down:hover > img {
 .thumb-icon {
   width: 20px; /* 이미지의 너비를 20px로 설정 */
   height: 20px; /* 이미지의 높이를 20px로 설정 */
+  margin-right: 10px;
 }

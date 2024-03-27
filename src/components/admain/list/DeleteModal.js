@@ -1,5 +1,4 @@
 import React from 'react';
-import {cusomizedAxios as axios} from "../../../constants/customizedAxios";
 
 const DeleteModal = ({ onClickDelete, setIsVisibleDelete }) => {
     // 취소 시 모달 창 닫음

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../../styles/contents/description.css";
 import Fade from "react-reveal/Fade";
-import axios from "axios"; 
+import {cusomizedAxios as axios} from "../../../constants/customizedAxios";
 
 const Description = (props) => {
   const [movieDetails, setMovieDetails] = useState({
@@ -61,41 +61,70 @@ const Description = (props) => {
   }, [movie_id]);
 
   useEffect(() => {
-    // 서버에서 추천 수 가져오기
-    const fetchThumbsUpCount = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8080/likes/count/1`);
-        setThumbsUp(response.data); // 서버에서 받은 추천 수로 상태 업데이트
-      } catch (error) {
-        console.error("추천 수 가져오기 실패:", error);
-      }
+    const fetchLikeCount = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8081/likes/count`, {
+                params: { contentId: props.contentId }
+            });
+            setThumbsUp(response.data); // 받은 추천 수로 상태 업데이트
+        } catch (error) {
+            console.error('추천 수 조회 실패:', error);
+        }
     };
 
-    fetchThumbsUpCount();
-  }, [movie_id]); // movie_id가 변경될 때마다 추천 수를 다시 가져옴
+    if(props.contentId) { // contentId가 있을 때만 요청
+        fetchLikeCount();
+    }
+}, [props.contentId]); // props.contentId가 변경될 때마다 추천 수를 다시 조회
 
   useEffect(() => {
-    // 서버에서 비추천 수 가져오기
-    const fetchThumbsDownCount = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8080/dislikes/count/1`);
-        setThumbsDown(response.data); // 서버에서 받은 비추천 수로 상태 업데이트
-      } catch (error) {
-        console.error("비추천 수 가져오기 실패:", error);
-      }
+    const fetchDislikeCount = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8081/dislikes/count`, {
+                params: { contentId: props.contentId }
+            });
+            setThumbsDown(response.data); // 비추천 수로 상태 업데이트
+        } catch (error) {
+            console.error('비추천 수 조회 실패:', error);
+        }
     };
-  
-    fetchThumbsDownCount();
-  }, [movie_id]); // movie_id가 변경될 때마다 비추천 수를 다시 가져옴
 
-  const handleThumbsUp = () => {
-    setThumbsUp(thumbsUp + 1);
+    if(props.contentId) { // contentId가 있을 때만 요청
+        fetchDislikeCount();
+    }
+}, [props.contentId]); // props.contentId가 변경될 때마다 비추천 수를 다시 조회
+
+  const handleThumbsUp = async () => {
+    try {
+      // 유저 ID와 contentId를 쿼리 파라미터로 서버에 전송
+      const response = await axios.post('http://localhost:8081/likes', null, {
+        params: {
+          userId: 1, // 유저 ID는 1로 고정
+          contentId: props.contentId, // props에서 받은 contentId 사용
+        }
+      });
+      console.log('추천이 성공적으로 추가되었습니다.', response.data);
+      // 추천 수 상태 업데이트
+      setThumbsUp(thumbsUp + 1);
+    } catch (error) {
+      console.error('추천 추가 실패:', error);
+    }
   };
 
-  const handleThumbsDown = () => {
-    setThumbsDown(thumbsDown + 1);
+  const handleThumbsDown = async () => {
+    try {
+      const response = await axios.post('http://localhost:8081/dislikes', null, {
+        params: {
+          userId: 1, // 예시로 1 사용
+          contentId: props.contentId,
+        }
+      });
+      console.log('비추천이 성공적으로 추가되었습니다.', response.data);
+      setThumbsDown(thumbsDown + 1);
+    } catch (error) {
+      console.error('비추천 추가 실패:', error);
+    }
   };
-
   return (
     <div className="custom-body">
       <div className="description-section">
@@ -112,11 +141,11 @@ const Description = (props) => {
             <h3 className="title">{movieDetails.title}</h3>{" "}
             {/* 동적으로 제목 설정 */}
             <span className="thumb-up" onClick={handleThumbsUp}>
-              <img src="thumb-up.png" alt="추천" className="thumb-icon" />
+              <img src="/thumb-up.png" alt="추천" className="thumb-icon" />
               추천 {thumbsUp}
             </span>
             <span className="thumb-down" onClick={handleThumbsDown}>
-              <img src="thumb-down.png" alt="비추천" className="thumb-icon" />
+            <img src="/thumb-down.png" alt="비추천" className="thumb-icon" />
               비추천 {thumbsDown}
             </span>
             <div className="tags">

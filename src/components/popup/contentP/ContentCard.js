@@ -1,58 +1,130 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 import Content from "./Content";
-import Fade from "react-reveal/Fade";
 import "../../../styles/contents/contentCard.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
-const ContentCard = () => {
-  const [content, setContent] = useState({ title: "", src: "" }); // 영화 데이터를 저장할 상태
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 700, // 슬라이드 전환 속도
+  slidesToShow: 5,
+  slidesToScroll: 2,  
+  autoplay: true,
+  autoplaySpeed: 3000, // 자동 전환 속도
+  cssEase: 'ease-in-out', // 부드러운 전환 효과를 위한 속도 곡선 설정
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        cssEase: 'ease-in-out',
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        cssEase: 'ease-in-out',
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        cssEase: 'ease-in-out',
+      },
+    },
+  ],
+};
+
+
+
+const ContentCard = ({ contentId, onContentSelect }) => {
+  const [contents, setContents] = useState([]);
+  const [mouseDownPos, setMouseDownPos] = useState({ x: null, y: null });
 
   useEffect(() => {
+    const apiKey = "0decfffb82411d82c9af75fdfaba9b34";
+    // 영화의 키워드를 가져오는 API 호출
     axios
-      .get("http://localhost:8080/ContentsPopup?contentId=1") // 서버로부터 데이터를 받아오는 URL
-      .then((response) => {
-        // 성공적으로 데이터를 받아왔을 때의 처리
-        const ContentData = response.data; // 여기서는 response.data가 영화 데이터를 포함하고 있다고 가정
-        setContent({ title: ContentData.title, src: ContentData.src }); // 받아온 데이터로 movie 상태를 업데이트
+      .get(
+        `https://api.themoviedb.org/3/movie/${contentId}/keywords?api_key=${apiKey}`
+      )
+      .then((keywordsResponse) => {
+        const keywords = keywordsResponse.data.keywords;
+        if (keywords.length > 0) {
+          // 키워드 목록 중에서 랜덤으로 하나 선택
+          const randomKeyword =
+            keywords[Math.floor(Math.random() * keywords.length)].id;
+          // 선택된 키워드를 사용하여 관련 영화 목록 가져오기
+          return axios.get(
+            `https://api.themoviedb.org/3/keyword/${randomKeyword}/movies?api_key=${apiKey}&language=ko-KR`
+          );
+        } else {
+          throw new Error("No keywords found for this movie.");
+        }
+      })
+      .then((moviesResponse) => {
+        const relatedMovies = moviesResponse.data.results;
+        setContents(
+          relatedMovies.map((movie) => ({
+            id: movie.id,
+            title: movie.title,
+            imgUrl: movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+              : "/컨텐츠기본이미지.jpg",
+          }))
+        );
       })
       .catch((error) => {
-        // 데이터를 받아오는 중 에러가 발생했을 때의 처리
         console.error("There was an error!", error);
       });
-  }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 단 한 번만 실행되도록 함
+  }, [contentId]);
+
+  const handleMouseDown = (e) => {
+    setMouseDownPos({ x: e.clientX, y: e.clientY });
+  };
+
+  const checkContentTypeAndPost = async (content, mouseUpEvent) => {
+    if (
+      Math.abs(mouseDownPos.x - mouseUpEvent.clientX) > 5 ||
+      Math.abs(mouseDownPos.y - mouseUpEvent.clientY) > 5
+    ) {
+      // 드래그로 간주, 클릭 이벤트 무시
+      return;
+    }
+    // 저장 작업의 성공 여부와 관계없이 페이지 이동
+    onContentSelect(content.title);
+  };
 
   return (
-    <div>
-      <h3 className="video-title">비디오| 다른컨텐츠</h3>
-      <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3 mb-10 movie-container">
-        <Fade bottom delay={300}>
-          <Content
-            name={content.title}
-            src={content.imgUrl}
-            className="movie-left"
-          />
-        </Fade>
-        <Fade bottom delay={300}>
-          <Content
-            name={content.title}
-            src={content.imgUrl}          />
-        </Fade>
-        <Fade bottom delay={300}>
-          <Content
-            name={content.title}
-            src={content.imgUrl}          />
-        </Fade>
-        <Fade bottom delay={300}>
-          <Content
-            name={content.title}
-            src={content.imgUrl}          />
-        </Fade>
-        <Fade bottom delay={500}>
-          <Content
-            name={content.title}
-            src={content.imgUrl}          />
-        </Fade>
-      </div>
+    <div onMouseDown={handleMouseDown}>
+      <h3 className="video-title">비슷한 영화 추천</h3>
+      <Slider {...settings}>
+        {contents.map((content, index) => (
+          <div
+            key={index}
+            onMouseUp={(e) => checkContentTypeAndPost(content, e)}
+          >
+            <Content name={content.title} src={content.imgUrl} />
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };

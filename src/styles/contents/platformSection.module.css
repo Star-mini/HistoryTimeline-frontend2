@@ -1,0 +1,52 @@
+.logo {
+  margin-right: 8px; /* mr-2 대응 */
+  height: 50px;
+  width: auto;
+  margin-right: 30px; /* 오른쪽 마진 추가 */
+  border-radius: 50%; /* 모든 모서리를 둥글게 만듭니다. */
+  /* 로고의 크기를 정사각형으로 만들기 위해 너비와 높이를 같게 설정하십시오. 예를 들어: */
+  width: 70px; /* 로고의 너비 */
+  height: 70px; /* 로고의 높이 */
+
+}
+.text {
+  margin-right: 20px; /* 버튼과의 간격 조정, 필요에 따라 조정 */
+  color: white; /* 텍스트 색상을 흰색으로 설정 */
+  font-size: 20px;
+}
+.button {
+  background-color: #e53e3e;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 0.75rem;
+}
+.button-container {
+  margin-left: auto; /* 오른쪽으로 요소를 밀어내는 역할 */
+}
+.text-button-container {
+  display: flex;
+  align-items: center; /* 텍스트와 버튼을 세로 중앙 정렬 */
+  margin-left: auto; /* 이전 요소들과의 간격을 최대로 하여 오른쪽 정렬 효과 */
+}
+.container {
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px; /* px-7 대응 */
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+.platformName {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+.long-name {
+  /* 긴 이름에 적용할 스타일을 여기에 작성합니다. 예를 들어: */
+  margin-left: -30px; /* 필요에 따라 조정 */
+}
