@@ -1,20 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 
+.movieContainer{
+    background-color: rgb(24, 24, 24);  
+}
 
 .movieTitle{
     color: #f87c56;
-    margin-left: 30px;
-    margin-bottom: 30px;
+    background-color: rgb(24, 24, 24);
+    margin-left: 3%;
+    margin-bottom: 4%;
     font-family: Galmuri14, sans-serif;
 }
 .moviePosterSlide {
     background-color: rgb(24, 24, 24);
-    width: 70%; 
+    width: 90%; 
     margin: 0 auto; 
 }
 
 .moviePoster {
+    
     text-align: center;
     color: #ffffff;
     font-family: 'Noto Sans KR', sans-serif;
@@ -38,15 +43,18 @@
     border-radius: 20px; 
     margin: 0 auto;
 }
+.movieName{
+    margin-top: 3%;
+    
+}
+
 
 
 .slick-prev {
-    left: -30px; 
-    top: 125px;
+    left: -4%; 
 }
 
 .slick-next {
-    right: -30px; 
-    top: 125px;
+    right: -4%; 
 }
 

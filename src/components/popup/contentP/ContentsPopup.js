@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Comments from "./Comments";
@@ -9,16 +9,16 @@ import Detail from "./Detail";
 import "../../../styles/contents/ContentsPopup.css";
 import FetchMovieID from "./FetchMovieID";
 
+// ContentsPopup 컴포넌트
 function ContentsPopup({ movieTitle = "태극기 휘날리며", onClose }) {
   const [contentId, setContentId] = useState("");
   const [title, setTitle] = useState(movieTitle); // movieTitle 상태 추가
-
+  const popupRef = useRef(null); // DOM 요소에 대한 참조를 생성합니다.
 
   // contentId 상태가 변경될 때마다 콘솔에 출력
   useEffect(() => {
     console.log(`contentId가 변경되었습니다: ${contentId}`);
   }, [contentId]);
-
 
   // URL에서 title 파라미터를 추출하는 대신, movieTitle 프롭스를 사용합니다.
   const handleMovieIdFetched = (id) => {
@@ -31,9 +31,8 @@ function ContentsPopup({ movieTitle = "태극기 휘날리며", onClose }) {
     setTitle(selectedTitle);
   };
 
-
   return (
-    <div className="popup">
+    <div className="popup" ref={popupRef}>
       <FetchMovieID movieTitle={title} onMovieIdFetched={handleMovieIdFetched} />
 
       <div>
@@ -42,14 +41,13 @@ function ContentsPopup({ movieTitle = "태극기 휘날리며", onClose }) {
           <PlatformSection contentId={contentId} />
         </div>
         <div className="movie-card-margin">
-        <ContentCard contentId={contentId} onContentSelect={handleContentSelect} />
+          <ContentCard contentId={contentId} onContentSelect={handleContentSelect} />
         </div>
         <Detail contentId={contentId} />
         <div style={{ marginTop: "80px" }}>
-          <Comments movieTitle={title} /> {/* useParams 대신 movieTitle 프롭스를 사용합니다. */}
+          <Comments contentId={contentId}/> {/* useParams 대신 movieTitle 프롭스를 사용합니다. */}
         </div>
       </div>
-      <button onClick={onClose}>닫기</button>
     </div>
   );
 }

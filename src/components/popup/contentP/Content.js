@@ -1,8 +1,8 @@
 import '../../../styles/contents/content.css';
 
 function Content(props) {
-    // className prop을 추가하여 외부에서 전달받은 클래스를 적용합니다.
-    const { src, name, className } = props; // 구조 분해 할당을 사용하여 props를 추출합니다.
+    // className prop을 추가하여 외부에서 전달받은 클래스를 적용
+    const { src, name, className } = props; // 구조 분해 할당을 사용하여 props를 추출
 
     console.log(src);
 
