@@ -3,15 +3,16 @@ import "../styles/font.css";
 
 function Header(props) {
     const fontColor = "#0d0d0d"; // 글씨
+    const propsBackground = props.background;
+    console.log(props);
     return (
         <div
-            className="container"
+            className="header container"
             style={{
                 margin: 0,
                 maxWidth: "100%",
                 position: "fixed",
-                top: "10px",
-                right: "20px",
+                background : propsBackground || "" 
             }}
         >
             <div className="row">
