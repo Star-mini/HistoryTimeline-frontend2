@@ -70,7 +70,7 @@ function Comments({ contentId }) {
         {currentComments.map((comment, index) => (
           <div className="comment" key={index}>
             <div className="comment-header">
-              <span className="comment-author">{comment.userId}</span>
+              <span className="comment-author">익명</span>
             </div>
             <p className="comment-body">{comment.note}</p>
           </div>

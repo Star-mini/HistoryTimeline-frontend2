@@ -8,7 +8,6 @@ import PlatformSection from "./PlatformSection";
 import Detail from "./Detail";
 import "../../../styles/contents/ContentsPopup.css";
 import FetchMovieID from "./FetchMovieID";
-import cookie from 'react-cookies';
 
 
 // ContentsPopup 컴포넌트
