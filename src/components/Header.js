@@ -8,12 +8,17 @@ function Header(props) {
     const [state, setState] = useState("");
     useEffect(() => {
         setState(cookie.load("email"));
-        console.log(state);
     }, []);
 
     const isLoginState = () => {
-        return state != null;
+        return state !== "";
     };
+
+    const logout = () => {
+        setState("");
+        cookie.remove("email");
+    }
+
     const LoginAndLogout = () => {
         if (isLoginState()) {
             return (
@@ -49,6 +54,7 @@ function Header(props) {
         <div
             className="header container"
             style={{
+                zIndex: 5,
                 margin: 0,
                 maxWidth: "100%",
                 position: "fixed",

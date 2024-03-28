@@ -3,8 +3,10 @@
 .timeline-labels {
     position: fixed;
     z-index: 5;
-    background-color: var(--pointColor);
-    /*border-bottom: 3px solid var(--pointColor);*/
+    /*background-color: var(--point2Color);*/
+    background:
+            linear-gradient(276deg, rgb(209, 202, 252), rgb(255 149 125));
+    color: var(--backgroundColor);
     display: grid;
     grid-template-columns: 4fr 1fr 4fr;
     height: 100px;
@@ -13,7 +15,6 @@
 }
 
 .timeline-labels > .label {
-    color: var(--fontWhiteColor);
     display: flex;
     align-items: center;
     justify-content: center;
