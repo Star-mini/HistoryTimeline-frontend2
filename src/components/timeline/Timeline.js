@@ -7,23 +7,6 @@ import ScrollLoadingBox from '../timeline/ScrollLoadingBox';
 import {years} from "../../constants/years";
 import {countries, koreaImgUrl} from "../../constants/countries";
 import {cusomizedAxios as axios} from "../../constants/customizedAxios";
-import HistoryPoptest2 from '../popup/historyP/HistoryPoptest2';
-
-const Modal = ({ isOpen, onClose, historyId ,selectedCountry, selectedYear }) => {
-    if (!isOpen) return null;
-    
-    return (
-        <div className="modal-overlay" onClick={onClose}>
-            <div className="modal2" onClick={(e) => e.stopPropagation()}>
-            <HistoryPoptest2 
-                historyId={historyId} 
-                countryId={selectedCountry?.countryId} 
-                year={selectedYear?.name} 
-            />
-            </div>
-        </div>
-    );
-};
 
 /* Timeline Component -> 나라 선택 부터 history Label까지 포함 */
 const Timeline = () => {
@@ -50,21 +33,6 @@ const Timeline = () => {
     const [isHistoryVisible, setIsHistoryVisible] = useState(false);
     const [historyId, setHistoryId] = useState(null);
     const [isContentVisible, setIsContentVisible] = useState(false);
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
-
-
-    useEffect(() => {
-        setIsModalOpen(false); // Modal이 닫혀있는지 확인
-    }, [selectedCountry, selectedYear]);
 
     // 페이지가 열렸을 때 Timeline이 천천히 보이도록 함.
     useEffect(() => {
@@ -182,7 +150,6 @@ const Timeline = () => {
     // 보여줄 역사 아이디를 저장하는 함수
     const onClickHistoryLabel = (historyId) => {
         setHistoryId(historyId);
-        setIsModalOpen(true);
     }
 
     // 역사 팝업에서 나올 때 historyId -> null
@@ -281,7 +248,6 @@ const Timeline = () => {
             }
             {/* 로딩때만 보일 로딩 박스 */}
             { morePage && <ScrollLoadingBox ref={loader} />}
-            <Modal isOpen={isModalOpen} onClose={closeModal} historyId={historyId} countryId={selectedCountry} year={selectedYear} />
         </div>
 
     );

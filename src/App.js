@@ -15,10 +15,8 @@ import ContentsPopup from "./components/popup/contentP/ContentsPopup";
  * "/map" 지도 있는 메인페이지
  */
 function App() {
-    document.body.style.fontFamily = "Galmuri14";
     return (
         <Router>
-            
             <Routes>
                 <Route path="/" element={<VideoZoomInOut />} />
                 <Route path="/map" element={<MapMain />} />

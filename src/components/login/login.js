@@ -82,23 +82,15 @@ function Login() {
           top: "120px",
         }}
       >
-
-        <button style={{ border: "none", background: "none" }}>
-          <img
-            src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
-            width="222"
-            alt="카카오 로그인 버튼"
-            onClick={handleKakaoLogin}
-          />
-        </button>
-        <button style={{ border: "none", background: "none" }} onClick={handleNaverLogin}>
-              <img
-                  src="btnG_완성형.png"
-                  width="222"
-                  alt="네이버 로그인 버튼"
-                  onClick={handleNaverLogin}
-              />
-          </button>
+        {/*<button style={{ border: "none", background: "none" }}>*/}
+        {/*  <img*/}
+        {/*    src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"*/}
+        {/*    width="222"*/}
+        {/*    alt="카카오 로그인 버튼"*/}
+        {/*    onClick={handleKakaoLogin}*/}
+        {/*  />*/}
+        {/*</button>*/}
+        <button onClick={handleNaverLogin}> 네이버 로그인 </button>
       </div>
     </div>
   );
