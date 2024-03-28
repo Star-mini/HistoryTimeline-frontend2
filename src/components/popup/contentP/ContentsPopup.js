@@ -8,20 +8,37 @@ import PlatformSection from "./PlatformSection";
 import Detail from "./Detail";
 import "../../../styles/contents/ContentsPopup.css";
 import FetchMovieID from "./FetchMovieID";
+import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 
 
 // ContentsPopup 컴포넌트
-function ContentsPopup({ movieTitle = "태극기 휘날리며", onClose }) {
-  const [contentId, setContentId] = useState("");
-  const [title, setTitle] = useState(movieTitle); // movieTitle 상태 추가
-  const popupRef = useRef(null); // DOM 요소에 대한 참조를 생성합니다.
+function ContentsPopup({ onClose }) {
+  const [contentId, setContentId] = useState("11658"); // 초깃값을 11658로 설정
+  const [title, setTitle] = useState(""); // movieTitle 상태 초기값을 빈 문자열로 설정
+  const popupRef = useRef(null);
 
-  // contentId 상태가 변경될 때마다 콘솔에 출력
   useEffect(() => {
-    console.log(`contentId가 변경되었습니다: ${contentId}`);
-  }, [contentId]);
+    const apiKey = process.env.REACT_APP_API_KEY;
+    // TMDB API를 호출하여 초기 영화 제목을 가져옴
+    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=태극기 휘날리며&language=ko-KR`)
+      .then((response) => {
+        const movies = response.data.results;
+        if (movies.length > 0) {
+          // 검색 결과 중 첫 번째 영화의 제목으로 상태 업데이트
+          setTitle(movies[0].title);
+          setContentId(movies[0].id);
+        } else {
+          // 영화를 찾을 수 없는 경우 에러 처리
+          console.error("영화를 찾을 수 없습니다.");
+        }
+      })
+      .catch((error) => {
+        console.error("API 호출 중 오류가 발생했습니다: ", error);
+      });
+  }, []); // 의존성 배열을 빈 배열로 설정하여 컴포넌트 마운트 시 한 번만 실행
 
-  // URL에서 title 파라미터를 추출하는 대신, movieTitle 프롭스를 사용합니다.
+
+  // URL에서 title 파라미터를 추출하는 대신, movieTitle 프롭스를 사용
   const handleMovieIdFetched = (id) => {
     setContentId(id);
   };
