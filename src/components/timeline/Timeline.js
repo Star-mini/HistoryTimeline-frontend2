@@ -17,8 +17,8 @@ const Modal = ({ isOpen, onClose, historyId ,selectedCountry, selectedYear }) =>
             <div className="modal2" onClick={(e) => e.stopPropagation()}>
             <HistoryPoptest2 
                 historyId={historyId} 
-                countryId={selectedCountry?.countryId} 
-                year={selectedYear?.name} 
+                countryId={selectedCountry} 
+                year={selectedYear} 
             />
             </div>
         </div>
@@ -52,6 +52,9 @@ const Timeline = () => {
     const [isContentVisible, setIsContentVisible] = useState(false);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [clickedCountryId, setClickedCountryId] = useState(null);
+    const [clickedYear, setClickedYear] = useState(null);
+
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -180,9 +183,24 @@ const Timeline = () => {
     };
 
     // 보여줄 역사 아이디를 저장하는 함수
-    const onClickHistoryLabel = (historyId) => {
-        setHistoryId(historyId);
-        setIsModalOpen(true);
+    const onClickHistoryLabel = async (historyId) => {
+        try {
+            // Axios를 사용하여 서버에서 데이터를 가져옴
+            const response = await axios.get(`/history/three?historyId=${historyId}`);
+            const historyData = response.data;
+    
+            // 서버에서 받은 데이터에서 countryId와 year를 추출
+            const { countryId: clickedCountryId, year: clickedYear } = historyData;
+    
+            // historyId, countryId, year을 설정하여 모달을 오픈
+            setHistoryId(historyId);
+            setClickedCountryId(clickedCountryId);
+            setClickedYear(clickedYear);
+            setIsModalOpen(true);
+        } catch (error) {
+            // 데이터를 가져오는 도중 에러 발생 시 예외 처리
+            console.error('Error fetching history data:', error);
+        }
     }
 
     // 역사 팝업에서 나올 때 historyId -> null
@@ -286,8 +304,8 @@ const Timeline = () => {
                 isOpen={isModalOpen} 
                 onClose={closeModal} 
                 historyId={historyId} 
-                selectedCountry={selectedCountry} 
-                selectedYear={selectedYear} 
+                selectedCountry={clickedCountryId} 
+                selectedYear={clickedYear} 
             />
         </div>
 
