@@ -35,8 +35,7 @@ function VideoZoomInOut() {
                 container.style.transform = `scale(${newScale})`;
                 document.getElementById("root").style.overflow = "hidden";
                 // 수정된 부분: newScale이 maxScale에 근접하면 페이지를 이동
-                console.log(maxScale - 0.5, maxScale + 0.5)
-                if (newScale >= maxScale - 0.5 && newScale <= maxScale + 0.5) {
+                if (newScale >= maxScale - 1) {
                     navigate("/map");
                 }
             }
