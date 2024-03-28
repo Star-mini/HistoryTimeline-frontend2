@@ -12,30 +12,35 @@ import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 
 
 // ContentsPopup 컴포넌트
-function ContentsPopup({ onClose }) {
-  const [contentId, setContentId] = useState("11658"); // 초깃값을 11658로 설정
-  const [title, setTitle] = useState(""); // movieTitle 상태 초기값을 빈 문자열로 설정
+function ContentsPopup({ movieTitle = "태극기 휘날리며", onClose }) {
+  const [contentId, setContentId] = useState("11658");
+  const [title, setTitle] = useState(movieTitle);
   const popupRef = useRef(null);
-
+  
   useEffect(() => {
-    const apiKey = process.env.REACT_APP_API_KEY;
-    // TMDB API를 호출하여 초기 영화 제목을 가져옴
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=태극기 휘날리며&language=ko-KR`)
-      .then((response) => {
-        const movies = response.data.results;
-        if (movies.length > 0) {
-          // 검색 결과 중 첫 번째 영화의 제목으로 상태 업데이트
-          setTitle(movies[0].title);
-          setContentId(movies[0].id);
+    const fetchMovieId = async () => {
+      if (!title) return; // title이 없다면 함수를 종료합니다.
+      
+      const apiKey = process.env.REACT_APP_API_KEY;
+      try {
+        // TMDB API를 사용해 영화 ID 검색
+        const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(title)}`);
+        if (response.data.results.length > 0) {
+          // 검색된 영화 중 첫 번째 영화의 ID를 설정
+          setContentId(response.data.results[0].id);
+          setTitle(response.data.results[0].title); // 검색된 영화의 정확한 제목을 저장
         } else {
-          // 영화를 찾을 수 없는 경우 에러 처리
-          console.error("영화를 찾을 수 없습니다.");
+          // 영화가 검색되지 않았을 때의 처리
+          console.error('영화를 찾을 수 없습니다.');
         }
-      })
-      .catch((error) => {
-        console.error("API 호출 중 오류가 발생했습니다: ", error);
-      });
-  }, []); // 의존성 배열을 빈 배열로 설정하여 컴포넌트 마운트 시 한 번만 실행
+      } catch (error) {
+        // API 호출 중 오류가 발생했을 때의 처리
+        console.error('API 호출 중 오류가 발생했습니다: ', error);
+      }
+    };
+
+    fetchMovieId();
+  }, [movieTitle]); // movieTitle prop이 변경될 때마다 useEffect를 다시 실행합니다.
 
 
   // URL에서 title 파라미터를 추출하는 대신, movieTitle 프롭스를 사용
