@@ -16,14 +16,15 @@ const MovieCom = ({ movies, onMovieSelect }) => {
                     const searchResponse = await axios.get(`https://api.themoviedb.org/3/search/movie`, {
                         params: {
                             api_key: 'fab5e47a8eb6bba3fa581019b523c6b2',
-                            query: movie.title 
+                            query: movie.title ,
                         }
                     });
                     const movieId = searchResponse.data?.results[0]?.id;
                     if (movieId) {        
                         const detailResponse = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, {
                             params: {
-                                api_key: 'fab5e47a8eb6bba3fa581019b523c6b2' 
+                                api_key: 'fab5e47a8eb6bba3fa581019b523c6b2' ,
+                                language: 'ko-KR'
                             }
                         });                        
                         const posterUrl = detailResponse.data?.poster_path;
