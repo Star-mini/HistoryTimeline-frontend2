@@ -7,6 +7,7 @@ function Footer(props) {
         <div
             className="container"
             style={{
+                zIndex: 5,
                 margin: 0,
                 maxWidth: "100%",
                 position: "fixed",
