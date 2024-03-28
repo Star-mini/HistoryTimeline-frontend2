@@ -19,11 +19,11 @@ function MapChartV2() {
     const [scrollY, setScrollY] = useState(window.scrollY);
     const [showTimeline, setShowTimeline] = useState(false);
     const [pins] = useState([
-        { x: "35.6", y: "14.5", country: "410" }, // 한국
+        { x: "37.6", y: "14.5", country: "410" }, // 한국
         { x: "2", y: "13", country: "840" }, // 미국
-        { x: "31", y: "12.5", country: "156" }, // 중국
-        { x: "18", y: "11", country: "826" }, // 영국
-        { x: "37.5", y: "14", country: "392" }, // 일본
+        { x: "35", y: "12.5", country: "156" }, // 중국
+        { x: "19", y: "10", country: "826" }, // 영국
+        { x: "39.5", y: "15", country: "392" }, // 일본
     ]);
 
     useEffect(() => {
