@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // axios 라이브러리 import
+import axios from 'axios';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,12 +7,12 @@ import "./Movie.css";
 import Fade from 'react-reveal/Fade';
 
 const MovieCom = ({ movies, onMovieSelect }) => {
-    const [posterUrls, setPosterUrls] = useState([]);
+    const [movieData, setMovieData] = useState([]);
 
     useEffect(() => {
-        const fetchPosterUrls = async () => {
+        const fetchMovieData = async () => {
             try {
-                const urls = await Promise.all(movies.map(async (movie) => {
+                const data = await Promise.all(movies.map(async (movie) => {
                     const searchResponse = await axios.get(`https://api.themoviedb.org/3/search/movie`, {
                         params: {
                             api_key: 'fab5e47a8eb6bba3fa581019b523c6b2',
@@ -27,21 +27,24 @@ const MovieCom = ({ movies, onMovieSelect }) => {
                             }
                         });                        
                         const posterUrl = detailResponse.data?.poster_path;
-                        return posterUrl ? `https://image.tmdb.org/t/p/original${posterUrl}` : null;
+                        const movieData = {
+                            title: movie.title,
+                            posterUrl: posterUrl ? `https://image.tmdb.org/t/p/original${posterUrl}` : null
+                        };
+                        return movieData;
                     } else {
-                        return null; // 영화 ID가 없는 경우 null 반환
+                        return null;
                     }
                 }));
-                setPosterUrls(urls.filter(url => url !== null)); // null인 경우 필터링하여 상태 변수에 저장
+                setMovieData(data.filter(item => item !== null)); // null인 경우 필터링하여 상태 변수에 저장
             } catch (error) {
-                console.error('Error fetching poster URLs:', error);
+                console.error('Error fetching movie data:', error);
             }
         };
 
-        fetchPosterUrls(); 
+        fetchMovieData(); 
     }, [movies]); 
 
-    // 슬라이더 설정
     const sliderSettings = {
         dots: false,
         infinite: true,
@@ -63,14 +66,14 @@ const MovieCom = ({ movies, onMovieSelect }) => {
             <h3 className='movieTitle'>관련 영화</h3>
 
             <Slider {...sliderSettings} className="moviePosterSlide" >
-                {posterUrls.map((posterUrl, index) => (  // 포스터 이미지 URL 맵핑 후 렌더링
-                    <div className="moviePoster" key={index} onClick={() => handlePosterClick(movies[index].title)}>
+                {movieData.map((movie, index) => (  
+                    <div className="moviePoster" key={index} onClick={() => handlePosterClick(movie.title)}>
                         <img className='moviePosterFrame'
-                            src={posterUrl}
-                            alt={movies[index].title}
+                            src={movie.posterUrl}
+                            alt={movie.title}
                             width="70%"
                         />
-                        <h4 className='movieName'>{movies[index].title}</h4>
+                        <h4 className='movieName'>{movie.title}</h4>
                     </div>
                 ))}
             </Slider>
