@@ -12,7 +12,7 @@ function Header(props) {
     }, []);
 
     const isLoginState = () => {
-        return state != null;
+        return state != null && state != undefined;
     };
     const LoginAndLogout = () => {
         if (isLoginState()) {
