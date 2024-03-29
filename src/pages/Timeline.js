@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import cookie from "react-cookies";
 import {useEffect} from "react";
+import "../styles/timeline/timeline.css"
 
 
 // 타임라인 페이지
@@ -13,8 +14,8 @@ const Timeline = () => {
     }, [])
 
     return (
-        <div>
-            <Header background="white"/>
+        <div className="timeline-page">
+            <Header background="linear-gradient(276deg, rgb(209, 202, 252), rgb(255 149 125))"/>
             {/* 타임라인 컴포넌트 */}
             <TimelineComponent />
             <Footer />
