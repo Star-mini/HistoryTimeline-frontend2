@@ -102,6 +102,14 @@ const Description = (props) => {
     }
 }, [props.contentId]); // props.contentId가 변경될 때마다 비추천 수를 다시 조회
 
+
+  // contentId가 변경될 때 추천 상태를 초기화하는 useEffect 추가
+  useEffect(() => {
+    setHasThumbedUp(false);
+    setHasThumbedDown(false);
+  }, [props.contentId]);
+
+  
   // 추천 수와 비추천 수를 업데이트하는 함수 추가
   const handleThumbsUp = async () => {
     if(hasThumbedUp) {

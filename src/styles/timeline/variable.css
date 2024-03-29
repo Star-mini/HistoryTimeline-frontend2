@@ -26,7 +26,9 @@
     --backgroundColor: white;
     --fontColor: black;
     --fontWhiteColor: white;
-    --pointColor: #f87c56;
+    /*--pointColor: rgb(209, 202, 252);*/
+    --pointColor: lightgray;
+    --point2Color: #f87c56;
     --titleColor: #222222;
     --briefColor: #555555;
 }

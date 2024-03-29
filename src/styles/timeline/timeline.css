@@ -8,6 +8,10 @@ body {
     line-height: 20px;
     overflow: auto;
 }
+
+.timeline-page {
+}
+
 .timeline-transition {
     display: flex;
     padding-top: 100px;

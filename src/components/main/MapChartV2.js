@@ -19,11 +19,11 @@ function MapChartV2() {
     const [scrollY, setScrollY] = useState(window.scrollY);
     const [showTimeline, setShowTimeline] = useState(false);
     const [pins] = useState([
-        { x: "35.6", y: "14.5", country: "410" }, // 한국
+        { x: "37.6", y: "14.5", country: "410" }, // 한국
         { x: "2", y: "13", country: "840" }, // 미국
-        { x: "31", y: "12.5", country: "156" }, // 중국
-        { x: "18", y: "11", country: "826" }, // 영국
-        { x: "37.5", y: "14", country: "392" }, // 일본
+        { x: "35", y: "12.5", country: "156" }, // 중국
+        { x: "19", y: "10", country: "826" }, // 영국
+        { x: "39.5", y: "15", country: "392" }, // 일본
     ]);
 
     useEffect(() => {
@@ -52,12 +52,12 @@ function MapChartV2() {
 
     const westStyle = useSpring({
         top: scrollY <= maxScroll ? `${Math.min(scrollY, 5)}vw` : "5vw",
-        left: scrollY <= maxScroll ? `${Math.min(scrollY + 6, 10)}vw` : "10vw",
+        left: scrollY <= maxScroll ? `${Math.min(scrollY + 6,10)}vw` : "10vw",
     });
 
     const eastStyle = useSpring({
         top: scrollY <= maxScroll ? `${Math.min(scrollY, 5)}vw` : "5vw",
-        right: scrollY <= maxScroll ? `${Math.min(scrollY + 5, 9)}vw` : "9vw",
+        right: scrollY <= maxScroll ? `${Math.min(scrollY + 5, 7)}vw` : "7vw",
     });
 
     const earthBoxStyle = useSpring({
@@ -97,10 +97,10 @@ function MapChartV2() {
     }, [scrollY]);
 
     return (
-        <div className="container">
+        <div className="container" style={{width:"100%",margin:"20px"}}>
             <div className="row" style={{ justifyContent: "center" }}>
                 <div
-                    className="col-7"
+                    className="col-6"
                     style={{
                         maxWidth: "60vw",
                         width: "60vw",
@@ -177,7 +177,7 @@ function MapChartV2() {
                     </div>
                 </div>
                 <div
-                    className="col-5"
+                    className="col-6"
                     style={{
                         display: showTimeline ? "flex" : "none",
                         width: "20vw",
