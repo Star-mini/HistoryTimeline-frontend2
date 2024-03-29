@@ -15,7 +15,7 @@ function MapMain() {
                     textAlign: "center",
                     height: "3000px",
                     background:
-                        "linear-gradient(45deg, rgb(209, 202, 252), rgb(234, 226, 253))",
+                        "linear-gradient(276deg, rgb(209, 202, 252), rgb(255 149 125))",
                 }}
             >
                 <br />

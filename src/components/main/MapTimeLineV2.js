@@ -33,7 +33,7 @@ function MapTimeLineV2(props) {
                 for (let i = 0; i < 6; i++) {
                     const colorProgress = i * step;
                     const alpha = Math.min(1, scrollProgress - colorProgress);
-                    colors[i] = `rgba(128, 0, 128, ${alpha})`;
+                    colors[i] = `rgba(234, 234, 252, ${alpha})`;
                     if (alpha >= 0.4 && !showTexts[i]) {
                         setShowTexts(prevShowTexts => {
                             const newShowTexts = [...prevShowTexts];
@@ -128,7 +128,7 @@ function MapTimeLineV2(props) {
                                     borderRadius: "5px",
                                     margin: "2px 10px 5px 10px",
                                     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                                    width: "20vw",
+                                    width: "24vw",
                                     textAlign: "left"
                                 }}
                             >
