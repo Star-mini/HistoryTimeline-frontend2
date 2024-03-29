@@ -15,8 +15,13 @@ function Header(props) {
 
     const handleLogout = () => {
         setState("");
+        cookie.remove("email");
         navigate(-1);
     };
+
+    const handleLogin = () => {
+        navigate("/login");
+    }
 
     return (
         <div
@@ -56,16 +61,16 @@ function Header(props) {
                                     Logout
                                 </button>
                             ) : (
-                                <a
+                                <button
                                     className="nav-link"
-                                    href="/login"
+                                    onClick={handleLogin}
                                     style={{
                                         color: fontColor,
                                         fontSize: "15pt",
                                     }}
                                 >
                                     Login
-                                </a>
+                                </button>
                             )}
                         </li>
                     </ul>
