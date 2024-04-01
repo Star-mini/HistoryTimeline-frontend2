@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../../styles/contents/description.css";
 import Fade from "react-reveal/Fade";
-import {cusomizedAxios as axios} from "../../../constants/customizedAxios";
+import { cusomizedAxios as axios } from "../../../constants/customizedAxios";
 
 // Description 컴포넌트는 영화 상세 정보를 렌더링
 const Description = (props) => {
@@ -12,8 +12,8 @@ const Description = (props) => {
     cast: "",
     producers: "",
     tagline: "",
-    year: "", 
-    genres: [], 
+    year: "",
+    genres: [],
     rating: 0,
   });
   const [thumbsUp, setThumbsUp] = useState(10);
@@ -21,17 +21,16 @@ const Description = (props) => {
   const [hasThumbedUp, setHasThumbedUp] = useState(false); // 추천 버튼을 눌렀는지 여부
   const [hasThumbedDown, setHasThumbedDown] = useState(false); // 비추천 버튼을 눌렀는지 여부
 
-
-
   // TMDB API 키와 영화 ID 설정
   const api_key = process.env.REACT_APP_API_KEY;
-  const movie_id = props.contentId; 
+  const movie_id = props.contentId;
   const baseUrl = "https://api.themoviedb.org/3";
   const imageUrl = "https://image.tmdb.org/t/p/original/";
 
   // 영화 상세 정보를 가져오는 useEffect 추가
   useEffect(() => {
     // 영화 상세 정보 가져오기
+    // 영화 상세 정보를 가져오는 useEffect 내의 fetchMovieDetails 함수
     const fetchMovieDetails = async () => {
       const { data: movieData } = await axios.get(
         `${baseUrl}/movie/${movie_id}?api_key=${api_key}&language=ko-KR`
@@ -50,9 +49,16 @@ const Description = (props) => {
         .join(", ");
       const genres = movieData.genres.map((genre) => genre.name);
 
+      // 이미지 경로가 없는 경우 기본 이미지 경로를 사용
+      const defaultImagePath =
+        "https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/service/a85d0594017900001.jpg?type=thumb&opt=C800x400";
+      const backdropPath = movieData.backdrop_path
+        ? imageUrl + movieData.backdrop_path
+        : defaultImagePath;
+
       setMovieDetails({
         title: movieData.title,
-        backdropPath: imageUrl + movieData.backdrop_path,
+        backdropPath: backdropPath, // 조건부로 이미지 경로 설정
         description: movieData.overview,
         cast: castNames,
         producers: producerNames,
@@ -69,39 +75,43 @@ const Description = (props) => {
   // 추천 수와 비추천 수를 가져오는 useEffect 추가
   useEffect(() => {
     const fetchLikeCount = async () => {
-        try {
-            const response = await axios.get(`http://localhost:8081/likes/count`, {
-                params: { contentId: props.contentId }
-            });
-            setThumbsUp(response.data); // 받은 추천 수로 상태 업데이트
-        } catch (error) {
-            console.error('추천 수 조회 실패:', error);
-        }
+      try {
+        const response = await axios.get(`http://localhost:8081/likes/count`, {
+          params: { contentId: props.contentId },
+        });
+        setThumbsUp(response.data); // 받은 추천 수로 상태 업데이트
+      } catch (error) {
+        console.error("추천 수 조회 실패:", error);
+      }
     };
 
-    if(props.contentId) { // contentId가 있을 때만 요청
-        fetchLikeCount();
+    if (props.contentId) {
+      // contentId가 있을 때만 요청
+      fetchLikeCount();
     }
-}, [props.contentId]); // props.contentId가 변경될 때마다 추천 수를 다시 조회
+  }, [props.contentId]); // props.contentId가 변경될 때마다 추천 수를 다시 조회
 
   // 비추천 수를 가져오는 useEffect 추가
   useEffect(() => {
     const fetchDislikeCount = async () => {
-        try {
-            const response = await axios.get(`http://localhost:8081/dislikes/count`, {
-                params: { contentId: props.contentId }
-            });
-            setThumbsDown(response.data); // 비추천 수로 상태 업데이트
-        } catch (error) {
-            console.error('비추천 수 조회 실패:', error);
-        }
+      try {
+        const response = await axios.get(
+          `http://localhost:8081/dislikes/count`,
+          {
+            params: { contentId: props.contentId },
+          }
+        );
+        setThumbsDown(response.data); // 비추천 수로 상태 업데이트
+      } catch (error) {
+        console.error("비추천 수 조회 실패:", error);
+      }
     };
 
-    if(props.contentId) { // contentId가 있을 때만 요청
-        fetchDislikeCount();
+    if (props.contentId) {
+      // contentId가 있을 때만 요청
+      fetchDislikeCount();
     }
-}, [props.contentId]); // props.contentId가 변경될 때마다 비추천 수를 다시 조회
-
+  }, [props.contentId]); // props.contentId가 변경될 때마다 비추천 수를 다시 조회
 
   // contentId가 변경될 때 추천 상태를 초기화하는 useEffect 추가
   useEffect(() => {
@@ -109,60 +119,63 @@ const Description = (props) => {
     setHasThumbedDown(false);
   }, [props.contentId]);
 
-  
   // 추천 수와 비추천 수를 업데이트하는 함수 추가
   const handleThumbsUp = async () => {
-    if(hasThumbedUp) {
-      alert('추천은 한번만 가능해요.'); // 경고 메시지 띄우기
+    if (hasThumbedUp) {
+      alert("추천은 한번만 가능해요."); // 경고 메시지 띄우기
       return; // 추가 처리 방지
     }
-  
+
     try {
       // 서버에 추천 요청 전송 로직은 여기에 유지
-      const response = await axios.post('http://localhost:8081/likes', null, {
+      const response = await axios.post("http://localhost:8081/likes", null, {
         params: {
           userId: 1, // 유저 ID는 예시로 1 사용
           contentId: props.contentId,
-        }
+        },
       });
-      console.log('추천이 성공적으로 추가되었습니다.', response.data);
+      console.log("추천이 성공적으로 추가되었습니다.", response.data);
       setThumbsUp(thumbsUp + 1); // 추천 수 상태 업데이트
       setHasThumbedUp(true); // 추천 버튼을 눌렀다고 상태 업데이트
     } catch (error) {
-      console.error('추천 추가 실패:', error);
+      console.error("추천 추가 실패:", error);
     }
   };
-  
+
   // 비추천 수를 업데이트하는 함수 추가
   const handleThumbsDown = async () => {
-    if(hasThumbedDown) {
-      alert('비추천은 한번만 가능해요.'); // 경고 메시지 띄우기
+    if (hasThumbedDown) {
+      alert("비추천은 한번만 가능해요."); // 경고 메시지 띄우기
       return; // 추가 처리 방지
     }
-  
+
     try {
       // 서버에 비추천 요청 전송 로직은 여기에 유지
-      const response = await axios.post('http://localhost:8081/dislikes', null, {
-        params: {
-          userId: 1, // 유저 ID는 예시로 1 사용
-          contentId: props.contentId,
+      const response = await axios.post(
+        "http://localhost:8081/dislikes",
+        null,
+        {
+          params: {
+            userId: 1, // 유저 ID는 예시로 1 사용
+            contentId: props.contentId,
+          },
         }
-      });
-      console.log('비추천이 성공적으로 추가되었습니다.', response.data);
+      );
+      console.log("비추천이 성공적으로 추가되었습니다.", response.data);
       setThumbsDown(thumbsDown + 1); // 비추천 수 상태 업데이트
       setHasThumbedDown(true); // 비추천 버튼을 눌렀다고 상태 업데이트
     } catch (error) {
-      console.error('비추천 추가 실패:', error);
+      console.error("비추천 추가 실패:", error);
     }
   };
-  
+
   // Description 컴포넌트에서 추천 수와 비추천 수를 렌더링
   return (
     <div className="custom-body">
       <div className="description-section">
         <Fade bottom delay={500}>
           <img
-            src={movieDetails.backdropPath} // 동적으로 배경 이미지 설정
+            src={movieDetails.backdropPath} // 조건부 로직으로 이미지 경로 설정됨
             alt="Series Background"
             className="hero-image"
           />
@@ -177,7 +190,7 @@ const Description = (props) => {
               추천 {thumbsUp}
             </span>
             <span className="thumb-down" onClick={handleThumbsDown}>
-            <img src="/thumb-down.png" alt="비추천" className="thumb-icon" />
+              <img src="/thumb-down.png" alt="비추천" className="thumb-icon" />
               비추천 {thumbsDown}
             </span>
             <div className="tags">
